@@ -1,0 +1,22 @@
+.inner-container{
+    gap: 1.5rem;
+    background: linear-gradient(97.05deg, #909473 3.76%, #5B6D5C 100%);;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 6px solid rgba(203, 185, 137, 0.78);
+    text-align: center;
+}
+
+.inner-container .primaryText{
+    color: white;
+    font-weight: 600;
+}
+.inner-container .secondaryText{
+    color: rgba(21, 2, 2, 0.587);
+}
+.inner-container .button {
+    background: #5B6D5C;
+    border: 2px solid E4E1D8;
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+}

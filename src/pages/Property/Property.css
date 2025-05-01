@@ -1,0 +1,151 @@
+.property-container{
+    gap: 2rem;
+    position: relative;
+}
+
+.property-container .like{
+    position: absolute;
+    top: 3rem;right: 3rem;
+    cursor: pointer;
+}
+
+
+.property-container>img{
+    align-self: center;
+    max-height: 35rem;
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.property-image-slider {
+    width: 100%;
+    align-self: center;
+    border-radius: 1rem;
+    overflow: hidden;
+    max-height: 35rem;
+}
+.property-image-slider {
+    position: relative;
+  }
+  
+  .property-image-slider .swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .property-image-slider .swiper-pagination-bullet {
+    background: white;
+    opacity: 0.7;
+  }
+  
+  .property-image-slider .swiper-pagination-bullet-active {
+    background: #4066ff;
+    opacity: 1;
+  }
+
+  /* Custom navigation buttons */
+.r-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.r-prevButton,
+.r-nextButton {
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Optional hover */
+.r-prevButton:hover,
+.r-nextButton:hover {
+    background: #4066ff;
+}
+
+.property-image-slider .swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+
+.property-image-slider .property-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+    max-height: 35rem;
+}
+
+
+  
+
+.property-details{
+    width: 100%;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.property-details>div{
+    flex: 1;
+    gap: 1.5rem;
+}
+
+.property-details .left .head{
+    justify-content: space-between;
+    width: 100%;
+}
+
+.facilities{
+    gap: 1rem;
+    font-size: 0.9rem;
+    padding: 1rem;
+}
+
+.facility{
+    gap: 0.5rem;
+}
+
+.property-details .button{
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.property-details .button:hover{
+    transform: scale(1.05);
+}
+
+
+  
+
+@media (max-width: 700px) {
+    .property-container>div{
+        flex-direction: column;
+    }
+    .head{
+        flex-direction: column;
+    }
+    .facilities{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .property-details>div{
+        width: 100%;
+    }
+}
