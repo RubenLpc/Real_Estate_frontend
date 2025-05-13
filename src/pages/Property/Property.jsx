@@ -1,212 +1,266 @@
-import React, { useContext, useState } from "react";
-import { useMutation, useQuery } from "react-query";
+// src/pages/Property/Property.jsx
+import React from "react";
+import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
-import { getProperty, removeBooking } from "../../utils/api.js";
 import { PuffLoader } from "react-spinners";
+import { Button } from "@mantine/core";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Navigation, Pagination } from "swiper";
 import { AiFillHeart } from "react-icons/ai";
+import Map from "../../components/Map/Map";
+import { getResidency } from "../../utils/api";
 import "./Property.css";
 
-import { Swiper, SwiperSlide,useSwiper } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
-
-
-
-import { FaShower } from "react-icons/fa";
-import { AiTwotoneCar } from "react-icons/ai";
-import { MdLocationPin, MdMeetingRoom } from "react-icons/md";
-import Map from "../../components/Map/Map.jsx";
-import useAuthCheck from "../../hooks/useAuthCheck.jsx";
-import { useAuth0 } from "@auth0/auth0-react";
-import BookingModal from "../../components/BookingModal/BookingModal.jsx";
-import UserDetailContext from "../../context/UserDetailContext.js";
-import { Button } from "@mantine/core";
-import { toast } from "react-toastify";
-import Heart from "../../components/Heart/Heart.jsx";
-const Property = () => {
+export default function Property() {
   const { pathname } = useLocation();
-  const id = pathname.split("/").slice(-1)[0];
-  const { data, isLoading, isError } = useQuery(["resd", id], () =>
-    getProperty(id)
+  const id = pathname.split("/").pop();
+  const { data, isLoading, isError } = useQuery(
+    ["residency", id],
+    () => getResidency(id)
   );
 
-  const [modalOpened, setModalOpened] = useState(false);
-  const { validateLogin } = useAuthCheck();
-  const { user } = useAuth0();
+  if (isLoading)
+    return (
+      <div className="wrapper flexCenter paddings">
+        <PuffLoader />
+      </div>
+    );
+  if (isError || !data)
+    return (
+      <div className="wrapper flexCenter paddings">
+        <span>Fehler beim Laden der Objekt-Daten.</span>
+      </div>
+    );
 
   const {
-    userDetails: { token, bookings },
-    setUserDetails,
-  } = useContext(UserDetailContext);
-
-  const { mutate: cancelBooking, isLoading: cancelling } = useMutation({
-    mutationFn: () => removeBooking(id, user?.email, token),
-    onSuccess: () => {
-      setUserDetails((prev) => ({
-        ...prev,
-        bookings: prev.bookings.filter((booking) => booking?.id !== id),
-      }));
-
-      toast.success("Booking cancelled", { position: "bottom-right" });
-    },
-  });
-
-  if (isLoading) {
-    return (
-      <div className="wrapper">
-        <div className="flexCenter paddings">
-          <PuffLoader />
-        </div>
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className="wrapper">
-        <div className="flexCenter paddings">
-          <span>Error while fetching the property details</span>
-        </div>
-      </div>
-    );
-  }
+    title,
+    shortDescription,
+    description,
+    propertyType,
+    status,
+    landArea,
+    livingArea,
+    rooms,
+    constructionYear,
+    renovationNeed,
+    zoning,
+    energyCertificate,
+    documents = [],
+    image,
+    images = [],
+    videoUrl,
+    droneVideoUrl,
+    price,
+    negotiable,
+    commission,
+    availabilityDate,
+    address,
+    city,
+    country,
+    region,
+    features = [],
+    tags = [],
+  } = data;
 
   return (
     <div className="wrapper">
-      <div className="flexColStart paddings innerWidth property-container">
-        {/* like button */}
+      <div className="property-container innerWidth paddings">
+        {/* 1. Header: Titel + Standort */}
         <div className="like">
-          <Heart id={id}/>
+          <AiFillHeart size={28} color="#e74c3c" />
         </div>
+        <h1 className="primaryText">{title}</h1>
+        <p className="secondaryText">
+          {address && `${address}, `}
+          {city && `${city}, `}
+          {region || "Nicht angegeben"}
+          {country && `, ${country}`}
+        </p>
 
-        {/* image */}
+        {/* 2. Teaser */}
+        {shortDescription && (
+          <p className="teaserText">{shortDescription}</p>
+        )}
+
+        {/* 3. Medienbereich */}
         <Swiper
-  spaceBetween={20}
-  slidesPerView={1}
-  navigation
-  pagination={{ clickable: true }}
-  modules={[Navigation, Pagination]}
-  className="property-image-slider"
-><SlideNextButton />
-  {[data.image, ...(data.images || [])].map((img, idx) => (
-    <SwiperSlide key={idx}>
-      
-      <img src={img} alt={`property-${idx}`} className="property-image" />
-    </SwiperSlide>
-  ))}
-</Swiper>
-
-
-
-        <div className="flexCenter property-details">
-          {/* left */}
-          <div className="flexColStart left">
-            {/* head */}
-            <div className="flexStart head">
-              <span className="primaryText">{data?.title}</span>
-              <span className="orangeText" style={{ fontSize: "1.5rem" }}>
-                $ {data?.price}
-              </span>
-            </div>
-
-            {/* facilities */}
-            <div className="flexStart facilities">
-              {/* bathrooms */}
-              <div className="flexStart facility">
-                <FaShower size={20} color="#1F3E72" />
-                <span>{data?.facilities?.bathrooms} Bathrooms</span>
+          modules={[Navigation, Pagination]}
+          navigation
+          pagination={{ clickable: true }}
+          spaceBetween={20}
+          slidesPerView={1}
+          className="property-image-slider"
+        >
+          <SlideNavButtons />
+          {image && (
+            <SwiperSlide>
+              <img src={image} alt="Hauptbild" className="property-image" />
+            </SwiperSlide>
+          )}
+          {images.map((url, i) => (
+            <SwiperSlide key={i}>
+              <img
+                src={url}
+                alt={`Bild ${i + 1}`}
+                className="property-image"
+              />
+            </SwiperSlide>
+          ))}
+          {videoUrl && (
+            <SwiperSlide>
+              <div className="video-wrapper">
+                <iframe
+                  src={videoUrl}
+                  title="Video"
+                  frameBorder="0"
+                  allowFullScreen
+                />
               </div>
+            </SwiperSlide>
+          )}
+          {droneVideoUrl && (
+            <SwiperSlide>
+              <iframe
+                src={droneVideoUrl}
+                title="Drohnenvideo"
+                frameBorder="0"
+                allowFullScreen
+              />
+            </SwiperSlide>
+          )}
+        </Swiper>
 
-              {/* parkings */}
-              <div className="flexStart facility">
-                <AiTwotoneCar size={20} color="#1F3E72" />
-                <span>{data?.facilities.parkings} Parking</span>
-              </div>
+        {/* 4–8. Main + Sidebar Grid */}
+        <div className="details-grid">
+          {/* Main Column */}
+          <div className="main-column">
+            {/* 5. Langtext */}
+            <section className="description-section">
+              <h3>Beschreibung</h3>
+              <p className="secondaryText">{description}</p>
+            </section>
 
-              {/* rooms */}
-              <div className="flexStart facility">
-                <MdMeetingRoom size={20} color="#1F3E72" />
-                <span>{data?.facilities.bedrooms} Room/s</span>
-              </div>
-            </div>
+            {/* 6. Lage + Karte */}
+            <section className="map-section">
+              <h3>Lage</h3>
+              <Map address={address} city={city} country={country} />
+            </section>
 
-            {/* description */}
-
-            <span className="secondaryText" style={{ textAlign: "justify" }}>
-              {data?.description}
-            </span>
-
-            {/* address */}
-
-            <div className="flexStart" style={{ gap: "1rem" }}>
-              <MdLocationPin size={25} />
-              <span className="secondaryText">
-                {data?.address}{" "}
-                {data?.city}{" "}
-                {data?.country}
-              </span>
-            </div>
-
-            {/* booking button */}
-            {bookings?.map((booking) => booking.id).includes(id) ? (
-              <>
-                <Button
-                  variant="outline"
-                  w={"100%"}
-                  color="red"
-                  onClick={() => cancelBooking()}
-                  disabled={cancelling}
-                >
-                  <span>Cancel booking</span>
-                </Button>
-                <span>
-                  Your visit already booked for date{" "}
-                  {bookings?.filter((booking) => booking?.id === id)[0].date}
-                </span>
-              </>
-            ) : (
-              <button
-                className="button"
-                onClick={() => {
-                  validateLogin() && setModalOpened(true);
-                }}
-              >
-                Book your visit
-              </button>
+            {/* 7. Dokumente */}
+            {documents.length > 0 && (
+              <section className="docs-section">
+                <h3>Dokumente</h3>
+                <ul>
+                  {documents.map((url, i) => (
+                    <li key={i}>
+                      <a
+                        href={url}
+                        download={`Dokument_${i + 1}.pdf`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Dokument {i + 1}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             )}
 
-            <BookingModal
-              opened={modalOpened}
-              setOpened={setModalOpened}
-              propertyId={id}
-              email={user?.email}
-            />
+            {/* 9. Extras & Tags */}
+            {(features.length > 0 || tags.length > 0) && (
+              <section className="tags-section">
+                {features.length > 0 && (
+                  <>
+                    <h3>Ausstattung</h3>
+                    <ul className="feature-list">
+                      {features.map((f) => (
+                        <li key={f}>✅ {f}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {tags.length > 0 && (
+                  <>
+                    <h3>Highlights</h3>
+                    <ul className="tag-list">
+                      {tags.map((t) => (
+                        <li key={t}>🏷️ {t}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </section>
+            )}
+
+            {/* 10. CTA */}
+            <div className="cta-section">
+              <Button className="button">Besichtigung anfragen</Button>
+            </div>
           </div>
 
-          {/* right side */}
-          <div className="map">
-            <Map
-              address={data?.address}
-              city={data?.city}
-              country={data?.country}
-            />
-          </div>
+          {/* Sidebar */}
+          <aside className="sidebar">
+            <h3>Objekt-Details</h3>
+            <ul className="facts-box">
+              <li><strong>Objektart:</strong> {propertyType || "–"}</li>
+              <li><strong>Status:</strong> {status || "–"}</li>
+              <li>
+                <strong>Grundst.:</strong>{" "}
+                {landArea != null ? `${landArea} m²` : "–"}
+              </li>
+              <li>
+                <strong>Wohn-/Nutzf.:</strong>{" "}
+                {livingArea != null ? `${livingArea} m²` : "–"}
+              </li>
+              <li><strong>Zimmer:</strong> {rooms != null ? rooms : "–"}</li>
+              <li>
+                <strong>Baujahr:</strong>{" "}
+                {constructionYear != null ? constructionYear : "–"}
+              </li>
+              <li>
+                <strong>Sanierungsbedarf:</strong> {renovationNeed || "–"}
+              </li>
+              <li><strong>Widmung:</strong> {zoning || "–"}</li>
+              <li>
+                <strong>Energieausweis:</strong>{" "}
+                {energyCertificate ? (
+                  <a href={energyCertificate} target="_blank" rel="noreferrer">
+                    herunterladen
+                  </a>
+                ) : (
+                  "–"
+                )}
+              </li>
+            </ul>
+
+            <h3>Preis</h3>
+            <p className="orangeText">€ {price.toLocaleString()}</p>
+            {negotiable && <p>VB</p>}
+            {commission && <p>Provision: {commission}</p>}
+            {availabilityDate && (
+              <p>
+                Verfügbar ab:{" "}
+                {new Date(availabilityDate).toLocaleDateString()}
+              </p>
+            )}
+          </aside>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default Property;
-
-const SlideNextButton = () => {
+// Swiper custom nav
+const SlideNavButtons = () => {
   const swiper = useSwiper();
   return (
-    <div className="flexCenter r-buttons">
+    <div className="r-buttons flexCenter">
       <button onClick={() => swiper.slidePrev()} className="r-prevButton">
-        &lt;
+        ‹
       </button>
       <button onClick={() => swiper.slideNext()} className="r-nextButton">
-        &gt;
+        ›
       </button>
     </div>
   );

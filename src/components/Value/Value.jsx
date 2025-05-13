@@ -5,128 +5,247 @@ import {
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
-  AccordionItemState,
 } from "react-accessible-accordion";
-import "react-accessible-accordion/dist/fancy-example.css";
+import { MdOutlineArrowDropDown, MdCheck } from "react-icons/md";
+import { Button, List, ThemeIcon, SimpleGrid, Title } from "@mantine/core";
 import {
-  MdOutlineArrowDropDown,
-  MdOutlineArrowDropDownCircle,
-} from "react-icons/md";
-import data from "../../utils/accordion.jsx";
+  IconBuilding,
+  IconHome,
+  IconLock,
+  IconMapSearch,
+  IconPhoto,
+  IconDrone,
+  IconFileText,
+  IconShare,
+  IconUsers,
+  IconGavel,
+  IconCalendarStats,
+  IconUserCheck,
+  IconMapPin,
+  IconBriefcase,
+  IconRefresh,
+} from "@tabler/icons-react";
+import "react-accessible-accordion/dist/fancy-example.css";
 import "./Value.css";
-// Demo styles, see 'Styles' section below for some notes on use.
+import InquiryModal from "../InquiryModal/InquiryModal.jsx";
 
 const Value = () => {
+  const [modalOpened, setModalOpened] = useState(false);
+  const iconStyle = { backgroundColor: 'var(--secondary)', color: 'var(--primary)' };
+
+  const sections = [
+    {
+      key: 0,
+      title: 'Kernkompetenzen - Was wir Ihnen bieten',
+      icon: <IconBuilding size={20} />,  
+      content: (
+        <>Mit langjähriger Erfahrung in der Standortentwicklung, Betriebsansiedlung sowie der Vermittlung von Liegenschaften begleite ich Sie beim Kauf oder Verkauf Ihrer Immobilie – professionell, diskret und individuell auf Ihre Situation abgestimmt.
+        <br/><br/>
+        Von der ersten unverbindlichen Beratung bis zur Übergabe begleite ich Sie persönlich – strukturiert, zielorientiert und mit Blick auf Ihre individuellen Bedürfnisse.
+        <br/><br/>
+        Ob Pferdehof, landwirtschaftliches Anwesen, Ackerfläche, Gewerbegrundstück, Betriebshalle oder Wohnhaus – für jede Immobilie entwickle ich eine passende Vermarktungsstrategie.
+        <br/><br/>
+        <strong>Mein Ziel:</strong> Das bestmögliche Ergebnis für Sie als Eigentümer:in – wirtschaftlich durchdacht, steuerlich sinnvoll und emotional stimmig.
+        <br/><br/>
+        Darüber hinaus unterstütze ich Sie bei der Entwicklung von Baulandentwicklungsprojekten – von der Erstbewertung über das Widmungsverfahren bis zur strukturierten Verwertung.</>
+      )
+    },
+    
+    {
+      key: 1,
+      title: 'Vermittlung von Immobilien - Sie suchen eine Immobilie?',
+      icon: <IconHome size={20} />,  
+      content: (
+        <>
+          Nehmen Sie gerne Kontakt mit mir auf – denn die meisten meiner Objekte werden nicht öffentlich präsentiert.
+          <br/><br/>
+          Unabhängig davon ob Sie eine Immobilie für den Eigengebrauch oder als Anlageobjekt wünschen, sollte aktuell kein passendes Objekt verfügbar sein, können Sie mir Ihren Suchwunsch gerne über das folgende Formular übermitteln.
+          <br/><br/>
+          <strong>Service für Kaufinteressenten:</strong>
+          <List spacing="sm" size="sm" withPadding>
+            {[
+              'Professionelle und aussagekräftige Verkaufsunterlagen',
+              'Umfangreiche Präsentation im Internet',
+              'Individuelle Besichtigungen',
+              'Aktiv gepflegtes Vormerksystem',
+              'Abklärung rechtlicher Fragen',
+              'Unterstützung bei Finanzierungen',
+              'Organisation von Kaufverträgen',
+              'Persönliche Begleitung bei der Abwicklung',
+              'Zusätzliche Services wie Entrümpelung, Renovierung',
+            ].map((text, idx) => (
+              <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}><MdCheck size={16} /></ThemeIcon>}>
+                {text}
+              </List.Item>
+            ))}
+          </List>
+        </>
+      )
+    },
+    {
+      key: 2,
+      title: 'Diskrete Vermarktung oder gezielte Suche abseits der Öffentlichkeit',
+      icon: <IconLock size={20} />,
+      content: (
+        <>
+        <em>Erfolg in der Stille – Ihre Immobilientransaktion diskret und professionell.</em>
+        <br/><br/>
+        Nicht jede Immobilientransaktion soll öffentlich sichtbar sein – sei es aus privaten, geschäftlichen oder strategischen Gründen.
+        <br/><br/>
+        Ich biete Ihnen dafür maßgeschneiderte, diskrete Vermarktungskonzepte oder unterstütze Sie bei einer gezielten Suche im Off-Market-Bereich.
+        <br/><br/>
+        Dank meines Netzwerks und meiner langjährigen Erfahrung kann ich Ihnen auch abseits klassischer Plattformen passende Lösungen anbieten – vertraulich, individuell und persönlich begleitet.
+        </>
+      )
+    },
+    {
+      key: 3,
+      title: 'Professionelle Immobilienvermittlung – strukturiert und marktorientiert',
+      icon: <IconBriefcase size={20} />,
+      content: (
+        <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]} spacing="lg">
+          <div>
+            <Title order={6} style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Visuelle Präsentation</Title>
+            <List spacing="sm" size="sm" withPadding>
+              {[
+                { icon: <IconPhoto size={20} />, text: 'Professionelle Foto- und Videoaufnahmen zur optimalen Darstellung Ihrer Immobilie in Online-Galerien' },
+                { icon: <IconDrone size={20} />, text: 'Drohnenaufnahmen zur attraktiven Visualisierung der Lage und Umgebung' },
+                { icon: <IconFileText size={20} />, text: 'Erstellung hochwertiger Verkaufsunterlagen, die Ihre Immobilie ins beste Licht rücken' },
+              ].map((item, idx) => (
+                <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}>{item.icon}</ThemeIcon>}>
+                  {item.text}
+                </List.Item>
+              ))}
+            </List>
+          </div>
+          <div>
+            <Title order={6} style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Marketing & Recht</Title>
+            <List spacing="sm" size="sm" withPadding>
+              {[
+                { icon: <IconShare size={20} />, text: 'Gezielte Social-Media-Kampagnen und Plattformplatzierungen zur Maximierung der Reichweite' },
+                { icon: <IconUsers size={20} />, text: 'Kontaktaufnahme mit vorgemerkten Kunden aus meinem Netzwerk' },
+                { icon: <IconGavel size={20} />, text: 'Klärung behördlicher Vorgaben und Bestimmungen' },
+                { icon: <IconCalendarStats size={20} />, text: 'Ständige Information des Verkäufers über die Verkaufsaktivitäten' },
+                { icon: <IconUserCheck size={20} />, text: 'Selektive Einzelbesichtigungen und Prüfung der Interessenten' },
+              ].map((item, idx) => (
+                <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}>{item.icon}</ThemeIcon>}>
+                  {item.text}
+                </List.Item>
+              ))}
+            </List>
+          </div>
+        </SimpleGrid>
+      )
+    },
+    {
+      key: 4,
+      title: 'Standortsuche und Betriebsansiedlung',
+      icon: <IconMapSearch size={20} />,
+      content: (
+        <>
+        Wenn Sie für Ihr Unternehmen den optimalen Standort suchen, sind Sie bei mir genau richtig. Ich führe eine strategische Analyse potenzieller Standorte durch und berate Sie bei der Auswahl geeigneter Betriebsflächen – mit dem Ziel, die wirtschaftlich und infrastrukturell beste Lösung für Ihr Vorhaben zu finden.
+        <br/><br/>
+        Nach einem persönlichen Erstgespräch erstelle ich eine Longlist potenzieller Standorte, die Ihren Anforderungen entsprechen. In einem strukturierten Auswahlprozess verdichten wir diese gemeinsam zu einer Shortlist – auf deren Basis die nächsten Schritte im Projekt gezielt geplant und umgesetzt werden.
+        <br/><br/>
+        <strong>Unterstützung bei Behördenwegen und Genehmigungen:</strong> Zahlreiche behördliche Genehmigungen und Verfahren sind notwendig. Ich unterstütze Sie mit meiner langjährigen Erfahrung im Behördenmanagement und begleite Sie gemeinsam mit Fachexperten verlässlich durch alle relevanten Abläufe.
+        <br/><br/>
+        <strong>Finanzierungspartner aus meinem Netzwerk:</strong> Insbesondere Großprojekte fordern das Thema der Finanzierung sehr. Bei Bedarf empfehle ich Ihnen vertrauenswürdige Ansprechpartner aus meinem Netzwerk im Banken- und Investorenbereich.
+        <br/><br/>
+        <strong>Vermittlung von Kommunikationspartnern für Anrainerthemen:</strong> Erweiterungen können Auswirkungen auf das Umfeld haben. Ich bringe Sie mit erfahrenen Kommunikationspartnern zusammen, die Sie bei Anrainerkommunikation, Bürgerbeteiligung und Informationsveranstaltungen unterstützen.
+        <br/><br/>
+        Kontaktieren Sie mich gerne für ein unverbindliches Erstgespräch – ich freue mich auf Ihre Anfrage.</>
+      )
+    },
+    {
+      key: 5,
+      title: 'Baulandentwicklung',
+      icon: <IconMapPin size={20} />,  
+      content: (
+        <>
+          <strong>Baulandentwicklung: </strong>Aus landwirtschaftlicher Fläche wird Bauland.<br/><br/>
+          Sie möchten wissen, wie aus Ihrer Grünlandfläche gewidmetes Bauland werden kann? Als erfahrener Projektentwickler begleite ich Sie durch diesen komplexen Prozess – rechtssicher, wirtschaftlich und technisch optimiert und individuell zugeschnitten.<br/><br/>
+          <strong>Unsere Leistungen im Überblick:</strong>
+          <br />
+         
+          <List spacing="sm" size="sm" withPadding>
+            {[
+              'Analyse der Nutzungs- und Widmungspotenziale Ihres Grundstücks',
+              'Erstellung eines schlüssigen Entwicklungskonzepts',
+              'Begleitung im Behördenmanagement bis zur Erreichung der Flächenwidmung / Bebauungsplanes',
+              'Parzellierung und Vermarktung der neuen Baugrundstücke',
+              'Zusammenarbeit mit Partnern aus Rechts- & Steuerberatung sowie Planung und Technik',
+            ].map((text, idx) => (
+              <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}><MdCheck size={16} /></ThemeIcon>}>
+                {text}
+              </List.Item>
+            ))}
+          </List>
+          <br/>
+          <strong>Ihre Vorteile:</strong>
+          <br />
+     
+          <List spacing="sm" size="sm" withPadding>
+            {[
+              'Aktivierung stiller Reserven durch gezielte Planung (z. B. Immobilienertragsteuer)',
+              'Schutz vor dem Eintritt in den gewerblichen Grundstückshandel',
+              'Ganzheitliche Projektbegleitung – von Erstberatung bis Verkauf',
+            ].map((text, idx) => (
+              <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}><MdCheck size={16} /></ThemeIcon>}>
+                {text}
+              </List.Item>
+            ))}
+          </List>
+        </>
+      )
+    },
+    {
+      key: 6,
+      title: 'Revitalisierungsprojekte',
+      icon: <IconRefresh size={20} />,
+      content: (
+        <>
+        Auch Immobilien durchlaufen Lebenszyklen – und mit jeder Phase verändern sich die Nutzungsmöglichkeiten. Gezielte „Verjüngungskuren“ wie Sanierungen oder Umnutzungen können den Wert und die Verwendbarkeit deutlich steigern.
+        <br/><br/>
+        Ob sich eine solche Investition langfristig für Sie lohnt oder ob ein Verkauf an auf Revitalisierungen spezialisierte Käufer:innen die bessere Option ist, besprechen wir gerne in einem persönlichen Erstgespräch.
+        <br/><br/>
+        Viele meiner Kund:innen sind insbesondere an sanierungsbedürftigen Einfamilienhäusern, Zinshäusern und Gewerbeliegenschaften interessiert.
+        </>
+      )
+    }
+  ];
+
   return (
     <div>
-      <section id="value" className="v-wrapper">
-        <div className="paddings innerWidth flexCenter v-container">
-          {/* left side */}
-          <div className="v-left">
-            <div className="image-container">
-              <img src="./value.png" alt="" />
-            </div>
-          </div>
-
-          {/* right */}
+      <section id="core-competencies" className="core-wrapper">
+        <div className="paddings innerWidth flexCenter core-container">
           <div className="flexColStart v-right">
-            <span className="orangeText">Our Value</span>
-
-            <span className="primaryText">Value We Give to You</span>
-
-            <span className="secondaryText">
-              We always ready to help by providijng the best services for you.
-              <br />
-              We beleive a good blace to live can make your life better
-            </span>
-
-            <Accordion
-              className="accordion"
-              allowMultipleExpanded={false}
-              preExpanded={[0]}
-            >
-              {data.map((item, i) => {
-                const [className, setClassName] = useState(null);
-                return (
-                  <AccordionItem
-                    className={`accordionItem ${className}`}
-                    uuid={i}
-                    key={i}
-                  >
-                    <AccordionItemHeading>
-                      <AccordionItemButton className="flexCenter accordionButton ">
-                        {/* just for getting state of item */}
-                        <AccordionItemState>
-                          {({ expanded }) =>
-                            expanded
-                              ? setClassName("expanded")
-                              : setClassName("collapsed")
-                          }
-                        </AccordionItemState>
-                        <div className="flexCenter icon">{item.icon}</div>
-                        <span className="primaryText">{item.heading}</span>
-                        <div className="flexCenter icon">
-                          <MdOutlineArrowDropDown size={20} />
-                        </div>
-                      </AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <p className="secondaryText">{item.detail}</p>
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                );
-              })}
+            <Accordion allowMultipleExpanded={false} preExpanded={[0]} className="accordion">
+              {sections.map(({ key, title, icon, content }) => (
+                <AccordionItem uuid={key} key={key} className="accordionItem">
+                  <AccordionItemHeading>
+                    <AccordionItemButton className="flexCenter accordionButton">
+                      <ThemeIcon style={{ ...iconStyle, marginRight: '0.5rem' }} radius="xl" size={30}>
+                        {icon}
+                      </ThemeIcon>
+                      <span className="primaryText" style={{ fontSize: '1rem' }}>{title}</span>
+                      <MdOutlineArrowDropDown size={24} style={{ color: 'var(--primary)', marginLeft: 'auto' }} />
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel>
+                    <span className="secondaryText" style={{ fontSize: '0.875rem' }}>{content}</span>
+                    <div style={{ marginTop: '1rem', textAlign: 'right' }}>
+                      <Button className="button" size="sm" style={{ backgroundColor: 'var(--primary)', color: 'white' }} onClick={() => setModalOpened(true)}>
+                        Suchauftrag senden
+                      </Button>
+                    </div>
+                  </AccordionItemPanel>
+                </AccordionItem>
+              ))}
             </Accordion>
           </div>
         </div>
       </section>
-      <section id="about-us" className="about-us-wrapper">
-        <div className="paddings innerWidth flexCenter about-us-container">
-          {/* Left side - Imagine despre companie */}
-
-          {/* Right side - Detalii despre companie */}
-          <div className="flexColStart about-us-right">
-            <span className="orangeText">About Us</span>
-            <span className="primaryText">Who We Are</span>
-
-            <span className="secondaryText">
-              We are a company dedicated to providing the best services for our
-              clients. Our team of professionals is committed to delivering
-              excellent results in everything we do. Our company has been in the
-              business for over 10 years, offering innovative solutions and
-              creating long-lasting relationships with our clients.
-              <br />
-              <br />
-              Our team of experts is dedicated to creating a positive impact,
-              helping our clients achieve their goals and grow their businesses.
-            </span>
-            <br />
-            {/* Viziune */}
-            <div className="vision">
-              <span className="primaryText">Our Vision</span>
-              <p className="secondaryText">
-                Our vision is to be the leading company in our industry, known
-                for innovation, customer satisfaction, and reliability. We aim
-                to be the preferred choice for businesses looking for quality
-                services and impactful solutions.
-              </p>
-            </div>
-            <br />
-            {/* Misiune */}
-            <div className="mission">
-              <span className="primaryText">Our Mission</span>
-              <p className="secondaryText">
-                Our mission is to empower businesses by providing them with
-                tools and services that foster growth, improve efficiency, and
-                help them stay ahead in a competitive market.
-              </p>
-            </div>
-
-            {/* Buton pentru a contacta */}
-            <div className="about-us-button"></div>
-          </div>
-        </div>
-      </section>
+      <InquiryModal opened={modalOpened} onClose={() => setModalOpened(false)} />
     </div>
   );
 };

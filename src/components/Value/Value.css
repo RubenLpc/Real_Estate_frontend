@@ -1,5 +1,11 @@
+:root {
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --blue: #5B6D5C;
+}
+
+/* Container and layout */
 .v-container .image-container {
-  border: 8px solid rgb(232 232 232 / 93%);
+  border: 8px solid rgba(232, 232, 232, 0.93);
 }
 .v-container > div {
   flex: 1;
@@ -7,6 +13,8 @@
 .v-right {
   gap: 0.5rem;
 }
+
+/* Accordion base styles */
 .accordion {
   margin-top: 2rem;
   border: none;
@@ -18,19 +26,54 @@
   overflow: hidden;
   margin-bottom: 20px;
 }
-
 .accordionItem.expanded {
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* stronger */
   border-radius: 6px;
 }
 .accordionButton {
+  display: flex;
+  align-items: center;
   background: white;
   padding: 1rem;
   width: 100%;
-  justify-content: space-between;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.accordionButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
+/* Title and dropdown arrow positioning */
+.accordionButton .primaryText {
+  flex: 1;
+  font-size: 1.1rem;
+}
+.accordionButton .icon {
+  flex: none;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.accordionButton .icon svg {
+  color: var(--blue);
+}
+.accordionItem.expanded .icon {
+  transform: rotate(180deg);
+}
+
+/* Text and content icon */
+.secondaryText {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
 .icon {
   padding: 10px;
   background: #eeeeff;
@@ -40,18 +83,21 @@
   fill: var(--blue);
 }
 
-.accordionButton .primaryText{
-    font-size: 1.1rem;
-}
-
+/* Responsive breakpoints */
 @media (max-width: 1024px) {
-    .v-container{
-        flex-direction: column;
-    }
+  .v-container {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 768px) {
-    .accordionButton .primaryText{
-        font-size: .8rem;
-    }
+  .accordionButton {
+    flex-direction: row;
+  }
+  .accordionButton .primaryText {
+    font-size: 0.9rem;
+  }
+  .accordionButton .icon {
+    margin-left: auto;
+  }
 }

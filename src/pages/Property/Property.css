@@ -149,3 +149,148 @@
         width: 100%;
     }
 }
+
+/* în Property.css */
+.property-container {
+    display: grid;
+    grid-template-columns: 1fr 300px; /* 1fr = conținut, 300px = sidebar */
+    gap: 2rem;
+  }
+  
+  .property-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .sidebar {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  /* Property.css */
+.map-section {
+    width: 100%;
+    height: 300px;           /* sau 400px, după preferinţă */
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .map-section iframe,
+  .map-section .mantine-Map-root { /* dacă foloseşti componenta Map */
+    width: 100% !important;
+   
+  }
+  
+  /* src/pages/Property/Property.css */
+.wrapper {
+    width: 100%;
+  }
+  .property-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .like {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+  }
+  .property-image-slider {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+  }
+  .property-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .video-wrapper iframe {
+    width: 100%;
+    height: 60vh;
+  }
+  .property-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .details-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+  }
+  .main-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .sidebar {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  .facts-box {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+  }
+  .facts-box li {
+    margin-bottom: 0.5rem;
+  }
+  .description-section,
+  .map-section,
+  .docs-section,
+  .tags-section,
+  .cta-section {
+    margin-top: 1.5rem;
+  }
+  .map-section {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .map-section iframe,
+  .map-section .mantine-Map-root {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .teaserText {
+    font-style: italic;
+  }
+  .feature-list,
+  .tag-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .feature-list li,
+  .tag-list li {
+    background: #eef;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+  }
+  .r-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+  .r-prevButton,
+  .r-nextButton {
+    pointer-events: all;
+    background: rgba(0,0,0,0.4);
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+  

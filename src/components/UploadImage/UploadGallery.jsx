@@ -1,45 +1,39 @@
+// UploadGallery.jsx (fixed)
 import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
-import { Button, Group, TextInput } from "@mantine/core";
+import { Button, Group } from "@mantine/core";
 import "./UploadImage.css";
 
-
-const UploadGallery = ({
-  propertyDetails,
-  setPropertyDetails,
-  nextStep,
-  prevStep,
-}) => {
-  const [images, setImages] = useState(propertyDetails.images || []);
-  const [videoLink, setVideoLink] = useState(propertyDetails.video || "");
-  const cloudinaryRef = useRef();
-  const widgetRef = useRef();
-
-  const handleNext = () => {
-    setPropertyDetails((prev) => ({
-      ...prev,
-      images,
-      video: videoLink.trim(), // include doar dacă există
-    }));
-    nextStep();
-  };
+const UploadGallery = ({ gallery = [], onChange, nextStep, prevStep }) => {
+  // preluăm imaginile existente doar la prima randare
+  const [urls, setUrls] = useState(gallery);
+  const widgetRef = useRef(null);
 
   useEffect(() => {
-    cloudinaryRef.current = window.cloudinary;
-    widgetRef.current = cloudinaryRef.current.createUploadWidget(
+    // nu crea widget-ul de mai multe ori
+    if (widgetRef.current) return;
+
+    widgetRef.current = window.cloudinary.createUploadWidget(
       {
         cloudName: "do3wzvgto",
         uploadPreset: "r2ocxngt",
         multiple: true,
         maxFiles: 10,
       },
-      (err, result) => {
-        if (result.event === "success") {
-          setImages((prev) => [...prev, result.info.secure_url]);
+      (error, result) => {
+        if (!error && result.event === "success") {
+          // adaugă noua imagine în state
+          setUrls((prev) => {
+            const updated = [...prev, result.info.secure_url];
+            onChange && onChange(updated);      // raportează în formular
+            return updated;
+          });
         }
       }
     );
-  }, []);
+  }, [onChange]);            // va rula o singură dată (onChange e stabil)
+
+  const handleNext = () => nextStep();
 
   return (
     <div className="flexColCenter uploadWrapper">
@@ -48,33 +42,23 @@ const UploadGallery = ({
         onClick={() => widgetRef.current?.open()}
       >
         <AiOutlineCloudUpload size={40} color="grey" />
-        <span>Upload Gallery Images</span>
+        <span>Bilder hochladen</span>
       </div>
 
-      <div className="uploadedGallery">
-        {images.map((url, i) => (
-          <img
-            key={i}
-            src={url}
-            alt={`uploaded ${i}`}
-            style={{ height: "100px", margin: "0.5rem", borderRadius: "8px" }}
-          />
+      {/* preview imagini */}
+      <div className="galleryPreview">
+        {urls.map((u, i) => (
+          <img key={i} src={u} alt={`img-${i}`} className="thumbnail" />
         ))}
       </div>
 
-      <TextInput
-        placeholder="YouTube video link (optional)"
-        label="Video"
-        value={videoLink}
-        onChange={(e) => setVideoLink(e.target.value)}
-        style={{ width: "100%", marginTop: "1rem" }}
-      />
-
-      <Group position="center" mt={"xl"}>
+      <Group position="center" mt="xl">
         <Button variant="default" onClick={prevStep}>
-          Back
+          Zurück
         </Button>
-        <Button onClick={handleNext}>Next</Button>
+        <Button onClick={handleNext} disabled={urls.length === 0}>
+          Weiter
+        </Button>
       </Group>
     </div>
   );

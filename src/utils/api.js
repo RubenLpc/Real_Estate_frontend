@@ -3,8 +3,22 @@ import dayjs from "dayjs";
 import { toast } from "react-toastify";
 
 export const api = axios.create({
-  baseURL: "https://real-estate-backend-l3m1.onrender.com/api"
+  //baseURL: "https://real-estate-backend-l3m1.onrender.com/api"
+baseURL: "http://localhost:8000/api"
+
 });
+
+export const sendInquiry = async (formData) => {
+  try {
+    const res = await api.post("/mail/send", formData);
+    toast.success("Ihre Anfrage wurde erfolgreich versendet!");
+    return res.data;
+  } catch (error) {
+    toast.error("Fehler beim Versenden des Formulars.");
+    throw error;
+  }
+};
+
 
 export const getAllProperties = async () => {
   try {
@@ -22,7 +36,7 @@ export const getAllProperties = async () => {
   }
 };
 
-export const getProperty = async (id) => {
+export const getResidency= async (id) => {
   try {
     const response = await api.get(`/residency/${id}`, {
       timeout: 10 * 1000,
@@ -166,25 +180,16 @@ export const getAllBookings = async (email, token) => {
 }
 
 
-export const createResidency = async (data, token) => {
-  console.log(data)
-  try{
-    const res = await api.post(
-      `/residency/create`,
-      {
-        data
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-  }catch(error)
-  {
-    throw error
+export const createResidency = async (data) => {
+  try {
+    const res = await api.post(`/residency/create`,  data );
+    return res.data;
+  } catch (error) {
+    toast.error("Fehler beim Speichern.");
+    throw error;
   }
-}
+};
+
 export const deleteProperty = async (id, token) => {
   const res = await api.delete(`/residency/delete/${id}`, {  // folosește `api.delete`
     headers: {
