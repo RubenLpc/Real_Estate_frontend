@@ -293,4 +293,28 @@
     padding: 0.5rem 1rem;
     border-radius: 4px;
   }
+
+  @media (max-width: 600px) {
+    .property-image-slider {
+      height: 40vh;
+    }
+    .sidebar {
+      font-size: 0.8rem;
+      padding: 0.8rem;
+    }
+    .r-prevButton, .r-nextButton {
+      padding: 0.3rem;
+    }
+
+    .property-container {
+        grid-template-columns: 1fr; /* trece pe o coloană */
+      }
+      .details-grid {
+        grid-template-columns: 1fr; /* main + sidebar sub unul sub altul */
+      }
+      .map-section {
+        height: 200px;
+      }
+    
+  }
   
