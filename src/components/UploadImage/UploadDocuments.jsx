@@ -1,30 +1,38 @@
-import React, { useEffect, useRef, useState } from "react";
+// src/components/UploadImage/UploadDocuments.jsx
+import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { Button, Group } from "@mantine/core";
-import { downloadFile } from "../../utils/download.js";
-
 import "./UploadImage.css";
 
-const UploadDocuments = ({ initialDocs = [], onChange, nextStep, prevStep }) => {
-  const [urls, setUrls] = useState(initialDocs);
-  const widgetRef = useRef();
+/**
+ * Props:
+ *   value:      string[]            // existing document URLs
+ *   onChange:   (newUrls:string[])  // called when upload widget returns a new URL
+ *   nextStep:   () => void
+ *   prevStep:   () => void
+ */
+export default function UploadDocuments({ value = [], onChange, nextStep, prevStep }) {
+  const [docs, setDocs] = useState(value);
+  const widgetRef = useRef(null);
 
   useEffect(() => {
+    // initialize Cloudinary widget just once
+    if (widgetRef.current) return;
     widgetRef.current = window.cloudinary.createUploadWidget(
       {
         cloudName: "do3wzvgto",
         uploadPreset: "r2ocxngt",
-        resourceType: "raw",
+        resourceType: "raw", // for PDF/DOC
         multiple: true,
         maxFiles: 10,
       },
       (err, result) => {
         if (!err && result.event === "success") {
-          const newUrl = result.info.secure_url;
-          setUrls(prev => {
-            const updated = [...prev, newUrl];
-            onChange(updated);
-            return updated;
+          const url = result.info.secure_url;
+          setDocs((prev) => {
+            const next = [...prev, url];
+            onChange(next);   // notify parent *inside* the callback
+            return next;
           });
         }
       }
@@ -33,30 +41,34 @@ const UploadDocuments = ({ initialDocs = [], onChange, nextStep, prevStep }) => 
 
   return (
     <div className="flexColCenter uploadWrapper">
-      <div className="flexColCenter uploadZone" onClick={() => widgetRef.current?.open()}>
+      <div className="flexColCenter uploadZone" onClick={() => widgetRef.current.open()}>
         <AiOutlineCloudUpload size={50} color="grey" />
         <span>Dokumente hochladen (PDF / DOC)</span>
       </div>
 
       <div className="docsList">
-        {urls.map((url, i) => (
-          <Button
+        {docs.map((url, i) => (
+          <a
             key={i}
-            variant="subtle"
-            onClick={() => downloadFile(url, `Dokument_${i + 1}.pdf`)}
-            style={{ display: "block", margin: "0.5rem 0" }}
+            href={url}
+            download={`Dokument_${i + 1}.pdf`}
+            target="_blank"
+            rel="noreferrer"
+            className="docLink"
           >
-            ↓ Dokument&nbsp;{i + 1}
-          </Button>
+            ↓ Dokument {i + 1}
+          </a>
         ))}
       </div>
 
       <Group position="apart" mt="xl">
-        <Button variant="default" onClick={prevStep}>Zurück</Button>
-        <Button onClick={nextStep} disabled={urls.length === 0}>Weiter</Button>
+        <Button variant="default" onClick={prevStep}>
+          Zurück
+        </Button>
+        <Button onClick={nextStep} disabled={docs.length === 0}>
+          Weiter
+        </Button>
       </Group>
     </div>
   );
-};
-
-export default UploadDocuments;
+}

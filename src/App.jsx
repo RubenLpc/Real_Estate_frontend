@@ -15,6 +15,8 @@ import Bookings from "./pages/Bookings/Bookings.jsx";
 import Favourites from "./pages/Favourites/Favourites.jsx";
 import AdminProperties from "./pages/Properties/AdminProperties.jsx";
 import AddPropertyModal from "./components/AddPropertyModal/AddPropertyModal.jsx";
+import CookieBanner from "./components/CookieBanner/CookieBanner.jsx";
+import Privacy from "./pages/Privacy/Privacy.jsx";
 
 function App() {
   const queryClient = new QueryClient();
@@ -34,6 +36,7 @@ function App() {
     <UserDetailContext.Provider value={{ userDetails, setUserDetails }}>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
+          <CookieBanner />
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route element={<Layout />}>
@@ -46,6 +49,8 @@ function App() {
                 <Route path="/favourites" element={<Favourites />} />
                 <Route path="/parola" element={<AdminProperties />} /> {/* ✅ admin */}
                 <Route path="/create" element={<AddPropertyModal opened={true} setOpened={handleAddPropertyClick} />} /> {/* ✅ admin */}
+                <Route path="/privacy" element={<Privacy />} /> {/* ✅ admin */}
+
 
                 
               </Route>

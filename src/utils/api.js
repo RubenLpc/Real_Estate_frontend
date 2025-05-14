@@ -19,6 +19,16 @@ export const sendInquiry = async (formData) => {
   }
 };
 
+export const sendPropertyContact = async (contactData) => {
+  try {
+    const res = await api.post("/mail/send/booking", contactData);
+    toast.success("Ihre Kontaktanfrage wurde erfolgreich versendet!");
+    return res.data;
+  } catch (error) {
+    toast.error("Fehler beim Versenden des Kontaktformulars.");
+    throw error;
+  }
+};
 
 export const getAllProperties = async () => {
   try {

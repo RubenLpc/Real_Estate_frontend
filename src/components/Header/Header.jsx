@@ -17,46 +17,32 @@ const Header = () => {
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
   const { validateLogin } = useAuthCheck();
 
-
   const handleAddPropertyClick = () => {
-    
-      setModalOpened(true);
-    
+    setModalOpened(true);
   };
+
   return (
     <section className="h-wrapper" style={{ background: headerColor }}>
       <div className="flexCenter innerWidth paddings h-container">
-        {/* logo */}
+        {/* Logo */}
         <Link to="/">
-          <img src="../logo.png" alt="logo" width={100} />
+          <img class="header_logo" src="../logo1.png" alt="Logo" width={100} 
+          />
         </Link>
 
-        {/* menu */}
-        <OutsideClickHandler
-          onOutsideClick={() => {
-            setMenuOpened(false);
-          }}
-        >
-          <div
-            // ref={menuRef}
-            className="flexCenter h-menu"
-            style={getMenuStyles(menuOpened)}
-          >
-            <NavLink to="/properties">Properties</NavLink>
-            <a href="#value">Our Value</a>
-            <a href="#contact-us">Contact Us</a>
-            <a href="#get-started">Get Started</a>
-          {/* login button            <a href="mailto:zainkeepscode@gmail.com">Contact</a>
- */}
-            {/* add property 
-            <div onClick={handleAddPropertyClick}>Add Property</div>
-            <AddPropertyModal opened={modalOpened} setOpened={setModalOpened} />
-            */}
-            
+        {/* Desktop / large menu */}
+        <OutsideClickHandler onOutsideClick={() => setMenuOpened(false)}>
+          <div className="flexCenter h-menu" style={getMenuStyles(menuOpened)}>
+            <NavLink to="/">Startseite</NavLink>
+            <NavLink to="/properties">Immobilien</NavLink>
+            <a href="mailto:lupancuruben2@gmail.com">Kontakt</a>
+            {/* Dacă vrei să reintroduci butonul de adăugare proprietate: */}
+            {/* <div onClick={handleAddPropertyClick}>Inserat hinzufügen</div>
+            <AddPropertyModal opened={modalOpened} setOpened={setModalOpened} /> */}
           </div>
         </OutsideClickHandler>
 
-        {/* for medium and small screens */}
+        {/* Mobile menu icon */}
         <div
           className="menu-icon"
           onClick={() => setMenuOpened((prev) => !prev)}

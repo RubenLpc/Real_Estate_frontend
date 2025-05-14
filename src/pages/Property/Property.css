@@ -316,5 +316,46 @@
         height: 200px;
       }
     
+
+      
+  }
+
+  .docs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .docs-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  .docs-item a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .docs-item a:hover {
+    text-decoration: underline;
   }
   
+  .video-wrapper {
+    width: 100%;
+    height: 60vh;            /* aceeaşi înălţime ca imaginile tale */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* video nativ, iframe YouTube/Vimeo sau ReactPlayer */
+  .video-wrapper video,
+  .video-wrapper iframe,
+  .video-wrapper .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  /* peste .property-image şi în video-wrapper */
+
+
+ 

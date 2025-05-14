@@ -9,6 +9,12 @@
   color: var(--secondary);
   justify-content: space-between;
 }
+.header-logo {
+  width: 170px;     /* poți ajusta mai mare dacă vrei */
+  height: auto;
+  margin-bottom: 0;
+  padding-bottom: none;
+}
 
 .h-menu {
   gap: 2rem;

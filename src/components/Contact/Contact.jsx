@@ -2,41 +2,43 @@ import React from "react";
 import "./Contact.css";
 import { MdCall } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
-import { HiChatBubbleBottomCenter } from 'react-icons/hi2'; // pentru SMS
+import { HiChatBubbleBottomCenter } from 'react-icons/hi2';
+
 const Contact = () => {
   return (
     <div id="contact-us" className="c-wrapper">
       <div className="paddings innerWidth flexCenter c-container">
-        {/* left side */}
+        {/* linke Seite */}
         <div className="flexColStart c-left">
-          <span className="orangeText">Our Contact Us</span>
-          <span className="primaryText">Easy to contact us</span>
+          <span className="orangeText">Kontakt</span>
+          <span className="primaryText">Einfach Kontakt aufnehmen</span>
           <span className="secondaryText">
-            We are always ready to help by providing the best services for you. We
-            believe a good place to live can make your life better.
+            Wir sind immer bereit, Ihnen die besten Services zu bieten. Wir glauben,
+            dass ein schöner Wohnort Ihr Leben verbessern kann.
           </span>
 
           <div className="flexColStart contactModes">
-            {/* first row */}
+            {/* erste Zeile */}
             <div className="flexStart row">
+              {/* Telefon */}
               <div className="flexColCenter mode">
                 <div className="flexStart">
                   <div className="flexCenter icon">
                     <MdCall size={25} />
                   </div>
                   <div className="flexColStart detail">
-                    <span className="primaryText">Call</span>
+                    <span className="primaryText">Anrufen</span>
                     <span className="secondaryText">0753 851 305</span>
                   </div>
                 </div>
                 <div className="flexCenter button">
-                <a href="tel:+40753851305" target="_blank" rel="noopener noreferrer">
-  Call now
-</a>
-
+                  <a href="tel:+40753851305" rel="noopener noreferrer">
+                    Jetzt anrufen
+                  </a>
                 </div>
               </div>
 
+              {/* WhatsApp */}
               <div className="flexColCenter mode">
                 <div className="flexStart">
                   <div className="flexCenter icon">
@@ -44,64 +46,64 @@ const Contact = () => {
                   </div>
                   <div className="flexColStart detail">
                     <span className="primaryText">WhatsApp</span>
-                    <span className="secondaryText">Chat on WhatsApp</span>
+                    <span className="secondaryText">Chat starten</span>
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/40753851305" // Linkul de WhatsApp (poți pune orice număr)
+                  href="https://wa.me/40753851305"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flexCenter button"
                 >
-                  WhatsApp now
+                  Jetzt chatten
                 </a>
               </div>
             </div>
 
-            {/* second row */}
+            {/* zweite Zeile */}
             <div className="flexStart row">
+              {/* SMS */}
               <div className="flexColCenter mode">
                 <div className="flexStart">
                   <div className="flexCenter icon">
                     <HiChatBubbleBottomCenter size={25} />
                   </div>
                   <div className="flexColStart detail">
-                    <span className="primaryText">Message</span>
-                    <span className="secondaryText">Send a message</span>
+                    <span className="primaryText">SMS</span>
+                    <span className="secondaryText">Nachricht senden</span>
                   </div>
                 </div>
                 <a href="sms:+40753851305" className="flexCenter button">
-  Message now
-</a>
-
+                  Jetzt SMS
+                </a>
               </div>
+
+              {/* E-Mail */}
               <div className="flexColCenter mode">
                 <div className="flexStart">
                   <div className="flexCenter icon">
                     <HiChatBubbleBottomCenter size={25} />
                   </div>
                   <div className="flexColStart detail">
-                    <span className="primaryText">Email</span>
-                    <span className="secondaryText">Send us an email</span>
+                    <span className="primaryText">E-Mail</span>
+                    <span className="secondaryText">E-Mail senden</span>
                   </div>
                 </div>
                 <a
-                  href="mailto:lupancuruben2@gmail.com?subject=Inquiry"
+                  href="mailto:lupancuruben2@gmail.com?subject=Anfrage"
                   className="flexCenter button"
                 >
-                  Email us
+                  Jetzt schreiben
                 </a>
               </div>
             </div>
-
-            
           </div>
         </div>
 
-        {/* right side */}
+        {/* rechte Seite */}
         <div className="flexEnd c-right">
           <div className="image-container">
-            <img src="./contact.jpg" alt="" />
+            <img src="./contact.jpg" alt="Kontaktbild" />
           </div>
         </div>
       </div>
