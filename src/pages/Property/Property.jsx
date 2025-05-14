@@ -19,7 +19,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Video from "yet-another-react-lightbox/plugins/video";
 import "yet-another-react-lightbox/styles.css";
 import ReactPlayer from "react-player";
-import Map from "../../components/Map/Map";
+import Map from "../../components/Map/Map.jsx";
 import { getResidency, sendPropertyContact } from "../../utils/api";
 import InquiryModal from "../../components/InquiryModal/InquiryModal.jsx";
 import "./Property.css";
