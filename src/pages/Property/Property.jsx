@@ -58,6 +58,7 @@ export default function Property() {
       agbs: (v) => (v ? null : "Erforderlich"),
       widerruf: (v) => (v ? null : "Erforderlich"),
       datenschutz: (v) => (v ? null : "Erforderlich"),
+      provisionOk: (v) => (v ? null : "Erforderlich"),
     },
   });
 
