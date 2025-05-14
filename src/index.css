@@ -9,10 +9,7 @@
   --lightBlue: #E4E1D8;
   --shadow: 0px 23px 21px -8px rgba(144, 148, 115, 0.25);
 }
-paddings-lr {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
+
 
 * {
   margin: 0;
