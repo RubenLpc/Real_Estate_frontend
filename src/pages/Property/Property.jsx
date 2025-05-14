@@ -23,6 +23,7 @@ import Map from "../../components/Map/Map";
 import { getResidency, sendPropertyContact } from "../../utils/api";
 import InquiryModal from "../../components/InquiryModal/InquiryModal.jsx";
 import "./Property.css";
+import { toast } from "react-toastify";
 
 export default function Property() {
   const { pathname } = useLocation();
@@ -47,6 +48,7 @@ export default function Property() {
       widerruf: false,
       datenschutz: false,
       interests: { call: false, visit: false, finance: false },
+      provisionOk: false,
     },
     validate: {
       anrede: (v) => (v ? null : "Pflichtfeld"),

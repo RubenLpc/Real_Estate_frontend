@@ -4,13 +4,12 @@
   top: 0;
 }
 .h-container {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+ 
   color: var(--secondary);
   justify-content: space-between;
 }
 .header-logo {
-  width: 170px;     /* poți ajusta mai mare dacă vrei */
+  width: 150px;     /* poți ajusta mai mare dacă vrei */
   height: auto;
   margin-bottom: 0;
   padding-bottom: none;
