@@ -110,6 +110,14 @@ export default function Property() {
   } = data;
 
   const isOffMarket = status === "diskret";
+  const displayRegion = region || '';        // oraș = region
+const displayCountry = 'Austria';          // țară forțată
+const locationLine = [plz, displayRegion]
+  .filter(Boolean)
+  .join(' ');
+const fullAddress = [address, displayRegion, displayCountry]
+  .filter(Boolean)
+  .join(', ');
 
   const mediaItems = [];
   if (image) mediaItems.push({ src: image, type: "image" });
@@ -231,26 +239,35 @@ export default function Property() {
 
             {/* Lagebeschreibung + Karte + POIs */}
             <section className="location-desc-section">
-              <h3>Lage</h3>
-              {locationDescription && (
-                <p className="secondaryText">{locationDescription}</p>
-              )}
-              <Map
-                address={address}
-                city={city}
-                country={country}
-                pois={pois}
-              />
-              {pois && pois.length > 0 && (
-                <ul className="poi-list">
-                  {pois.map((poi, idx) => (
-                    <li key={idx}>
-                      • {poi.name} ({poi.distance} km)
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </section>
+  <h3>Lage</h3>
+
+  {/* afișează descrierea de locație dacă există */}
+  {locationDescription && (
+    <p className="secondaryText">{locationDescription}</p>
+  )}
+
+  {/* afișează harta doar dacă ai adresa sau regiunea */}
+  {(address || region) ? (
+    <Map
+      // trimiți un string de forma "Strada X 5, RegionName, Austria"
+      address={fullAddress}
+      pois={pois}
+    />
+  ) : (
+    <p className="secondaryText">
+      Adresse nicht verfügbar.
+    </p>
+  )}
+
+  {/* afișează POI numai dacă există */}
+  {pois && pois.length > 0 && (
+    <ul className="poi-list">
+      {pois.map((poi, idx) => (
+        <li key={idx}>• {poi.name} ({poi.distance} km)</li>
+      ))}
+    </ul>
+  )}
+</section>
 
             {/* 9. Ausstattung & Tags */}
             {(features.length || tags.length) > 0 && (
