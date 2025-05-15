@@ -19,7 +19,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Video from "yet-another-react-lightbox/plugins/video";
 import "yet-another-react-lightbox/styles.css";
 import ReactPlayer from "react-player";
-import Map from "../../components/Map/Map.jsx";
+import LeafletMap from "../../components/Map/LeafLetMap.jsx";
 import { getResidency, sendPropertyContact } from "../../utils/api";
 import InquiryModal from "../../components/InquiryModal/InquiryModal.jsx";
 import "./Property.css";
@@ -237,30 +237,20 @@ const fullAddress = [address, displayRegion, displayCountry]
               <p className="secondaryText">{description}</p>
             </section>
 
-            {/* Lagebeschreibung + Karte + POIs */}
             <section className="location-desc-section">
   <h3>Lage</h3>
 
-  {/* afișează descrierea de locație dacă există */}
   {locationDescription && (
     <p className="secondaryText">{locationDescription}</p>
   )}
 
-  {/* afișează harta doar dacă ai adresa sau regiunea */}
   {(address || region) ? (
-    <Map
-      // trimiți un string de forma "Strada X 5, RegionName, Austria"
-      address={fullAddress}
-      pois={pois}
-    />
+    <LeafletMap fullAddress={fullAddress} />
   ) : (
-    <p className="secondaryText">
-      Adresse nicht verfügbar.
-    </p>
+    <p className="secondaryText">Adresse nicht verfügbar.</p>
   )}
 
-  {/* afișează POI numai dacă există */}
-  {pois && pois.length > 0 && (
+  {pois.length > 0 && (
     <ul className="poi-list">
       {pois.map((poi, idx) => (
         <li key={idx}>• {poi.name} ({poi.distance} km)</li>
@@ -268,6 +258,7 @@ const fullAddress = [address, displayRegion, displayCountry]
     </ul>
   )}
 </section>
+
 
             {/* 9. Ausstattung & Tags */}
             {(features.length || tags.length) > 0 && (
