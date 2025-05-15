@@ -358,4 +358,16 @@
   /* peste .property-image şi în video-wrapper */
 
 
- 
+  .video-modal-wrapper {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    width: 100%;
+    max-width: 800px;   /* limitezi lățimea maximă */
+    margin: 0 auto;     /* centrat orizontal */
+  }
+  
+  .video-modal-wrapper .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }

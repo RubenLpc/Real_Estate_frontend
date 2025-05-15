@@ -127,6 +127,9 @@ const fullAddress = [address, displayRegion, displayCountry]
   if (video) mediaItems.push({ src: video, type: "video" });
   if (droneVideo) mediaItems.push({ src: droneVideo, type: "video" });
 
+  const imageSlides = mediaItems
+  .filter((m) => m.type === "image")
+  .map((m) => ({ src: m.src }));
   const slides = mediaItems.map((item) =>
     item.type === "image"
       ? { src: item.src }
@@ -173,12 +176,11 @@ const fullAddress = [address, displayRegion, displayCountry]
     <div className="wrapper">
       
       <Lightbox
-        open={lightboxIndex >= 0}
-        index={lightboxIndex}
-        close={() => setLightboxIndex(-1)}
-        slides={slides}
-        plugins={[Video]}
-      />
+  open={lightboxIndex >= 0}
+  index={lightboxIndex}
+  close={() => setLightboxIndex(-1)}
+  slides={imageSlides}
+/>
 
       <div className="property-container innerWidth paddings">
         <div className="header flexBetween">
