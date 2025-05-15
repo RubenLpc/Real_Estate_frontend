@@ -16,7 +16,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import { AiOutlineFilePdf } from "react-icons/ai";
 import Lightbox from "yet-another-react-lightbox";
-import {VideoPlugin} from "yet-another-react-lightbox/plugins/video";import "yet-another-react-lightbox/styles.css";
+import {Video} from "yet-another-react-lightbox/plugins/video";import "yet-another-react-lightbox/styles.css";
 import ReactPlayer from "react-player";
 import LeafletMap from "../../components/Map/LeafLetMap.jsx";
 import { getResidency, sendPropertyContact } from "../../utils/api";
@@ -176,7 +176,7 @@ const fullAddress = [address, displayRegion, displayCountry]
         index={lightboxIndex}
         close={() => setLightboxIndex(-1)}
         slides={slides}
-        plugins={[VideoPlugin]}
+        plugins={[Video]}
       />
 
       <div className="property-container innerWidth paddings">
