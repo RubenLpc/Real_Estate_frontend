@@ -166,9 +166,11 @@ const fullAddress = [address, displayRegion, displayCountry]
       // eroarea este notificată în sendPropertyContact
     }
   };
-
+  
+  console.log("Property data:", slides);
   return (
     <div className="wrapper">
+      
       <Lightbox
         open={lightboxIndex >= 0}
         index={lightboxIndex}
