@@ -131,3 +131,36 @@
   white-space: nowrap;
   cursor: pointer;
 }
+
+/* ultrasmall phones (ex. Galaxy S8, ~360px) */
+@media (max-width: 360px) {
+  .hero-title > h1 {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+
+  .search-bar input {
+    font-size: 0.8rem;
+  }
+
+  .search-bar button {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .image-container {
+    height: 20rem;
+  }
+
+  .stats {
+    gap: 1rem;
+  }
+
+  .stat > :nth-child(1) {
+    font-size: 1.4rem;
+  }
+
+  .stat > :nth-child(2) {
+    font-size: 0.7rem;
+  }
+}
