@@ -46,6 +46,22 @@ export const getAllProperties = async () => {
   }
 };
 
+export const getAllAvailableProperties = async () => {
+  try {
+    const response = await api.get("/residency/allresdav", {
+      timeout: 10 * 1000,
+    });
+
+    if (response.status === 400 || response.status === 500) {
+      throw response.data;
+    }
+    return response.data;
+  } catch (error) {
+    toast.error("Something went wrong");
+    throw error;
+  }
+};
+
 export const getResidency= async (id) => {
   try {
     const response = await api.get(`/residency/${id}`, {
@@ -209,3 +225,13 @@ export const deleteProperty = async (id, token) => {
   return res.data;
 };
 
+export const updateResidency = async (id, data) => {
+  try {
+    const res = await api.put(`/residency/update/${id}`, data);
+    toast.success("Immobilie erfolgreich aktualisiert!");
+    return res.data;
+  } catch (error) {
+    toast.error("Fehler beim Aktualisieren der Immobilie.");
+    throw error;
+  }
+};

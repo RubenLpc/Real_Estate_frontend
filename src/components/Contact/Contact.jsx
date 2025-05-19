@@ -3,18 +3,22 @@ import "./Contact.css";
 import { MdCall } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
 import { HiChatBubbleBottomCenter } from 'react-icons/hi2';
+import { Button } from "@mantine/core";
 
 const Contact = () => {
+  
   return (
     <div id="contact-us" className="c-wrapper">
       <div className="paddings innerWidth flexCenter c-container">
         {/* linke Seite */}
         <div className="flexColStart c-left">
           <span className="orangeText">Kontakt</span>
-          <span className="primaryText">Einfach Kontakt aufnehmen</span>
+          <span className="primaryText">Kontaktieren Sie mich direkt – unkompliziert & persönlich
+
+          </span>
           <span className="secondaryText">
-            Wir sind immer bereit, Ihnen die besten Services zu bieten. Wir glauben,
-            dass ein schöner Wohnort Ihr Leben verbessern kann.
+          Ob Beratung, Suchauftrag oder Rückfrage, gerne unterstütze ich Sie individuell bei Ihrem Immobilienanliegen.
+
           </span>
 
           <div className="flexColStart contactModes">
@@ -28,11 +32,11 @@ const Contact = () => {
                   </div>
                   <div className="flexColStart detail">
                     <span className="primaryText">Anrufen</span>
-                    <span className="secondaryText">0753 851 305</span>
+                    <span className="secondaryText">+43 664 3883 786</span>
                   </div>
                 </div>
                 <div className="flexCenter button">
-                  <a href="tel:+40753851305" rel="noopener noreferrer">
+                  <a href="tel:+43 664 3883 786" rel="noopener noreferrer">
                     Jetzt anrufen
                   </a>
                 </div>
@@ -50,7 +54,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/40753851305"
+                  href="https://wa.me/436643883786"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flexCenter button"
@@ -73,7 +77,7 @@ const Contact = () => {
                     <span className="secondaryText">Nachricht senden</span>
                   </div>
                 </div>
-                <a href="sms:+40753851305" className="flexCenter button">
+                <a href="sms:+436643883786" className="flexCenter button">
                   Jetzt SMS
                 </a>
               </div>
@@ -90,7 +94,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <a
-                  href="mailto:lupancuruben2@gmail.com?subject=Anfrage"
+                  href="mailto:office@fidelia.immo?subject=Anfrage"
                   className="flexCenter button"
                 >
                   Jetzt schreiben
@@ -103,7 +107,7 @@ const Contact = () => {
         {/* rechte Seite */}
         <div className="flexEnd c-right">
           <div className="image-container">
-            <img src="./contact.jpg" alt="Kontaktbild" />
+            <img src="./profil.png" alt="Kontaktbild" />
           </div>
         </div>
       </div>

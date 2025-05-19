@@ -53,92 +53,125 @@ const Value = () => {
     
     {
       key: 1,
-      title: 'Vermittlung von Immobilien - Sie suchen eine Immobilie?',
+      title: 'Vermittlung von Immobilien',
       icon: <IconHome size={20} />,  
       content: (
-        <>
-          Nehmen Sie gerne Kontakt mit mir auf – denn die meisten meiner Objekte werden nicht öffentlich präsentiert.
-          <br/><br/>
-          Unabhängig davon ob Sie eine Immobilie für den Eigengebrauch oder als Anlageobjekt wünschen, sollte aktuell kein passendes Objekt verfügbar sein, können Sie mir Ihren Suchwunsch gerne über das folgende Formular übermitteln.
-          <br/><br/>
-          <strong>Service für Kaufinteressenten:</strong>
-          <List spacing="sm" size="sm" withPadding>
-            {[
-              'Professionelle und aussagekräftige Verkaufsunterlagen',
-              'Umfangreiche Präsentation im Internet',
-              'Individuelle Besichtigungen',
-              'Aktiv gepflegtes Vormerksystem',
-              'Abklärung rechtlicher Fragen',
-              'Unterstützung bei Finanzierungen',
-              'Organisation von Kaufverträgen',
-              'Persönliche Begleitung bei der Abwicklung',
-              'Zusätzliche Services wie Entrümpelung, Renovierung',
-            ].map((text, idx) => (
-              <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}><MdCheck size={16} /></ThemeIcon>}>
-                {text}
-              </List.Item>
-            ))}
-          </List>
-        </>
+        <Accordion allowMultipleExpanded={false} preExpanded={["sub0"]} className="accordion sub-accordion">
+          {/* Sub-accordion: Sie suchen eine Immobilie? */}
+          <AccordionItem uuid="sub0" className="accordionItem">
+            <AccordionItemHeading>
+              <AccordionItemButton className="flexCenter accordionButton">
+                <ThemeIcon style={{ ...iconStyle, marginRight: '0.5rem' }} radius="xl" size={30}>
+                  <MdCheck size={20} />
+                </ThemeIcon>
+                <span className="primaryText" style={{ fontSize: '1rem' }}>Sie suchen eine Immobilie?</span>
+                <MdOutlineArrowDropDown size={24} style={{ color: 'var(--primary)', marginLeft: 'auto' }} />
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel>
+              <span className="secondaryText" style={{ fontSize: '0.875rem' }}>
+                Nehmen Sie gerne Kontakt mit mir auf – denn die meisten meiner Objekte werden nicht öffentlich präsentiert.
+                <br/><br/>
+                Unabhängig davon ob Sie eine Immobilie für den Eigengebrauch oder als Anlageobjekt wünschen, sollte aktuell kein passendes Objekt verfügbar sein, können Sie mir Ihren Suchwunsch gerne über das folgende Formular übermitteln.
+                <br/><br/>
+                <strong>Service für Kaufinteressenten:</strong>
+                <List spacing="sm" size="sm" withPadding>
+                  {[
+                    'Professionelle und aussagekräftige Verkaufsunterlagen',
+                    'Umfangreiche Präsentation im Internet',
+                    'Individuelle Besichtigungen',
+                    'Aktiv gepflegtes Vormerksystem',
+                    'Abklärung rechtlicher Fragen',
+                    'Unterstützung bei Finanzierungen',
+                    'Organisation von Kaufverträgen',
+                    'Persönliche Begleitung bei der Abwicklung',
+                    'Zusätzliche Services wie Entrümpelung, Renovierung',
+                  ].map((text, idx) => (
+                    <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}><MdCheck size={16} /></ThemeIcon>}>
+                      {text}
+                    </List.Item>
+                  ))}
+                </List>
+              </span>
+            </AccordionItemPanel>
+          </AccordionItem>
+
+          {/* Sub-accordion: Diskrete Vermarktung */}
+          <AccordionItem uuid="sub1" className="accordionItem">
+            <AccordionItemHeading>
+              <AccordionItemButton className="flexCenter accordionButton">
+                <ThemeIcon style={{ ...iconStyle, marginRight: '0.5rem' }} radius="xl" size={30}>
+                  <IconLock size={20} />
+                </ThemeIcon>
+                <span className="primaryText" style={{ fontSize: '1rem' }}>Diskrete Vermarktung oder gezielte Suche abseits der Öffentlichkeit</span>
+                <MdOutlineArrowDropDown size={24} style={{ color: 'var(--primary)', marginLeft: 'auto' }} />
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel>
+              <span className="secondaryText" style={{ fontSize: '0.875rem' }}>
+                <em>Erfolg in der Stille – Ihre Immobilientransaktion diskret und professionell.</em>
+                <br/><br/>
+                Nicht jede Immobilientransaktion soll öffentlich sichtbar sein – sei es aus privaten, geschäftlichen oder strategischen Gründen.
+                <br/><br/>
+                Ich biete Ihnen dafür maßgeschneiderte, diskrete Vermarktungskonzepte oder unterstütze Sie bei einer gezielten Suche im Off-Market-Bereich.
+                <br/><br/>
+                Dank meines Netzwerks und meiner langjährigen Erfahrung kann ich Ihnen auch abseits klassischer Plattformen passende Lösungen anbieten – vertraulich, individuell und persönlich begleitet.
+              </span>
+            </AccordionItemPanel>
+          </AccordionItem>
+
+          {/* Sub-accordion: Professionelle Immobilienvermittlung */}
+          <AccordionItem uuid="sub2" className="accordionItem">
+            <AccordionItemHeading>
+              <AccordionItemButton className="flexCenter accordionButton">
+                <ThemeIcon style={{ ...iconStyle, marginRight: '0.5rem' }} radius="xl" size={30}>
+                  <IconBriefcase size={20} />
+                </ThemeIcon>
+                <span className="primaryText" style={{ fontSize: '1rem' }}>Professionelle Immobilienvermittlung – strukturiert und marktorientiert</span>
+                <MdOutlineArrowDropDown size={24} style={{ color: 'var(--primary)', marginLeft: 'auto' }} />
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel>
+              <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]} spacing="lg">
+                <div>
+                  <Title order={6} style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Visuelle Präsentation</Title>
+                  <List spacing="sm" size="sm" withPadding>
+                    {[
+                      { icon: <IconPhoto size={20} />, text: 'Professionelle Foto- und Videoaufnahmen zur optimalen Darstellung Ihrer Immobilie in Online-Galerien' },
+                      { icon: <IconDrone size={20} />, text: 'Drohnenaufnahmen zur attraktiven Visualisierung der Lage und Umgebung' },
+                      { icon: <IconFileText size={20} />, text: 'Erstellung hochwertiger Verkaufsunterlagen, die Ihre Immobilie ins beste Licht rücken' },
+                    ].map((item, idx) => (
+                      <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}>{item.icon}</ThemeIcon>}>
+                        {item.text}
+                      </List.Item>
+                    ))}
+                  </List>
+                </div>
+                <div>
+                  <Title order={6} style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Marketing & Recht</Title>
+                  <List spacing="sm" size="sm" withPadding>
+                    {[
+                      { icon: <IconShare size={20} />, text: 'Gezielte Social-Media-Kampagnen und Plattformplatzierungen zur Maximierung der Reichweite' },
+                      { icon: <IconUsers size={20} />, text: 'Kontaktaufnahme mit vorgemerkten Kunden aus meinem Netzwerk' },
+                      { icon: <IconGavel size={20} />, text: 'Klärung behördlicher Vorgaben und Bestimmungen' },
+                      { icon: <IconCalendarStats size={20} />, text: 'Ständige Information des Verkäufers über die Verkaufsaktivitäten' },
+                      { icon: <IconUserCheck size={20} />, text: 'Selektive Einzelbesichtigungen und Prüfung der Interessenten' },
+                    ].map((item, idx) => (
+                      <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}>{item.icon}</ThemeIcon>}>
+                        {item.text}
+                      </List.Item>
+                    ))}
+                  </List>
+                </div>
+              </SimpleGrid>
+            </AccordionItemPanel>
+          </AccordionItem>
+        </Accordion>
       )
     },
+    
     {
       key: 2,
-      title: 'Diskrete Vermarktung oder gezielte Suche abseits der Öffentlichkeit',
-      icon: <IconLock size={20} />,
-      content: (
-        <>
-        <em>Erfolg in der Stille – Ihre Immobilientransaktion diskret und professionell.</em>
-        <br/><br/>
-        Nicht jede Immobilientransaktion soll öffentlich sichtbar sein – sei es aus privaten, geschäftlichen oder strategischen Gründen.
-        <br/><br/>
-        Ich biete Ihnen dafür maßgeschneiderte, diskrete Vermarktungskonzepte oder unterstütze Sie bei einer gezielten Suche im Off-Market-Bereich.
-        <br/><br/>
-        Dank meines Netzwerks und meiner langjährigen Erfahrung kann ich Ihnen auch abseits klassischer Plattformen passende Lösungen anbieten – vertraulich, individuell und persönlich begleitet.
-        </>
-      )
-    },
-    {
-      key: 3,
-      title: 'Professionelle Immobilienvermittlung – strukturiert und marktorientiert',
-      icon: <IconBriefcase size={20} />,
-      content: (
-        <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]} spacing="lg">
-          <div>
-            <Title order={6} style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Visuelle Präsentation</Title>
-            <List spacing="sm" size="sm" withPadding>
-              {[
-                { icon: <IconPhoto size={20} />, text: 'Professionelle Foto- und Videoaufnahmen zur optimalen Darstellung Ihrer Immobilie in Online-Galerien' },
-                { icon: <IconDrone size={20} />, text: 'Drohnenaufnahmen zur attraktiven Visualisierung der Lage und Umgebung' },
-                { icon: <IconFileText size={20} />, text: 'Erstellung hochwertiger Verkaufsunterlagen, die Ihre Immobilie ins beste Licht rücken' },
-              ].map((item, idx) => (
-                <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}>{item.icon}</ThemeIcon>}>
-                  {item.text}
-                </List.Item>
-              ))}
-            </List>
-          </div>
-          <div>
-            <Title order={6} style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Marketing & Recht</Title>
-            <List spacing="sm" size="sm" withPadding>
-              {[
-                { icon: <IconShare size={20} />, text: 'Gezielte Social-Media-Kampagnen und Plattformplatzierungen zur Maximierung der Reichweite' },
-                { icon: <IconUsers size={20} />, text: 'Kontaktaufnahme mit vorgemerkten Kunden aus meinem Netzwerk' },
-                { icon: <IconGavel size={20} />, text: 'Klärung behördlicher Vorgaben und Bestimmungen' },
-                { icon: <IconCalendarStats size={20} />, text: 'Ständige Information des Verkäufers über die Verkaufsaktivitäten' },
-                { icon: <IconUserCheck size={20} />, text: 'Selektive Einzelbesichtigungen und Prüfung der Interessenten' },
-              ].map((item, idx) => (
-                <List.Item key={idx} icon={<ThemeIcon style={iconStyle} radius="xl" size={24}>{item.icon}</ThemeIcon>}>
-                  {item.text}
-                </List.Item>
-              ))}
-            </List>
-          </div>
-        </SimpleGrid>
-      )
-    },
-    {
-      key: 4,
       title: 'Standortsuche und Betriebsansiedlung',
       icon: <IconMapSearch size={20} />,
       content: (
@@ -157,7 +190,7 @@ const Value = () => {
       )
     },
     {
-      key: 5,
+      key: 3,
       title: 'Baulandentwicklung',
       icon: <IconMapPin size={20} />,  
       content: (
@@ -199,7 +232,7 @@ const Value = () => {
       )
     },
     {
-      key: 6,
+      key: 4,
       title: 'Revitalisierungsprojekte',
       icon: <IconRefresh size={20} />,
       content: (

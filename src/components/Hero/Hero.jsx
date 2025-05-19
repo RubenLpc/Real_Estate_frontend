@@ -19,16 +19,19 @@ const Hero = () => {
                 type: "ease-in",
               }}
             >
-              Entdecken Sie <br />
-              Ihre perfekte
-              <br /> Immobilie
+              Baulandentwicklung<br />
+              Betriebsansiedlung
+
+              <br /> Immobilienvermittlung
+
             </motion.h1>
           </div>
           <div className="flexColStart secondaryText flexhero-des">
-            <span>Finden Sie eine Vielzahl von Objekten, die perfekt zu Ihnen passen</span>
-            <span>Vergessen Sie alle Schwierigkeiten bei der Wohnungssuche</span>
+            <span>Ich begleite Sie bei der Standortwahl, entwickle Bauland </span>
+            <span>mit Weitblick und vermittle Immobilien diskret und professionell </span>
+          <span>– mit Fokus auf Qualität, Struktur und Vertrauen.</span>
           </div>
-
+{ /* Suchleiste 
           <SearchBar />
 
           <div className="flexCenter stats">
@@ -52,7 +55,7 @@ const Hero = () => {
               </span>
               <span className="secondaryText">Auszeichnungen</span>
             </div>
-          </div>
+          </div>*/}
         </div>
 
         {/* rechte Seite */}

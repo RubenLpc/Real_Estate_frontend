@@ -39,10 +39,7 @@ const UploadMainImage = ({ mainImage, setMainImage, nextStep, prevStep }) => {
         </div>
       )}
 
-      <Group position="center" mt="xl">
-        <Button variant="default" onClick={prevStep}>Zurück</Button>
-        <Button onClick={nextStep} disabled={!imageURL}>Weiter</Button>
-      </Group>
+      
     </div>
   );
 };

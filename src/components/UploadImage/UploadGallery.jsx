@@ -52,14 +52,7 @@ const UploadGallery = ({ gallery = [], onChange, nextStep, prevStep }) => {
         ))}
       </div>
 
-      <Group position="center" mt="xl">
-        <Button variant="default" onClick={prevStep}>
-          Zurück
-        </Button>
-        <Button onClick={handleNext} disabled={urls.length === 0}>
-          Weiter
-        </Button>
-      </Group>
+      
     </div>
   );
 };

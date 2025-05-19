@@ -60,14 +60,7 @@ const UploadVideo = ({ videoUrl = "", onChange, nextStep, prevStep }) => {
         </div>
       )}
 
-      <Group position="apart" mt="xl">
-        <Button variant="default" onClick={prevStep}>
-          Zurück
-        </Button>
-        <Button onClick={nextStep} disabled={!videoUrl}>
-          Weiter
-        </Button>
-      </Group>
+      
     </div>
   );
 };

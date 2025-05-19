@@ -61,14 +61,14 @@
 /* right side */
 
 .image-container {
-  width: 30rem;
+  width: 35rem;
   height: 35rem;
   overflow: hidden;
   border-radius: 15rem 15rem 0 0;
   border: 8px solid rgba(255, 255, 255, 0.12);
 }
 .image-container>img{
-    width: 100%;
+    width: auto;
     height: 100%;
 }
 
@@ -78,7 +78,7 @@
     margin-top: 2rem;
   }
   .hero-title>h1{
-    font-size: 2.5rem;
+    font-size: 2rem;
     line-height: 3rem;
   }
   .image-container{

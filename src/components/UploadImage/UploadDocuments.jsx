@@ -61,14 +61,7 @@ export default function UploadDocuments({ value = [], onChange, nextStep, prevSt
         ))}
       </div>
 
-      <Group position="apart" mt="xl">
-        <Button variant="default" onClick={prevStep}>
-          Zurück
-        </Button>
-        <Button onClick={nextStep} disabled={docs.length === 0}>
-          Weiter
-        </Button>
-      </Group>
+      
     </div>
   );
 }

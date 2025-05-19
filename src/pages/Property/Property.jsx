@@ -110,14 +110,11 @@ export default function Property() {
   } = data;
 
   const isOffMarket = status === "diskret";
-  const displayRegion = region || '';        // oraș = region
-const displayCountry = 'Austria';          // țară forțată
-const locationLine = [plz, displayRegion]
-  .filter(Boolean)
-  .join(' ');
-const fullAddress = [address, displayRegion, displayCountry]
-  .filter(Boolean)
-  .join(', ');
+  const displayRegion = region || '';
+  const displayCountry = 'Austria';
+  const fullAddress = [address, displayRegion, displayCountry]
+    .filter(Boolean)
+    .join(', ');
 
   const mediaItems = [];
   if (image) mediaItems.push({ src: image, type: "image" });
@@ -128,8 +125,8 @@ const fullAddress = [address, displayRegion, displayCountry]
   if (droneVideo) mediaItems.push({ src: droneVideo, type: "video" });
 
   const imageSlides = mediaItems
-  .filter((m) => m.type === "image")
-  .map((m) => ({ src: m.src }));
+    .filter((m) => m.type === "image")
+    .map((m) => ({ src: m.src }));
   const slides = mediaItems.map((item) =>
     item.type === "image"
       ? { src: item.src }
@@ -142,7 +139,6 @@ const fullAddress = [address, displayRegion, displayCountry]
   );
 
   const handleContactSubmit = async (values) => {
-    // validare manuală și notificări pentru erori
     const validation = form.validate();
     if (validation.hasErrors) {
       Object.entries(validation.errors).forEach(([field, error]) => {
@@ -151,7 +147,6 @@ const fullAddress = [address, displayRegion, displayCountry]
       return;
     }
     try {
-      // trimitem și casetele de interes
       await sendPropertyContact({
         propertyTitle: title,
         anrede: values.anrede,
@@ -164,23 +159,20 @@ const fullAddress = [address, displayRegion, displayCountry]
       });
       setShowModal(false);
       toast.success("Anfrage erfolgreich gesendet!");
-
       form.reset();
     } catch (error) {
-      // eroarea este notificată în sendPropertyContact
+      // error handled in sendPropertyContact
     }
   };
-  
-  console.log("Property data:", slides);
+
   return (
     <div className="wrapper">
-      
       <Lightbox
-  open={lightboxIndex >= 0}
-  index={lightboxIndex}
-  close={() => setLightboxIndex(-1)}
-  slides={imageSlides}
-/>
+        open={lightboxIndex >= 0}
+        index={lightboxIndex}
+        close={() => setLightboxIndex(-1)}
+        slides={imageSlides}
+      />
 
       <div className="property-container innerWidth paddings">
         <div className="header flexBetween">
@@ -242,29 +234,27 @@ const fullAddress = [address, displayRegion, displayCountry]
             </section>
 
             <section className="location-desc-section">
-  <h3>Lage</h3>
+              <h3>Lage</h3>
 
-  {locationDescription && (
-    <p className="secondaryText">{locationDescription}</p>
-  )}
+              {locationDescription && (
+                <p className="secondaryText">{locationDescription}</p>
+              )}
 
-  {(address || region) ? (
-    <LeafletMap fullAddress={fullAddress} />
-  ) : (
-    <p className="secondaryText">Adresse nicht verfügbar.</p>
-  )}
+              {(address || region) ? (
+                <LeafletMap fullAddress={fullAddress} />
+              ) : (
+                <p className="secondaryText">Adresse nicht verfügbar.</p>
+              )}
 
-  {pois.length > 0 && (
-    <ul className="poi-list">
-      {pois.map((poi, idx) => (
-        <li key={idx}>• {poi.name} ({poi.distance} km)</li>
-      ))}
-    </ul>
-  )}
-</section>
+              {pois.length > 0 && (
+                <ul className="poi-list">
+                  {pois.map((poi, idx) => (
+                    <li key={idx}>• {poi.name} ({poi.distance} km)</li>
+                  ))}
+                </ul>
+              )}
+            </section>
 
-
-            {/* 9. Ausstattung & Tags */}
             {(features.length || tags.length) > 0 && (
               <section className="tags-section">
                 {features.length > 0 && (
@@ -289,6 +279,7 @@ const fullAddress = [address, displayRegion, displayCountry]
                 )}
               </section>
             )}
+
             {!isOffMarket && documents.length > 0 && (
               <section className="docs-section">
                 <h3>Dokumente</h3>
@@ -330,76 +321,82 @@ const fullAddress = [address, displayRegion, displayCountry]
                   Kontaktformular anfordern
                 </Button>
               )}
-
-              
             </div>
-            
           </div>
-          
 
           <aside className="sidebar">
             <h3>Objekt-Details</h3>
             <ul className="facts-box">
-              <li>
-                <strong>Objektart:</strong> {propertyType || "–"}
-              </li>
-              <li>
-                <strong>Grundst.:</strong>{" "}
-                {landArea != null ? `${landArea} m²` : "–"}
-              </li>
-              <li>
-                <strong>Wohn-/Nutzfl.:</strong>{" "}
-                {livingArea != null ? `ca. ${livingArea} m²` : "–"}
-              </li>
-              <li>
-                <strong>Zimmer:</strong> {rooms != null ? rooms : "–"}
-              </li>
-              <li>
-                <strong>Baujahr:</strong>{" "}
-                {constructionYear != null ? `ca. ${constructionYear}` : "–"}
-              </li>
-              <li>
-                <strong>Sanierungsbedarf:</strong> {renovationNeed || "–"}
-              </li>
-              <li>
-                <strong>Widmung:</strong> {zoning || "–"}
-              </li>
-              <li>
-                <strong>Energieausweis:</strong>{" "}
-                {energyCertificate ? (
+              {!!propertyType && (
+                <li>
+                  <strong>Objektart:</strong> {propertyType}
+                </li>
+              )}
+              {landArea > 0 && (
+                <li>
+                  <strong>Grundst.:</strong> {landArea} m²
+                </li>
+              )}
+              {livingArea > 0 && (
+                <li>
+                  <strong>Wohn-/Nutzfl.:</strong> ca. {livingArea} m²
+                </li>
+              )}
+              {rooms > 0 && (
+                <li>
+                  <strong>Zimmer:</strong> {rooms}
+                </li>
+              )}
+              {!!constructionYear && (
+                <li>
+                  <strong>Baujahr:</strong> ca. {constructionYear}
+                </li>
+              )}
+              {renovationNeed && (
+                <li>
+                  <strong>Sanierungsbedarf:</strong> {renovationNeed}
+                </li>
+              )}
+              {zoning && (
+                <li>
+                  <strong>Widmung:</strong> {zoning}
+                </li>
+              )}
+              {energyCertificate && (
+                <li>
+                  <strong>Energieausweis:</strong>{" "}
                   <a href={energyCertificate} target="_blank" rel="noreferrer">
                     Download
                   </a>
-                ) : (
-                  "–"
-                )}
-              </li>
+                </li>
+              )}
             </ul>
-
-            <h3>Preis</h3>
-            <p className="orangeText">€ {price.toLocaleString()}</p>
+            {price>0 && (<div><h3>Preis</h3>
+<p className="orangeText">€ {price.toLocaleString()}</p></div>
+                            
+              )}
+            
             {negotiable && <p>Verhandlungsbasis</p>}
             {commission && <p>Provision: {commission}</p>}
             {availabilityDate && (
-              <p>
-                Verfügbar ab: {new Date(availabilityDate).toLocaleDateString()}
-              </p>
+              <p>Verfügbar ab: {new Date(availabilityDate).toLocaleDateString()}</p>
             )}
           </aside>
         </div>
+
         <div style={{ marginTop: "1rem", textAlign: "center" }}>
-  <p style={{ marginBottom: "0.5rem" }}>
-    Nehmen Sie gerne Kontakt mit mir auf – denn die meisten meiner Objekte werden nicht öffentlich präsentiert. Unabhängig davon, ob Sie eine Immobilie für den Eigengebrauch oder als Anlageobjekt wünschen, können Sie mir Ihren Suchwunsch über das folgende Formular übermitteln.
-  </p>
-  <Button
-    fullWidth
-    size="md"
-    style={{ maxWidth: "300px", margin: "0 auto", backgroundColor: "var(--primary)", color: "white" }}
-    onClick={() => setModalOpened(true)}
-  >
-    Suchauftrag aufgeben
-  </Button>
-</div>
+          <p style={{ marginBottom: "0.5rem" }}>
+            Nehmen Sie gerne Kontakt mit mir auf – denn die meisten meiner Objekte werden nicht öffentlich präsentiert. Unabhängig davon, ob Sie eine Immobilie für den Eigengebrauch oder als Anlageobjekt wünschen, können Sie mir Ihren Suchwunsch über das folgende Formular übermitteln.
+          </p>
+          <Button
+            fullWidth
+            size="md"
+            style={{ maxWidth: "300px", margin: "0 auto", backgroundColor: "var(--primary)", color: "white" }}
+            onClick={() => setModalOpened(true)}
+          >
+            Suchauftrag aufgeben
+          </Button>
+        </div>
 
         <Modal
           opened={showModal}

@@ -35,7 +35,7 @@ const Header = () => {
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpened)}>
             <NavLink to="/">Startseite</NavLink>
             <NavLink to="/properties">Immobilien</NavLink>
-            <a href="mailto:lupancuruben2@gmail.com">Kontakt</a>
+            <a href="mailto:office@fidelia.immo">Kontakt</a>
             {/* Dacă vrei să reintroduci butonul de adăugare proprietate: */}
             {/* <div onClick={handleAddPropertyClick}>Inserat hinzufügen</div>
             <AddPropertyModal opened={modalOpened} setOpened={setModalOpened} /> */}
