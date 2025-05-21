@@ -66,7 +66,7 @@ const Contact = () => {
 
             {/* zweite Zeile */}
             <div className="flexStart row">
-              {/* SMS 
+              {/* SMS */}
               <div className="flexColCenter mode">
                 <div className="flexStart">
                   <div className="flexCenter icon">
@@ -81,9 +81,9 @@ const Contact = () => {
                   Jetzt SMS
                 </a>
               </div>
-                  */}
+                  
               {/* E-Mail */}
-              <div className="flexColCenter mode_email">
+              <div className="flexColCenter mode email">
                 <div className="flexStart">
                   <div className="flexCenter icon">
                     <HiChatBubbleBottomCenter size={25} />
