@@ -129,3 +129,9 @@
   height: auto;
   margin-top: 50px;
 }
+
+@media (max-width: 680px) {
+  .c-right .image-container img {
+    margin-top: 0px;
+  }
+}
