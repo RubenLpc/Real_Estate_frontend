@@ -9,6 +9,7 @@ import {
   Textarea,
   NumberInput,
   FileInput,
+  Stack,
   Group,
   Checkbox,
   Radio,
@@ -36,7 +37,20 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
   const [active, setActive] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-
+  const [newOpt, setNewOpt] = useState("");
+  const [options, setOptions] = useState([
+    "Reitplatz",
+    "Lagerhalle",
+    "Brunnen",
+    "Photovoltaik",
+    "Garage",
+  ]);
+  const addOption = () => {
+    if (newOpt.trim() === "" || options.includes(newOpt)) return;
+    setOptions((o) => [...o, newOpt]);
+    form.setFieldValue("features", [...form.values.features, newOpt]);
+    setNewOpt("");
+  };
   const form = useForm({
     initialValues: {
       title: "",
@@ -465,22 +479,32 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
                 nextStep();
               }}
             >
-              <Checkbox.Group
-                label="Ausstattung"
-                description="z. B. Reitplatz, Photovoltaik etc."
-                {...form.getInputProps("features")}
-                mt="sm"
-              >
-                {[
-                  "Reitplatz",
-                  "Lagerhalle",
-                  "Brunnen",
-                  "Photovoltaik",
-                  "Garage",
-                ].map((item) => (
-                  <Checkbox key={item} value={item} label={item} />
-                ))}
-              </Checkbox.Group>
+              <div>
+                <Checkbox.Group
+                  label="Ausstattung"
+                  description="z. B. Reitplatz, Photovoltaik etc."
+                  {...form.getInputProps("features")}
+                  mt="sm"
+                >
+                  <Stack>
+                    {options.map((item) => (
+                      <Checkbox key={item} value={item} label={item} />
+                    ))}
+                  </Stack>
+                </Checkbox.Group>
+
+                <TextInput
+                  mt="md"
+                  placeholder="Alte Ausstattung..."
+                  value={newOpt}
+                  onChange={(e) => setNewOpt(e.currentTarget.value)}
+                  onKeyDown={(e) => e.key === "Enter" && addOption()}
+                />
+
+                <Button mt="xs" onClick={addOption}>
+                  Adaugă la Ausstattung
+                </Button>
+              </div>
               <MultiSelect
                 label="Highlights / Tags"
                 placeholder="z. B. ruhige Lage"

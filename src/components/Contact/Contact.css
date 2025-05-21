@@ -5,7 +5,9 @@
   flex: 1;
 }
 .c-right {
-  width: 100%;
+  display: flex;
+  justify-content: center; /* centru orizontal */
+  align-items: center;     /* centru vertical */
 }
 .c-left {
   gap: 0.5rem;
@@ -17,6 +19,15 @@
 .contactModes .row {
   gap: 1.5rem;
 }
+.mode_email{
+  width: 33.5rem;
+  padding: 1rem;
+  border: 0.8px solid rgba(128, 128, 128, 0.143);
+  border-radius: 5px;
+  gap: 1rem;
+  transition: all 300ms ease-in;
+  
+}
 .mode {
   width: 16rem;
   padding: 1rem;
@@ -25,6 +36,37 @@
   gap: 1rem;
   transition: all 300ms ease-in;
 }
+
+
+
+.mode_email .button {
+  width: 100%;
+  background: var(--lightBlue);
+  color: var(--blue);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.mode_email > :nth-child(1) {
+  width: 100%;
+  gap: 1.6rem;
+}
+.mode_email .detail .primaryText {
+  font-size: 1.1rem;
+  font-weight: 600;
+  justify-items: center;
+}
+
+.mode_email:hover {
+  scale: 1.1;
+  box-shadow: var(--shadow);
+}
+
+.mode_email .button:hover {
+  background: var(--blue-gradient);
+  color: white;
+  scale: 0.8;
+}
+
 .mode .button {
   width: 100%;
   background: var(--lightBlue);
@@ -72,4 +114,18 @@
     .mode{
         width: 100%;
     }
+    .mode_email{
+      width: 100%;
+  }
+}
+
+.c-right .image-container {
+  max-width: 500px; 
+  width: 100%;
+}
+.c-right .image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
 }

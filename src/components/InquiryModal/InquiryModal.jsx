@@ -71,7 +71,7 @@ const InquiryModal = ({ opened, onClose }) => {
           <Box>
             <Select
               label="Anrede"
-              placeholder="Herr / Frau / Divers"
+              placeholder="Herr / Frau"
               required
               data={[{ value: "Herr", label: "Herr" }, { value: "Frau", label: "Frau" }, { value: "Divers", label: "Divers" }]}
               {...form.getInputProps("anrede", { showError: true })}
@@ -99,9 +99,10 @@ const InquiryModal = ({ opened, onClose }) => {
               mt="sm"
             />
             <TextInput
-              label="Telefonnummer (optional)"
+              label="Telefonnummer"
               placeholder="0123456789"
               {...form.getInputProps("telefon")}
+              required
               mt="sm"
             />
             <Group position="right" mt="md">
@@ -113,7 +114,7 @@ const InquiryModal = ({ opened, onClose }) => {
         <Stepper.Step label="Objektinformationen" description="Schritt 2">
           <Box>
             <MultiSelect
-              label="Immobilienart"
+              label="Welche Art von Immoblien suchen Sie?"
               placeholder="Mehrfachauswahl möglich"
               required
               data={[

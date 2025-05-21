@@ -18,7 +18,7 @@ const UploadGallery = ({ gallery = [], onChange, nextStep, prevStep }) => {
         cloudName: "do3wzvgto",
         uploadPreset: "r2ocxngt",
         multiple: true,
-        maxFiles: 10,
+        maxFiles: 20,
       },
       (error, result) => {
         if (!error && result.event === "success") {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import { PuffLoader } from "react-spinners";
+import { useEffect } from "react";
 import {
   Button,
   Modal,
@@ -32,7 +33,9 @@ export default function Property() {
     getResidency(id)
   );
   const [lightboxIndex, setLightboxIndex] = useState(-1);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [showModal, setShowModal] = useState(false);
   const [modalOpened, setModalOpened] = useState(false);
 

@@ -12,11 +12,7 @@ const GetStarted = () => {
       <div className="paddings innerWidth g-container">
         <div className="flexColCenter inner-container">
           <span className="primaryText">Bleiben wir in Kontakt!</span>
-          <span className="secondaryText">
-            Abonnieren Sie und erhalten Sie unsere attraktiven Preisangebote.
-            <br />
-            Finden Sie schon bald Ihr neues Zuhause.
-          </span>
+          
 
           {/* Hauptaktion: Suchauftrag aufgeben */}
           <Button
