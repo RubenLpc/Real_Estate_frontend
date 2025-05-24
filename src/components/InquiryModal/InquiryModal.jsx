@@ -73,7 +73,7 @@ const InquiryModal = ({ opened, onClose }) => {
               label="Anrede"
               placeholder="Herr / Frau"
               required
-              data={[{ value: "Herr", label: "Herr" }, { value: "Frau", label: "Frau" }, { value: "Divers", label: "Divers" }]}
+              data={[{ value: "Herr", label: "Herr" }, { value: "Frau", label: "Frau" }]}
               {...form.getInputProps("anrede", { showError: true })}
               mt="sm"
             />

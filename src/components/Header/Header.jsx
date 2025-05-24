@@ -9,6 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import ProfileMenu from "../ProfileMenu/ProfileMenu.jsx";
 import AddPropertyModal from "../AddPropertyModal/AddPropertyModal.jsx";
 import useAuthCheck from "../../hooks/useAuthCheck.jsx";
+import { HashLink } from "react-router-hash-link";
 
 const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -26,7 +27,11 @@ const Header = () => {
       <div className="flexCenter innerWidth paddings-lr h-container">
         {/* Logo */}
         <Link to="/">
-          <img className="header_logo" src="../logo1.png" alt="Logo" width={100} 
+          <img
+            className="header_logo"
+            src="../logo1.png"
+            alt="Logo"
+            width={100}
           />
         </Link>
 
@@ -35,7 +40,15 @@ const Header = () => {
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpened)}>
             <NavLink to="/">Startseite</NavLink>
             <NavLink to="/properties">Immobilien</NavLink>
-            <a href="mailto:office@fidelia.immo">Kontakt</a>
+            {/* Link către homepage + secțiunea #contact-us */}
+            <HashLink
+              smooth
+              to="/#contact-us"
+              onClick={() => setMenuOpened(false)}
+              className="menu-link"
+            >
+              Kontakt
+            </HashLink>
             {/* Dacă vrei să reintroduci butonul de adăugare proprietate: */}
             {/* <div onClick={handleAddPropertyClick}>Inserat hinzufügen</div>
             <AddPropertyModal opened={modalOpened} setOpened={setModalOpened} /> */}
