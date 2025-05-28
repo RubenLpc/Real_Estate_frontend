@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <section className="h-wrapper" style={{ background: headerColor }}>
+    <section className="h-wrapper" >
       <div className="flexCenter innerWidth paddings-lr h-container">
         {/* Logo */}
         <Link to="/">

@@ -1,54 +1,64 @@
+/* Hero.css (sau fișier separat de Header) */
 .h-wrapper {
   z-index: 99;
   position: sticky;
   top: 0;
-}
-.h-container {
- 
-  color: var(--secondary);
-  justify-content: space-between;
-}
-.header-logo {
-  width: 150px;     /* poți ajusta mai mare dacă vrei */
-  height: auto;
-  margin-bottom: 0;
-  padding-bottom: none;
-}
-.paddings-lr {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  /* fundal bej deschis, ca Hero 
+  background-color: var(--lightBlue);*/
+  background-color: white; /* fundal alb pentru contrast */
 }
 
+/* Containerul din header */
+.h-container {
+  color: var(--text-dark); /* text închis pentru contrast */
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.header-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-left: 5%;
+}
+
+/* Meniul */
 .h-menu {
+  display: flex;
   gap: 2rem;
-  color: white;
+  color: var(--primary);    /* verde inchis pentru link-uri */
 }
 .h-menu > *:hover {
   cursor: pointer;
-}
-.menu-icon {
-  display: none;
-  color: white;
+  color: var(--secondary);  /* bej transparent la hover */
 }
 
+/* Iconița de mobile */
+.menu-icon {
+  display: none;
+  color: var(--primary);
+  padding-right: 5%;
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .menu-icon {
     display: block;
   }
   .h-menu {
-    color: var(--black);
+    color: var(--text-dark);
     position: absolute;
     gap: 2rem;
     font-weight: 500;
     flex-direction: column;
-    right: 4rem;
-    top: 3rem;
+    right: 2rem;
+    top: 4rem;
     background: white;
     display: flex;
     border-radius: 10px;
-    transition: all 200ms ease;
-    align-items: flex-start;
-    padding: 3rem;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   }
 }

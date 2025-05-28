@@ -50,7 +50,7 @@ const iconStyle = {
 const Value = () => {
   const [modalOpened, setModalOpened] = useState(false);
   const iconStyle = {
-    backgroundColor: "var(--secondary)",
+    backgroundColor: "#F8F3F2",
     color: "var(--primary)",
   };
 
@@ -58,7 +58,7 @@ const Value = () => {
     {
       key: 0,
       title: "Kernkompetenzen - Was wir Ihnen bieten",
-      icon: <IconBuilding size={20} />,
+      icon: <IconBuilding size={25} />,
       content: (
         <>
           Mit langjähriger Erfahrung in der Standortentwicklung,
@@ -92,7 +92,7 @@ const Value = () => {
     {
       key: 1,
       title: "Vermittlung von Immobilien",
-      icon: <IconHome size={20} />,
+      icon: <IconHome size={25} />,
       content: (
         <Accordion
           allowMultipleExpanded={false}
@@ -101,7 +101,7 @@ const Value = () => {
         >
           {" "}
           {/* Sub-accordion: Sie suchen eine Immobilie? */}
-          <AccordionItem uuid="sub0" className="accordionItem">
+          <AccordionItem uuid="sub0"  className="accordionItem">
             <AccordionItemHeading>
               <AccordionItemButton className="flexCenter accordionButton">
                 <ThemeIcon
@@ -149,7 +149,7 @@ const Value = () => {
                       key={idx}
                       icon={
                         <ThemeIcon style={iconStyle} radius="xl" size={24}>
-                          <MdCheck size={16} />
+                          <MdCheck size={20} />
                         </ThemeIcon>
                       }
                     >
@@ -391,7 +391,7 @@ const Value = () => {
     {
       key: 2,
       title: "Standortsuche und Betriebsansiedlung",
-      icon: <IconMapSearch size={20} />,
+      icon: <IconMapSearch size={25} />,
       content: (
         <>
           Wenn Sie für Ihr Unternehmen den optimalen Standort suchen, sind Sie
@@ -447,7 +447,7 @@ const Value = () => {
     {
       key: 3,
       title: "Baulandentwicklung",
-      icon: <IconMapPin size={20} />,
+      icon: <IconMapPin size={25} />,
       content: (
         <>
           <strong>Baulandentwicklung: </strong>Aus landwirtschaftlicher Fläche
@@ -509,7 +509,7 @@ const Value = () => {
     {
       key: 4,
       title: "Revitalisierungsprojekte",
-      icon: <IconRefresh size={20} />,
+      icon: <IconRefresh size={25} />,
       content: (
         <>
           Auch Immobilien durchlaufen Lebenszyklen – und mit jeder Phase
@@ -539,17 +539,17 @@ const Value = () => {
           <div className="flexColStart v-right">
             <Accordion
               allowMultipleExpanded={false}
-              preExpanded={[0]}
+              allowZeroExpanded
               className="accordion"
             >
               {sections.map(({ key, title, icon, content }) => (
-                <AccordionItem uuid={key} key={key} className="accordionItem">
+                <AccordionItem uuid={key} key={key}  className="accordionItem">
                   <AccordionItemHeading>
                     <AccordionItemButton className="flexCenter accordionButton">
                       <ThemeIcon
                         style={{ ...iconStyle, marginRight: "0.5rem" }}
                         radius="xl"
-                        size={30}
+                        size={40}
                       >
                         {icon}
                       </ThemeIcon>

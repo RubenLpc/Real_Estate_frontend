@@ -1,6 +1,7 @@
 .inner-container{
     gap: 1.5rem;
-    background: linear-gradient(97.05deg, #909473 3.76%, #5B6D5C 100%);;
+   /* */ background: linear-gradient(97.05deg, #909473 3.76%, #5B6D5C 100%);
+
     padding: 2rem;
     border-radius: 10px;
     border: 6px solid rgba(203, 185, 137, 0.78);

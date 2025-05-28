@@ -24,8 +24,14 @@
   border: 0.8px solid rgba(128, 128, 128, 0.143);
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;   /* centrăm și păstrăm margin-bottom */
+  width: 95vw;           /* 80% din lățimea viewport-ului */
+  max-width: 1000px;      /* opțional, ca să nu devină prea lat pe ecrane mari */
 }
+.accordionItem .accordionItem {
+  width: 100%;
+}
+
 .accordionItem.expanded {
   box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* stronger */
   border-radius: 6px;
