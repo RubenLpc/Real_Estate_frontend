@@ -319,6 +319,10 @@
     width: 10px;
     height: 10px;
   }
+  .subtext {
+    font-size: 1rem;
+    
+  }
   
 }
 
