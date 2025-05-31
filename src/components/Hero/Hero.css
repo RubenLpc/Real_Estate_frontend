@@ -10,13 +10,29 @@
 }
 
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/* Container general (secţiunea Hero)                                         */
+/*   WRAPPER GENERAL (cu gradient)                                           */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+.hero-wrapper {
+  /* Aplicăm gradient pe întreg conținutul (slide + caption) */
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--lightBlue) 100%);
+  /* Pentru a prelua lățimea întregii pagini */
+  width: 100%;
+  /* Dacă vrem ca gradientul să urce în spatele header-ului, lăsăm overflow-ul vizibil */
+  overflow: hidden;
+  /* Pentru ca titlul slide-ului să rămână centrat vertical, pe desktop, păstrăm display: flex temporarily */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/*   CONTAINER SLIDE (partea de sus, cu imaginea/slide-ul)                   */
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh; /* ocupă tot ecranul pe desktop */
-  background: linear-gradient(135deg, #FFFFFF 0%, var(--lightBlue) 100%);
+  /* Pe desktop, ocupă tot viewport-ul */
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,7 +40,7 @@
   cursor: pointer;
 }
 
-/* Logo-ul rămâne absolut pe slide‐ul 2 (card) */
+/* Logo pe slide-ul 2 (rămâne acolo) */
 .hero-logo.large {
   position: absolute;
   top: 1rem;
@@ -42,7 +58,9 @@
   z-index: 10;
 }
 
-/* Slide base: ocupă toată aria .hero */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/*   SLIDE BASE                                                                */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .slide {
   position: absolute;
   width: 100%;
@@ -50,7 +68,7 @@
 }
 
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/* Slide 1 – background + heading animat                                      */
+/*   SLIDE 1 – fundal + heading animat                                        */
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .slide-words {
   position: relative;
@@ -61,7 +79,7 @@
   background-repeat: no-repeat;
 }
 
-/* Titlul din slide‐ul 1: poziționat absolut, puțin mai sus și la dreapta */
+/* Titlul slide-uluI 1 */
 .hero-heading {
   position: absolute;
   top: 30%;
@@ -69,7 +87,7 @@
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  text-align: right;
+  text-align: left;
   color: white;
   font-size: 5rem; /* desktop */
   line-height: 1.2;
@@ -83,14 +101,7 @@
 }
 
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/* Imaginea de mobil (pe ecrane ≤768px) – se afișează sub text cu bordură și shadow */
-/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-.slide-mobile-image {
-  display: none; /* by default, doar pe desktop nu apare */
-}
-
-/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/* Slide 2 – card cu imagine + text                                             */
+/*   SLIDE 2 – card cu imagine + text (nu apare pe mobil)                     */
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .slide-card {
   display: flex;
@@ -148,7 +159,7 @@
 }
 
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/* Pagination dots                                                                */
+/*   PAGINATION DOTS (desktop)                                                  */
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .pagination {
   position: absolute;
@@ -171,7 +182,7 @@
 }
 
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/* Desktop larg → tabletă mare (≤1024px)                                          */
+/*   SCALĂ PENTRU TABLETĂ / MOBILE (≤1024px)                                  */
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 @media (max-width: 1024px) {
   .hero-heading {
@@ -183,182 +194,154 @@
 }
 
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/* Tabletă / telefoane mari (≤768px)                                               */
+/*   TABLETĂ / TELEFOANE MARI (≤768px)                                              */
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 @media (max-width: 768px) {
-  /* Secțiunea Hero devine „auto-height” */
+  /* SLIDE-UL 1 – rămâne cu un height auto, nu 100vh */
   .slide-words {
-    background-image: none !important;
+    background-image: url('/hero.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+
+    /* înălțime auto ca să apară și chenarul sub el */
+    height: auto !important;
+    padding-top: 3rem;    /* puțin spațiu sus pentru titlu */
+    padding-bottom: 3rem;    /* vom lăsa spațiul pentru chenar mai jos */
   }
+  /* HERO – nu mai e 100vh, devine auto și nu are overflow hidden */
   .hero {
     height: auto !important;
     overflow: visible !important;
-    padding: 2rem 0;
+    padding: 0;
     align-items: flex-start;
   }
 
-  /* Anulăm absolutul pe slide-uri, ca ele să se stivuiască unul sub altul */
+  /* Resetăm absolutul pe slide-uri, să se stivuiască unul sub altul */
   .slide {
     position: relative !important;
     width: 100% !important;
     height: auto !important;
   }
 
-  /* Mutăm pagination în flux, dedesubt */
+  /* ASCUNDEM SLIDE-UL 2 (card) */
+  .slide-card {
+    display: none !important;
+  }
+
+  /* ASCUNDEM PAGINAREA (dots) */
   .pagination {
-    margin: 1rem auto 0;
-    right: auto !important;
-    z-index: 20;
+    display: none !important;
   }
 
-  /* Afișăm imaginea de mobil (sub text) */
-  .slide-mobile-image {
-    display: block;
-    width: 80%;
-    margin: 0 auto;
-    border: 2px solid var(--secondary);
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  .slide-mobile-image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* Titlul devine relativ, centrat, pe două linii (sau trei) */
+  /* Titlul – relativ, centrat, pe două/tr rânduri */
   .hero-heading {
     position: relative;
     top: auto;
     right: auto;
     transform: none;
-    text-align: right;
-    color: black;
-    font-size: clamp(1.5rem, 8vw, 2.2rem);
+    text-align: center;
+    color: white;
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
     line-height: 1.25;
-    margin: 1.5rem auto 0;
+    margin: 2rem auto 0;
     max-width: 90%;
-    padding-bottom: 50px;
-    padding-right: 15px;
+    padding: 0 1rem;
+    z-index: 2;
   }
   .hero-heading span {
     display: block;
     margin-bottom: 0.25em;
   }
-
-  /* Ascundem imaginea decor de pe desktop (dacă există) */
-  .slide-words .slide-right {
-    display: none;
-  }
-
-  /* Slide 2 (card) – îl facem coloană, cu puțin padding lateral */
-  .slide-card {
-    flex-direction: column;
-    padding: 2rem 1rem 0 1rem;
-    margin: 0;
-  }
-  .card {
-    flex-direction: column;
-    width: 100%;
-    border-radius: 1rem;
-  }
-  .card-image,
-  .card-text {
-    width: 100%;
-    border-left: none;
-    border-top: 3px solid var(--secondary);
-  }
-  .logo_card {
-    margin-bottom: 1rem;
-  }
-
-  /* Dot-urile sunt un pic mai mici */
-  .dot {
-    width: 10px;
-    height: 10px;
-  }
-  .subtext {
-    font-size: 1rem;
-  }
 }
 
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/* Telefoane mici (≤480px)                                                         */
+/*   TELEFOANE MICI (≤480px)                                                     */
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 @media (max-width: 480px) {
   .hero-heading {
-    font-size: clamp(1.2rem, 12vw, 1.8rem);
-    line-height: 1.25;
+    font-size: clamp(1.4rem, 10vw, 2rem);
+    line-height: 1.2;
     margin: 1rem auto 0;
   }
-  .hero-caption {
-    font-size: 0.8rem;
-    max-width: 100%;
-    margin-bottom: 1rem;
-  }
-  .hero-logo.large {
-    width: 200px;
-  }
-  .hero-logo.small {
-    width: 100px;
-  }
-  .pagination {
-    bottom: 1rem;
-    right: 1rem;
-  }
 }
 
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/* Stiluri finale pentru card-uri                                                */
+/*   CHENARUL CU TEXT ȘI BUTON (NUMAI PE MOBIL)                               */
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-.logo_card {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
+.hero-caption-container {
+  display: none; /* ascuns implicit pe desktop */
+  margin: 0 auto;
+  margin-top: 1rem;
+  max-width: 90%;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
 }
-.logo_card .hero-logo.small {
-  position: static !important;
-  transform: none !important;
-  width: 120px;
+.hero-caption-logo {
+  max-width: 100px;
+  margin: 0 auto 1rem;
+  display: block;
 }
-
-/* ─── RULE GENERAL ─── */
-/* ───────────────────────────────────────────────────────────────────── 
-   1) Stil general (desktop) – ascundem paragraful
-──────────────────────────────────────────────────────────────────── */
-.hero-caption {
-  display: none;
+.hero-caption-text {
   font-family: var(--font-serif);
   font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+.hero-caption-btn {
+  background-color: var(--primary);
   color: white;
-  text-align: right;
-  margin-top: 1rem;
-  max-width: 60%;
-  line-height: 1.4;
-  padding-left: 6%;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.hero-caption-btn:hover {
+  background-color: #4a5b4a; /* un ton puțin mai închis */
+  transform: scale(1.03);
 }
 
-/* ───────────────────────────────────────────────────────────────────── 
-   2) Stil pentru imaginea de mobil – ascuns în versiunea desktop
-──────────────────────────────────────────────────────────────────── */
-
-
-/* ───────────────────────────────────────────────────────────────────── 
-   3) Pe mobil (sub 768px) afișăm atât .hero-caption, cât și .slide-mobile-image 
-──────────────────────────────────────────────────────────────────── */
+/* Afișăm containerul doar pe mobil (≤768px) */
 @media (max-width: 768px) {
-  /* Afișăm paragraful sub cele trei cuvinte */
-  .hero-caption {
+  .hero-caption-container {
     display: block;
-    font-size: 0.9rem;
-    margin-top: 0.8rem;
-    max-width: 90%;
-    text-align: left;
-    color: var(--text-dark);
   }
+}
 
-  
+/* Variantei unde fiecare span are un blur dedesubt */
+.hero-heading span {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-heading span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 0.5rem);
+  height: calc(100% + 0.24rem);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 0.5rem;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .hero-heading span::before {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    width: calc(100% + 0.5rem);
+    height: calc(100% + 0.2rem);
+    border-radius: 0.75rem;
+  }
 }
