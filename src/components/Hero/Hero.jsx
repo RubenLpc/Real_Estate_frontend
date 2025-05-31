@@ -3,10 +3,9 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Hero.css";
 
-
 const SLIDE_DURATION = 5000;
 
-// animaţie cuvinte
+// animație cuvinte
 const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.25, delayChildren: 0.3 } },
@@ -15,14 +14,17 @@ const wordVariants = {
   hidden: { opacity: 0, x: -30 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
 };
-// animaţie deco imagine
+
+// animație deco imagine (folosită pe desktop)
 const decoVariants = {
   hidden: { opacity: 0, x: 50 },
   visible: { opacity: 1, x: 0, transition: { duration: 1 } },
 };
-const imageVariants = {
-  hidden: { scale: 1.2 },
-  visible: { scale: 1, transition: { duration: 1.5, ease: "easeOut" } },
+
+// animație fade-in pentru imaginea de mobil
+const mobileImageVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: "easeOut" } },
 };
 
 export default function Hero() {
@@ -44,53 +46,54 @@ export default function Hero() {
       onClick={handleClick}
       title="Click pentru a schimba ilustrația"
     >
-      {/* logo supradimensionat pe slide-words, mic pe card */}
-      
+      <AnimatePresence mode="wait">
+        {slide === 0 ? (
+          // ─── SLIDE 1 ─── background + text animat
+          <motion.div
+            key="words"
+            className="slide slide-words"
+            style={{ backgroundImage: `url('/hero.jpg')` }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* ─── titlul mare cu 3 cuvinte ─── */}
+            <motion.h1
+              className="hero-heading"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.span variants={wordVariants}>
+                Baulandentwicklung
+              </motion.span>
+              <motion.span variants={wordVariants}>
+                Betriebsansiedlung
+              </motion.span>
+              <motion.span variants={wordVariants}>
+                Immobilienvermittlung
+              </motion.span>
+            </motion.h1>
 
-<AnimatePresence mode="wait">
-  {slide === 0 ? (
-  <motion.div
-    key="words"
-    className="slide slide-words"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-  >
-    <div className="slide-left">
+            {/*** Paragraful care apare *numai* pe mobil ***/}
+            <p className="hero-caption">
+              Ich begleite Sie bei der Standortwahl, entwickle Bauland mit Weitblick 
+              und vermittle Immobilien diskret und professionell – mit Fokus auf 
+              Qualität, Struktur und Vertrauen.
+            </p>
 
-      <motion.h1
-        className="hero-heading"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        
-        <motion.span variants={wordVariants}>Baulandentwicklung</motion.span>
-        <motion.span variants={wordVariants}>Betriebsansiedlung</motion.span>
-        <motion.span variants={wordVariants}>Immobilienvermittlung</motion.span>
-      </motion.h1>
-
-      <p className="hero-caption">
-      Ich begleite Sie bei der Standortwahl, entwickle Bauland mit Weitblick und vermittle Immobilien diskret und professionell – mit Fokus auf Qualität, Struktur und Vertrauen.
-      </p>
-    </div>
-
-    <motion.div
-      className="slide-right"
-      variants={decoVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <motion.img
-        src="./hero-image.png"
-        alt="Clădire interesantă"
-        className="words-image"
-        variants={imageVariants}
-      />
-      <div className="image-overlay" />
-    </motion.div>
-  </motion.div>
-)  : (
+            {/* Imaginea de mobil (apare doar sub 768px, sub text) */}
+            <motion.div
+              className="slide-mobile-image"
+              variants={mobileImageVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <img src="/hero.jpg" alt="Baulandentwicklung" />
+            </motion.div>
+          </motion.div>
+        ) : (
+          // ─── SLIDE 2 ─── card cu imagine + text
           <motion.div
             key="card"
             className="slide slide-card"
@@ -104,13 +107,17 @@ export default function Hero() {
                 <img src="./profil_1.jpeg" alt="Dan Dutescu" />
               </div>
               <div className="card-text">
-              <div className="logo_card"><img
-        src="./logo1.png"
-        alt="Dan Dutescu Logo"
-        className={`hero-logo ${slide === 0 ? "large" : "small"}`}
-      /></div>
+                <div className="logo_card">
+                  <img
+                    src="./logo1.png"
+                    alt="Dan Dutescu Logo"
+                    className={`hero-logo ${slide === 0 ? "large" : "small"}`}
+                  />
+                </div>
                 <p className="subtext">
-                Ich begleite Sie bei der Standortwahl, entwickle Bauland mit Weitblick und vermittle Immobilien diskret und professionell – mit Fokus auf Qualität, Struktur und Vertrauen.
+                  Ich begleite Sie bei der Standortwahl, entwickle Bauland cu
+                  Weitblick und vermittle Immobilien diskret und profesional –
+                  cu fokus pe calitate, structură și încredere.
                 </p>
                 <a href="#core-competencies" className="cta">
                   Mehr erfahren…
@@ -121,6 +128,7 @@ export default function Hero() {
         )}
       </AnimatePresence>
 
+      {/* pagination dots */}
       <div className="pagination">
         <button
           className={`dot${slide === 0 ? " active" : ""}`}

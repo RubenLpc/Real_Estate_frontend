@@ -1,8 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import { PuffLoader } from "react-spinners";
-import { useEffect } from "react";
+import Contact from "../../components/Contact/Contact.jsx";
+
+// Iconițele pe care le folosim
+import {
+  BiHomeAlt,        // tip proprietate
+  BiRuler,          // suprafață
+  BiDoorOpen,       // camere
+  BiCalendar,       // an construcție / disponibilitate
+  BiWrench,         // necesită reparații
+  BiMapPin,         // zonare / locație
+  BiSolidZap,           // energie / certificat energetic
+  BiFile,           // documente
+  BiEnvelope,       // contact/email
+  BiPhone,          // telefon
+  BiInfoCircle,     // descriere
+  BiLocationPlus,   // subtitlu secțiune „Lage”
+  BiTag,            // Highlights
+  BiCheckShield,    // Ausstattung
+} from "react-icons/bi";
+
 import {
   Button,
   Modal,
@@ -13,16 +32,20 @@ import {
   Group,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
+
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
+
 import { AiOutlineFilePdf } from "react-icons/ai";
 import Lightbox from "yet-another-react-lightbox";
 import { Video } from "yet-another-react-lightbox/plugins";
 import "yet-another-react-lightbox/styles.css";
 import ReactPlayer from "react-player";
 import LeafletMap from "../../components/Map/LeafLetMap.jsx";
+
 import { getResidency, sendPropertyContact } from "../../utils/api";
 import InquiryModal from "../../components/InquiryModal/InquiryModal.jsx";
+
 import "./Property.css";
 import { toast } from "react-toastify";
 
@@ -33,9 +56,11 @@ export default function Property() {
     getResidency(id)
   );
   const [lightboxIndex, setLightboxIndex] = useState(-1);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const [showModal, setShowModal] = useState(false);
   const [modalOpened, setModalOpened] = useState(false);
 
@@ -113,17 +138,15 @@ export default function Property() {
   } = data;
 
   const isOffMarket = status === "diskret";
-  const displayRegion = region || '';
-  const displayCountry = 'Austria';
+  const displayRegion = region || "";
+  const displayCountry = "Austria";
   const fullAddress = [address, displayRegion, displayCountry]
     .filter(Boolean)
-    .join(', ');
+    .join(", ");
 
   const mediaItems = [];
   if (image) mediaItems.push({ src: image, type: "image" });
-  images
-    .filter(Boolean)
-    .forEach((src) => mediaItems.push({ src, type: "image" }));
+  images.filter(Boolean).forEach((src) => mediaItems.push({ src, type: "image" }));
   if (video) mediaItems.push({ src: video, type: "video" });
   if (droneVideo) mediaItems.push({ src: droneVideo, type: "video" });
 
@@ -178,6 +201,7 @@ export default function Property() {
       />
 
       <div className="property-container innerWidth paddings">
+        {/* Titlu proprietate */}
         <div className="header flexBetween">
           <h1 className="primaryText">{title}</h1>
         </div>
@@ -188,10 +212,12 @@ export default function Property() {
               (region ? ` | ${region}` : "")}
         </p>
 
+        {/* Scurtă descriere */}
         {!isOffMarket && shortDescription && (
           <p className="teaserText">{shortDescription}</p>
         )}
 
+        {/* Slider imagini / video */}
         {!isOffMarket && mediaItems.length > 0 && (
           <Swiper
             modules={[Navigation, Pagination]}
@@ -229,21 +255,30 @@ export default function Property() {
           </Swiper>
         )}
 
+        {/* Conținutul principal și sidebar */}
         <div className="details-grid">
           <div className="main-column">
+            {/* Secțiunea „Beschreibung” */}
             <section className="description-section">
-              <h3>Beschreibung</h3>
+              <h3 className="section-title">
+                <BiInfoCircle className="title-icon" />
+                Beschreibung
+              </h3>
               <p className="secondaryText">{description}</p>
             </section>
 
+            {/* Secțiunea „Lage” */}
             <section className="location-desc-section">
-              <h3>Lage</h3>
+              <h3 className="section-title">
+                <BiLocationPlus className="title-icon" />
+                Lage
+              </h3>
 
               {locationDescription && (
                 <p className="secondaryText">{locationDescription}</p>
               )}
 
-              {(address || region) ? (
+              {address || region ? (
                 <LeafletMap fullAddress={fullAddress} />
               ) : (
                 <p className="secondaryText">Adresse nicht verfügbar.</p>
@@ -252,40 +287,57 @@ export default function Property() {
               {pois.length > 0 && (
                 <ul className="poi-list">
                   {pois.map((poi, idx) => (
-                    <li key={idx}>• {poi.name} ({poi.distance} km)</li>
+                    <li key={idx}>
+                      • {poi.name} ({poi.distance} km)
+                    </li>
                   ))}
                 </ul>
               )}
             </section>
 
+            {/* Secțiunea „Ausstattung” */}
             {(features.length || tags.length) > 0 && (
               <section className="tags-section">
+                <h3 className="section-title">
+                  <BiCheckShield className="title-icon" />
+                  Ausstattung
+                </h3>
                 {features.length > 0 && (
-                  <>
-                    <h3>Ausstattung</h3>
-                    <ul className="feature-list">
-                      {features.map((f, i) => (
-                        <li key={i}>✅ {f}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-                {tags.length > 0 && (
-                  <>
-                    <h3>Highlights</h3>
-                    <ul className="tag-list">
-                      {tags.map((t, i) => (
-                        <li key={i}>🏷️ {t}</li>
-                      ))}
-                    </ul>
-                  </>
+                  <ul className="feature-list facilities">
+                    {features.map((f, i) => (
+                      <li key={i} className="facility">
+                         {f}
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </section>
             )}
 
+            {/* Secțiunea „Highlights” */}
+            {tags.length > 0 && (
+              <section className="tags-section">
+                <h3 className="section-title">
+                  <BiTag className="title-icon" />
+                  Highlights
+                </h3>
+                <ul className="tag-list facilities">
+                  {tags.map((t, i) => (
+                    <li key={i} className="facility">
+                      🏷️ {t}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* Secțiunea „Dokumente” */}
             {!isOffMarket && documents.length > 0 && (
               <section className="docs-section">
-                <h3>Dokumente</h3>
+                <h3 className="section-title">
+                  <BiFile className="title-icon" />
+                  Dokumente
+                </h3>
                 <ul className="docs-list">
                   {documents.map((url, i) => (
                     <li key={i} className="docs-item">
@@ -310,104 +362,140 @@ export default function Property() {
               </section>
             )}
 
+            {/* Buton „Exposé anfordern” / „Kontaktformular” */}
             <div className="cta-section">
               {!isOffMarket ? (
                 <Button
                   component="a"
                   onClick={() => setShowModal(true)}
-                  className="button"
+                  className="button cta-button"
                 >
                   Jetzt Exposé anfordern
                 </Button>
               ) : (
-                <Button className="button" onClick={() => setShowModal(true)}>
+                <Button className="button cta-button" onClick={() => setShowModal(true)}>
                   Kontaktformular anfordern
                 </Button>
               )}
             </div>
           </div>
 
+          {/* Sidebar: Detalii proprietate */}
           <aside className="sidebar">
-            <h3>Objekt-Details</h3>
+            <h3 className="section-title">
+              <BiHomeAlt className="title-icon" />
+              Objekt-Details
+            </h3>
             <ul className="facts-box">
               {!!propertyType && (
                 <li>
-                  <strong>Objektart:</strong> {propertyType}
+                  <BiHomeAlt className="fact-icon" />
+                  <strong>Objektart: </strong> {propertyType}
                 </li>
               )}
               {landArea > 0 && (
                 <li>
-                  <strong>Grundst.:</strong> {landArea} m²
+                  <BiRuler className="fact-icon" />
+                  <strong>Grundstück: </strong> {landArea} m²
                 </li>
               )}
               {livingArea > 0 && (
                 <li>
-                  <strong>Wohn-/Nutzfl.:</strong> ca. {livingArea} m²
+                  <BiRuler className="fact-icon" />
+                  <strong>Wohn-/Nutzfläche: </strong> ca. {livingArea} m²
                 </li>
               )}
               {rooms > 0 && (
                 <li>
-                  <strong>Zimmer:</strong> {rooms}
+                  <BiDoorOpen className="fact-icon" />
+                  <strong>Zimmer: </strong> {rooms}
                 </li>
               )}
               {!!constructionYear && (
                 <li>
-                  <strong>Baujahr:</strong> ca. {constructionYear}
+                  <BiCalendar className="fact-icon" />
+                  <strong>Baujahr: </strong> ca. {constructionYear}
                 </li>
               )}
               {renovationNeed && (
                 <li>
-                  <strong>Sanierungsbedarf:</strong> {renovationNeed}
+                  <BiWrench className="fact-icon" />
+                  <strong>Sanierungsbedarf: </strong> {renovationNeed}
                 </li>
               )}
               {zoning && (
                 <li>
-                  <strong>Widmung:</strong> {zoning}
+                  <BiMapPin className="fact-icon" />
+                  <strong>Widmung: </strong> {zoning}
                 </li>
               )}
               {energyCertificate && (
                 <li>
-                  <strong>Energieausweis:</strong>{" "}
-                  <a href={energyCertificate} target="_blank" rel="noreferrer">
+                  <BiSolidZap className="fact-icon" />
+                  <strong>Energieausweis: </strong>{" "}
+                  <a
+                    href={energyCertificate}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="fact-link"
+                  >
                     Download
                   </a>
                 </li>
               )}
-            </ul>
-            {price>0 && (<div><h3>Preis</h3>
-<p className="orangeText">€ {price.toLocaleString()}</p></div>
-                            
+              {price > 0 && (
+                <li className="price-item">
+                  <BiHomeAlt className="fact-icon" />
+                  <strong>Preis: </strong>{" "}
+                  <span className="price-value">
+                    € {price.toLocaleString()}
+                  </span>
+                </li>
               )}
-            
-            {negotiable && <p>Verhandlungsbasis</p>}
-            {commission && <p>Provision: {commission}</p>}
-            {availabilityDate && (
-              <p>Verfügbar ab: {new Date(availabilityDate).toLocaleDateString()}</p>
-            )}
+              {negotiable && (
+                <li>
+                  <BiHomeAlt className="fact-icon" />
+                  <strong>Verhandlungsbasis </strong>
+                </li>
+              )}
+              {availabilityDate && (
+                <li>
+                  <BiCalendar className="fact-icon" />
+                  <strong>Verfügbar ab: </strong>{" "}
+                  {new Date(availabilityDate).toLocaleDateString()}
+                </li>
+              )}
+            </ul>
           </aside>
         </div>
 
-        <div style={{ marginTop: "1rem", textAlign: "center" }}>
-          <p style={{ marginBottom: "0.5rem" }}>
-            Nehmen Sie gerne Kontakt mit mir auf – denn die meisten meiner Objekte werden nicht öffentlich präsentiert. Unabhängig davon, ob Sie eine Immobilie für den Eigengebrauch oder als Anlageobjekt wünschen, können Sie mir Ihren Suchwunsch über das folgende Formular übermitteln.
-          </p>
-          <Button
-            fullWidth
-            size="md"
-            style={{ maxWidth: "300px", margin: "0 auto", backgroundColor: "var(--primary)", color: "white" }}
-            onClick={() => setModalOpened(true)}
-          >
-            Suchauftrag aufgeben
-          </Button>
-        </div>
+        {/* Secțiune finală cu buton de „Suchauftrag” */}
+        {/* …alte coduri… */}
+
+<div className="cta-wrapper">
+  <p className="cta-text">
+    Nehmen Sie gerne Kontakt mit mir auf – denn die meisten meiner Objekte werden 
+    nicht öffentlich präsentiert. Unabhängig davon, ob Sie eine Immobilie für 
+    den Eigengebrauch oder als Anlageobjekt wünschen, können Sie mir Ihren 
+    Suchwunsch über das folgende Formular übermitteln.
+  </p>
+  <Button
+    className="button cta-button"
+    onClick={() => setModalOpened(true)}
+  >
+    Suchauftrag aufgeben
+  </Button>
+</div>
+
+{/* …alte coduri… */}
+
+
 
         <Modal
           opened={showModal}
           onClose={() => setShowModal(false)}
           title={
-            isOffMarket
-              ? "Kontaktformular anfordern"
-              : "Suchauftrag / Kontaktformular"
+            isOffMarket ? "Kontaktformular anfordern" : "Suchauftrag / Kontaktformular"
           }
           size="lg"
           centered
@@ -507,14 +595,13 @@ export default function Property() {
         </Modal>
       </div>
 
-      <InquiryModal
-        opened={modalOpened}
-        onClose={() => setModalOpened(false)}
-      />
+      <InquiryModal opened={modalOpened} onClose={() => setModalOpened(false)} />
+      <Contact />
     </div>
   );
 }
 
+// Componente suplimentară pentru butoanele slider-ului
 const SlideNavButtons = () => {
   const swiper = useSwiper();
   return (
