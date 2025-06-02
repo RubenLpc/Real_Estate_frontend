@@ -370,11 +370,11 @@ export default function Property() {
                   onClick={() => setShowModal(true)}
                   className="button cta-button"
                 >
-                  Jetzt Exposé anfordern
+                  Kontaktformular
                 </Button>
               ) : (
                 <Button className="button cta-button" onClick={() => setShowModal(true)}>
-                  Kontaktformular anfordern
+                  Kontaktformular
                 </Button>
               )}
             </div>

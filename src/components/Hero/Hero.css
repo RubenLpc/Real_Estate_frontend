@@ -73,7 +73,7 @@
 .slide-words {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -344,4 +344,74 @@
     height: calc(100% + 0.2rem);
     border-radius: 0.75rem;
   }
+}
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* Stiluri pentru afișarea blocului pe desktop                               */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* Stiluri pentru blocul de sub titlul animat, afișat doar pe desktop       */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+.desktop {
+  position: absolute;
+  /* „30%” marchează aproximativ mijlocul containerului .slide-words,
+     iar + 3em înseamnă „puțin sub ultima linie de text din h1” */
+  top: calc(60% + 3em);
+  left: 5%;               /* 5% distanță din stânga ecranului */
+  max-width: 35%;         /* nu ocupa prea mult spațiu */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  z-index: 2;             /* deasupra imaginii */
+}
+
+.desktop-caption {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: white;
+  line-height: 1.4;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.hero-btn-desktop {
+  background-color: var(--primary);
+  color: white;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.hero-btn-desktop:hover {
+  background-color: #4a5b4a;
+  transform: scale(1.02);
+}
+
+/* Ascunde blocul “desktop” pe tablete și telefoane (≤768px) */
+@media (max-width: 768px) {
+  .desktop,
+  .desktop-caption {
+    display: none;
+  }
+}
+
+.cta-desktop {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(white);
+  text-decoration: none;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 2px;
+}
+.cta-desktop:hover {
+  color: var(--secondary);
 }

@@ -8,7 +8,7 @@ const PropertyCard = ({ card }) => {
   const navigate = useNavigate();
 
   // German terms
-  const unspecifiedPriceText = 'Nicht spezifiziert';
+  const unspecifiedPriceText = 'Preis auf Anfrage';
   const soldText = 'Verkauft';
   const reservedText = 'Reserviert';
 

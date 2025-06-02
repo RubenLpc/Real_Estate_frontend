@@ -224,7 +224,7 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
                 {...form.getInputProps("address")}
                 mt="sm"
               />
-              <Select
+              <TextInput
                 withAsterisk
                 label="Region"
                 placeholder="z. B. Oberösterreich"
