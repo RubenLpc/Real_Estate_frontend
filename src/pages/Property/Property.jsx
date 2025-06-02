@@ -264,7 +264,7 @@ export default function Property() {
                 <BiInfoCircle className="title-icon" />
                 Beschreibung
               </h3>
-              <p className="secondaryText">{description}</p>
+              <p className="secondaryText" style={{ whiteSpace: "pre-wrap" }}>{description}</p>
             </section>
 
             {/* Secțiunea „Lage” */}
