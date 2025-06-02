@@ -272,7 +272,7 @@
   display: none; /* ascuns implicit pe desktop */
   margin: 0 auto;
   margin-top: 1rem;
-  max-width: 90%;
+  max-width: 98%;
   background: white;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -414,4 +414,11 @@
 }
 .cta-desktop:hover {
   color: var(--secondary);
+}
+
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: clamp(1.5rem, 8vw, 1.7rem);
+    padding-left: 1%;
+  }
 }
