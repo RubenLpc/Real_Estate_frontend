@@ -16,7 +16,6 @@
     color: rgba(21, 2, 2, 0.587);
 }
 .inner-container .button {
-    background: #5B6D5C;
     border: 2px solid E4E1D8;
     box-shadow: var(--shadow);
     border-radius: 10px;

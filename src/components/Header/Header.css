@@ -11,7 +11,8 @@
 /* Containerul din header */
 .h-container {
   color: var(--text-dark); /* text închis pentru contrast */
-  justify-content: space-between;
+  justify-content: left;
+  gap: 10rem;
   align-items: center;
 }
 
@@ -29,6 +30,7 @@
   display: flex;
   gap: 2rem;
   color: var(--primary);    /* verde inchis pentru link-uri */
+  font-size: large;
 }
 .h-menu > *:hover {
   cursor: pointer;
@@ -60,5 +62,11 @@
     border-radius: 10px;
     padding: 2rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  }
+  .h-container {
+    color: var(--text-dark); /* text închis pentru contrast */
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
   }
 }

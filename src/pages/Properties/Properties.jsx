@@ -57,8 +57,9 @@ const Properties = () => {
 
   return (
     <div className="wrapper">
+      <SearchBar filter={filter} setFilter={setFilter} />
       <div className="flexColCenter paddings innerWidth properties-container">
-        <SearchBar filter={filter} setFilter={setFilter} />
+        
 
         <div className="paddings flexCenter properties">
           {filtered.map((card) => (

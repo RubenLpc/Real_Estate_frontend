@@ -39,8 +39,7 @@
 
 .mode_email .button {
   width: 100%;
-  background: var(--lightBlue);
-  color: var(--blue);
+  
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -58,15 +57,13 @@
   box-shadow: var(--shadow);
 }
 .mode_email .button:hover {
-  background: var(--blue-gradient);
-  color: white;
+  
   scale: 0.8;
 }
 
 .mode .button {
   width: 100%;
-  background: var(--lightBlue);
-  color: var(--blue);
+  
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -83,8 +80,7 @@
   box-shadow: var(--shadow);
 }
 .mode .button:hover {
-  background: var(--blue-gradient);
-  color: white;
+  
   scale: 0.8;
 }
 

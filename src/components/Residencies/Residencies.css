@@ -4,8 +4,8 @@
   overflow: hidden;
 }
 
-.r-head{
-  margin-bottom: 2rem;
+.r-wrapper {
+  background-color: #e4e1d8;
 }
 .r-card>img
 {

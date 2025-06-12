@@ -18,10 +18,9 @@ const GetStarted = () => {
           <Button
             className="button"
             size="sm"
-            style={{ backgroundColor: 'var(--primary)', color: 'white' }}
             onClick={() => setModalOpened(true)}
           >
-            Suchauftrag aufgeben
+            Suchauftrag
           </Button>
 
           {/* Social Media Buttons: Responsive Wrap */}

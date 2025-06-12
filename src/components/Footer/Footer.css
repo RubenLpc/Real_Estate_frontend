@@ -86,6 +86,16 @@
   .impressum-note a:hover {
     text-decoration: underline;
   }
+
+  .footer-impressum-link {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-impressum-link:hover {
+    text-decoration: underline;
+  }
+  
   
   /* Responsive: pe ecrane sub 768px coloanele se așează pe verticală */
   @media (max-width: 768px) {

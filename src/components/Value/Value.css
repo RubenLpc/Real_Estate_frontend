@@ -39,7 +39,8 @@
 .accordionButton {
   display: flex;
   align-items: center;
-  background: white;
+ background-color: #F8F3F2;      /* bej deschis */
+
   padding: 1rem;
   width: 100%;
   cursor: pointer;
@@ -106,4 +107,34 @@
   .accordionButton .icon {
     margin-left: auto;
   }
+}
+
+/* 1) Highlight background când e deschis */
+.accordionButton[aria-expanded="true"] {
+  background-color: #F8F3F2;      /* bej deschis */
+  border-radius: 6px 6px 0 0;    /* colţuri rotunjite doar sus */
+}
+
+/* 2) Roteşte săgeata sus când e deschis */
+.accordionButton[aria-expanded="true"] .dropIcon {
+  transform: rotate(180deg);
+  background-color: var(--primary-dark);
+  color: white;
+}
+
+/* 3) Tranziţii fine */
+.dropIcon {
+  transition: transform 0.3s ease, color 0.2s ease, background 0.2s ease;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  background-color: transparent;
+  
+}
+
+/* 4) Mouseover efect pe săgeată */
+
+.dropIcon:hover {
+  background-color: var(--primary-dark);
+  color: white;
 }

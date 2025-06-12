@@ -76,13 +76,13 @@ export default function Hero() {
       Weitblick und vermittle Immobilien diskret und professionell –
       mit Fokus auf Qualität, Struktur und Vertrauen.
       <br />
+      <button className="button desk_btn">
       <a
   href="#core-competencies"
   style={{ textAlign: "right", display: "block" }}
-  className="cta-desktop"
 >
   Mehr erfahren…
-</a>
+</a></button>
 
     </p>
     
@@ -106,9 +106,10 @@ export default function Hero() {
           Weitblick und vermittle Immobilien diskret und professionell –
           mit Fokus auf Qualität, Struktur und Vertrauen.
         </p>
-        <a href="#core-competencies" className="cta">
+        <button className="button">
+        <a href="#core-competencies" >
                     Mehr erfahren…
-                  </a>
+                  </a></button>
       </div>
     </section>
   );

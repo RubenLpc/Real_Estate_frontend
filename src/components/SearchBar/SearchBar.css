@@ -1,0 +1,90 @@
+:root {
+    --highlight: #F8F3F2;
+    --blue: #5B6D5C;
+    --primary-dark: #4e5e50;
+    --shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    --black: #131110;
+  }
+  
+  .search-bar-section {
+    display: flex;
+    align-items: center;
+    background-color: var(--highlight);
+    border-radius: 12px;
+    padding: 1rem 10rem;
+    gap: 1rem;
+    width: 100%;
+    box-shadow: var(--shadow);
+  }
+  
+  /* titlu */
+  .search-bar-title {
+    flex: 1;
+    margin: 0;
+  }
+  
+  /* noul wrapper: icon + input + buton în aceeaşi “pill” */
+  .search-bar-wrapper {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    overflow: hidden;       /* ca să se taie colţurile butonului */
+  }
+  
+  /* iconiţa din stânga */
+  .search-icon {
+    flex: none;
+    margin: 0 0.75rem;
+    color: var(--blue);
+  }
+  
+  /* input-ul */
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    color: var(--black);
+  }
+  
+  /* butonul este acum în interiorul aceleiaşi capsule */
+  .search-button {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+   
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .search-button:hover {
+    cursor: pointer;
+  }
+  
+  /* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .search-bar-section {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 1rem;
+      gap: 1rem;
+    }
+    /* Titlul să stea deasupra, centrat */
+    .search-bar-title {
+      text-align: center;
+      margin-bottom: 0;
+    }
+    /* Wrapper-ul capsulă (icon+input+buton) full-width */
+    .search-bar-wrapper {
+      width: 100%;
+    }
+    /* În capsulă, butonul e deja acolo – nu mai e separat */
+    
+  }
+  

@@ -17,6 +17,7 @@ import AdminProperties from "./pages/Properties/AdminProperties.jsx";
 import AddPropertyModal from "./components/AddPropertyModal/AddPropertyModal.jsx";
 import CookieBanner from "./components/CookieBanner/CookieBanner.jsx";
 import Privacy from "./pages/Privacy/Privacy.jsx";
+import Impressum from "./pages/Impressum/Impressum.jsx";
 
 function App() {
   const queryClient = new QueryClient();
@@ -50,6 +51,8 @@ function App() {
                 <Route path="/parola" element={<AdminProperties />} /> {/* ✅ admin */}
                 <Route path="/create" element={<AddPropertyModal opened={true} setOpened={handleAddPropertyClick} />} /> {/* ✅ admin */}
                 <Route path="/privacy" element={<Privacy />} /> {/* ✅ admin */}
+                <Route path="/impressum" element={<Impressum />} />
+
 
 
                 

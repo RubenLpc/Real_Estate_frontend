@@ -115,8 +115,8 @@ const Value = () => {
                   Sie suchen eine Immobilie?
                 </span>
                 <MdOutlineArrowDropDown
+                  className="dropIcon"
                   size={24}
-                  style={{ color: "var(--primary)", marginLeft: "auto" }}
                 />
               </AccordionItemButton>
             </AccordionItemHeading>
@@ -162,7 +162,6 @@ const Value = () => {
                 <Button
                   className="button"
                   size="sm"
-                  style={{ backgroundColor: "var(--primary)", color: "white" }}
                   onClick={() => setModalOpened(true)}
                 >
                   Suchauftrag senden
@@ -187,7 +186,7 @@ const Value = () => {
                 </span>
                 <MdOutlineArrowDropDown
                   size={24}
-                  style={{ color: "var(--primary)", marginLeft: "auto" }}
+                  className="dropIcon"
                 />
               </AccordionItemButton>
             </AccordionItemHeading>
@@ -216,7 +215,6 @@ const Value = () => {
                 <Button
                   className="button"
                   size="sm"
-                  style={{ backgroundColor: "var(--primary)", color: "white" }}
                   onClick={() => setModalOpened(true)}
                 >
                   Suchauftrag senden
@@ -241,7 +239,7 @@ const Value = () => {
                 </span>
                 <MdOutlineArrowDropDown
                   size={24}
-                  style={{ color: "var(--primary)", marginLeft: "auto" }}
+                  className="dropIcon"
                 />
               </AccordionItemButton>
             </AccordionItemHeading>
@@ -437,7 +435,7 @@ const Value = () => {
 
           <br />
           <div style={{ marginTop: '1rem', textAlign: 'right' }}>
-                      <Button className="button" size="sm" style={{ backgroundColor: 'var(--primary)', color: 'white' }} onClick={() => setModalOpened(true)}>
+                      <Button className="button" size="sm"  onClick={() => setModalOpened(true)}>
                         Suchauftrag senden
                       </Button>
                     </div>
@@ -560,8 +558,8 @@ const Value = () => {
                         {title}
                       </span>
                       <MdOutlineArrowDropDown
-                        size={24}
-                        style={{ color: "var(--primary)", marginLeft: "auto" }}
+                        size={28}
+                        className="dropIcon"
                       />
                     </AccordionItemButton>
                   </AccordionItemHeading>

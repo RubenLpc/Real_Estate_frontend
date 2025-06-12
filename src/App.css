@@ -5,8 +5,10 @@
 }
 .App>:nth-child(1)
 {
-  background: var(--black);
-  position: relative;
+  
+    background: #fafafa;  /* sau #fff */
+  
+    position: relative;
 }
 .white-gradient{
   position: absolute;
