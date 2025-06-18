@@ -11,7 +11,7 @@
     align-items: center;
     background-color: var(--highlight);
     border-radius: 12px;
-    padding: 1rem 10rem;
+    padding: 1rem 2rem;
     gap: 1rem;
     width: 100%;
     box-shadow: var(--shadow);
@@ -86,5 +86,10 @@
     }
     /* În capsulă, butonul e deja acolo – nu mai e separat */
     
+  }
+  @media (min-width: 1024px) {
+    .search-bar-section {
+      padding: 1rem 10rem; /* doar pe ecrane mari la nevoie */
+    }
   }
   
