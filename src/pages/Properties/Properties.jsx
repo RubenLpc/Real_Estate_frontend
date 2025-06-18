@@ -57,7 +57,8 @@ const Properties = () => {
 
   return (
     <div className="wrapper">
-      <SearchBar filter={filter} setFilter={setFilter} />
+
+      {/*<SearchBar filter={filter} setFilter={setFilter} />*/}
       <div className="flexColCenter paddings innerWidth properties-container">
         
 
