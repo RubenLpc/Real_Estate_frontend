@@ -138,3 +138,20 @@
   background-color: var(--primary-dark);
   color: white;
 }
+
+.secondaryText {
+  font-size: 0.875rem;
+}
+.primaryText {
+  font-size: 1rem ;
+}
+
+@media (min-width: 768px) {
+  
+  .secondaryText {
+    font-size: 1.15rem;
+  }
+  .primaryText {
+    font-size: 1.25rem ;
+  }
+}

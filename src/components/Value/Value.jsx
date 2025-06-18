@@ -111,7 +111,7 @@ const Value = () => {
                 >
                   <MdCheck size={20} />
                 </ThemeIcon>
-                <span className="primaryText" style={{ fontSize: "1rem" }}>
+                <span className="primaryText" >
                   Sie suchen eine Immobilie?
                 </span>
                 <MdOutlineArrowDropDown
@@ -121,7 +121,7 @@ const Value = () => {
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <span className="secondaryText" style={{ fontSize: "0.875rem" }}>
+              <span className="secondaryText" >
                 Nehmen Sie gerne Kontakt mit mir auf – denn die meisten meiner
                 Objekte werden nicht öffentlich präsentiert.
                 <br />
@@ -152,6 +152,8 @@ const Value = () => {
                           <MdCheck size={20} />
                         </ThemeIcon>
                       }
+
+                      className="secondaryText"
                     >
                       {text}
                     </List.Item>
@@ -180,7 +182,7 @@ const Value = () => {
                 >
                   <IconLock size={20} />
                 </ThemeIcon>
-                <span className="primaryText" style={{ fontSize: "1rem" }}>
+                <span className="primaryText" >
                   Diskrete Vermarktung oder gezielte Suche abseits der
                   Öffentlichkeit
                 </span>
@@ -191,7 +193,7 @@ const Value = () => {
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <span className="secondaryText" style={{ fontSize: "0.875rem" }}>
+              <span className="secondaryText" >
                 <em>
                   Erfolg in der Stille – Ihre Immobilientransaktion diskret und
                   professionell.
@@ -233,7 +235,7 @@ const Value = () => {
                 >
                   <IconBriefcase size={20} />
                 </ThemeIcon>
-                <span className="primaryText" style={{ fontSize: "1rem" }}>
+                <span className="primaryText" >
                   Professionelle Immobilienvermittlung – strukturiert und
                   marktorientiert
                 </span>
@@ -247,7 +249,7 @@ const Value = () => {
               <span
                 className="secondaryText"
                 style={{
-                  fontSize: "0.875rem",
+                  
                   display: "block",
                   marginBottom: "1rem",
                 }}
@@ -327,6 +329,7 @@ const Value = () => {
                   },
                 ].map((item, idx) => (
                   <List.Item
+                  className="secondaryText"
                     key={idx}
                     icon={
                       <ThemeIcon
@@ -346,6 +349,7 @@ const Value = () => {
               <Title
                 order={6}
                 style={{ color: "var(--primary)", margin: "1.5rem 0 0.5rem" }}
+                className="primaryText"
               >
                 Vorteile der professionellen Immobilienvermittlung:
               </Title>
@@ -366,6 +370,7 @@ const Value = () => {
                 ].map((item, idx) => (
                   <List.Item
                     key={idx}
+                    className="secondaryText"
                     icon={
                       <ThemeIcon
                         style={{ ...iconStyle, marginRight: 0 }}
@@ -435,7 +440,7 @@ const Value = () => {
 
           <br />
           <div style={{ marginTop: '1rem', textAlign: 'right' }}>
-                      <Button className="button" size="sm"  onClick={() => setModalOpened(true)}>
+                      <Button className="button"  onClick={() => setModalOpened(true)}>
                         Suchauftrag senden
                       </Button>
                     </div>
@@ -470,6 +475,7 @@ const Value = () => {
             ].map((text, idx) => (
               <List.Item
                 key={idx}
+                className="secondaryText"
                 icon={
                   <ThemeIcon style={iconStyle} radius="xl" size={24}>
                     <MdCheck size={16} />
@@ -491,6 +497,7 @@ const Value = () => {
             ].map((text, idx) => (
               <List.Item
                 key={idx}
+                className="secondaryText"
                 icon={
                   <ThemeIcon style={iconStyle} radius="xl" size={24}>
                     <MdCheck size={16} />
@@ -553,7 +560,7 @@ const Value = () => {
                       </ThemeIcon>
                       <span
                         className="primaryText"
-                        style={{ fontSize: "1rem" }}
+                        
                       >
                         {title}
                       </span>
@@ -566,7 +573,7 @@ const Value = () => {
                   <AccordionItemPanel>
                     <span
                       className="secondaryText"
-                      style={{ fontSize: "0.875rem" }}
+                      
                     >
                       {content}
                     </span>
