@@ -31,7 +31,7 @@ const Header = () => {
             className="header_logo"
             src="../logo1.png"
             alt="Logo"
-            width={130}
+            width={160}
           />
         </Link>
 

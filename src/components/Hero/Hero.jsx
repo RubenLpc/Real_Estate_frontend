@@ -13,6 +13,7 @@ const containerVariants = {
 const wordVariants = {
   hidden: { opacity: 0, x: -30 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+  
 };
 
 export default function Hero() {
@@ -57,6 +58,7 @@ export default function Hero() {
     variants={containerVariants}
     initial="hidden"
     animate="visible"
+    style={{ fontFamily: "Poppins, sans-serif" }}
   >
     <motion.span variants={wordVariants}>
       Baulandentwicklung

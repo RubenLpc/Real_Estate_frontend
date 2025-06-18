@@ -1,8 +1,9 @@
-.impressum-container {
+.datenschutz-container {
   background-color: #fafafa;
+  min-height: 100vh;
 }
 
-.impressum-header {
+.datenschutz-header {
   color: var(--primary);
   font-family: "Inter", sans-serif;
   margin-bottom: 1.5rem;
@@ -29,7 +30,18 @@
 }
 
 .info-card .mantine-Text-root {
-  line-height: 1.5;
+  line-height: 1.4;
+}
+
+.recipient-list {
+  margin: 0.5rem 0 1rem 0;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+  color: #333;
+}
+
+.recipient-list li {
+  margin-bottom: 0.25rem;
 }
 
 .footnote {
@@ -41,10 +53,6 @@
   line-height: 1.6;
 }
 
-.ris-link {
-  text-decoration: underline;
-}
-
 .back-link {
   color: var(--primary);
   font-weight: 500;
@@ -54,9 +62,4 @@
 
 .back-link:hover {
   text-decoration: underline;
-}
-
-/* listei cu no-break-uri pentru paragraf lung */
-.info-card p {
-  white-space: pre-line;
 }

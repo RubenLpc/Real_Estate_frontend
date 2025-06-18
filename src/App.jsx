@@ -18,6 +18,7 @@ import AddPropertyModal from "./components/AddPropertyModal/AddPropertyModal.jsx
 import CookieBanner from "./components/CookieBanner/CookieBanner.jsx";
 import Privacy from "./pages/Privacy/Privacy.jsx";
 import Impressum from "./pages/Impressum/Impressum.jsx";
+import Datenschutz from "./pages/Datenschutz/Datenschutz.jsx";
 
 function App() {
   const queryClient = new QueryClient();
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/create" element={<AddPropertyModal opened={true} setOpened={handleAddPropertyClick} />} /> {/* ✅ admin */}
                 <Route path="/privacy" element={<Privacy />} /> {/* ✅ admin */}
                 <Route path="/impressum" element={<Impressum />} />
+                <Route path="/datenschutz" element={<Datenschutz />} />
 
 
 

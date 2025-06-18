@@ -376,7 +376,7 @@
   font-size: 1rem;
   color: white;
   line-height: 1.4;
-  background: rgba(0, 0, 0, 0.4);
+  background: #cbbc8d;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   padding: 1rem;
@@ -420,10 +420,15 @@
 .cta-desktop:hover {
   color: var(--secondary);
 }
+.hero-heading {
+  
+  font-family: "Poppins", sans-serif;
+}
 
 @media (max-width: 768px) {
   .hero-heading {
     font-size: clamp(1.5rem, 8vw, 1.7rem);
     padding-left: 1%;
+    font-family: "Poppins", sans-serif;
   }
 }

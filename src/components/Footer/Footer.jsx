@@ -9,9 +9,16 @@ const Footer = () => {
         {/* Stânga: logo + viziune */}
         <div className="footer-col vision">
           <img src="../logo1.png" alt="Dan Dutescu Real Treuhand Logo" className="footer-logo" />
+          <p className="vision-text-head primaryText">
+          Wo Visionen Fläche finden.
+          </p>
           <a href="/impressum" className="footer-impressum-link">
             Impressum
          </a>
+         <a href="/datenschutz" className="footer-impressum-link">
+         Datenschutzinformation
+         </a>
+         
          <br />
 
           <p className="vision-text">
