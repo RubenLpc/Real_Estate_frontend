@@ -17,8 +17,8 @@ const UploadVideo = ({ videoUrl = "", onChange, nextStep, prevStep }) => {
   useEffect(() => {
     widgetRef.current = window.cloudinary?.createUploadWidget(
       {
-        cloudName: "do3wzvgto",
-        uploadPreset: "r2ocxngt",
+        cloudName: "dxisyk5sy",
+        uploadPreset: "wpfl2lxq",
         resourceType: "video",   // permite MP4, MOV etc.
         maxFiles: 1,
       },

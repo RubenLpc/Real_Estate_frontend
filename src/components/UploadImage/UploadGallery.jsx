@@ -15,8 +15,8 @@ const UploadGallery = ({ gallery = [], onChange, nextStep, prevStep }) => {
 
     widgetRef.current = window.cloudinary.createUploadWidget(
       {
-        cloudName: "do3wzvgto",
-        uploadPreset: "r2ocxngt",
+        cloudName: "dxisyk5sy",
+        uploadPreset: "wpfl2lxq",
         multiple: true,
         maxFiles: 20,
       },

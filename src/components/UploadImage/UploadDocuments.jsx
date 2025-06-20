@@ -20,8 +20,10 @@ export default function UploadDocuments({ value = [], onChange, nextStep, prevSt
     if (widgetRef.current) return;
     widgetRef.current = window.cloudinary.createUploadWidget(
       {
-        cloudName: "do3wzvgto",
-        uploadPreset: "r2ocxngt",
+        //cloudName: "do3wzvgto",
+        cloudName: "dxisyk5sy",
+        uploadPreset: "wpfl2lxq",
+        //uploadPreset: "r2ocxngt",
         resourceType: "raw", // for PDF/DOC
         multiple: true,
         maxFiles: 10,

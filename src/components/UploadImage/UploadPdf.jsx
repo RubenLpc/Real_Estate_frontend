@@ -11,8 +11,8 @@ export default function UploadPdf({ value, onChange }) {
     cloud.current = window.cloudinary;
     widget.current = cloud.current.createUploadWidget(
       {
-        cloudName: "do3wzvgto",
-        uploadPreset: "r2ocxngt",
+        cloudName: "dxisyk5sy",
+        uploadPreset: "wpfl2lxq",
         maxFiles: 1,
         sources: ["local", "url"],
         resourceType: "raw",        // <-- PDF

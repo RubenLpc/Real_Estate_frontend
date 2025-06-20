@@ -13,8 +13,8 @@ const UploadMainImage = ({ mainImage, setMainImage, nextStep, prevStep }) => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
-        cloudName: "do3wzvgto",
-        uploadPreset: "r2ocxngt",
+        cloudName: "dxisyk5sy",
+        uploadPreset: "wpfl2lxq",
         maxFiles: 1,
       },
       (err, result) => {
