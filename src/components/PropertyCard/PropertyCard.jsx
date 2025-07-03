@@ -19,8 +19,8 @@ const PropertyCard = ({ card }) => {
       return (
         <>
           <span style={{ color: "orange" }}>$</span>
-          <span>{card.price}</span>
-        </>
+          <span>{card.price.toLocaleString("de-DE")}</span>
+          </>
       );
     }
     return unspecifiedPriceText;
@@ -41,13 +41,19 @@ const PropertyCard = ({ card }) => {
         {renderPrice()}
       </span>
 
-      <span className="primaryText">
-        {truncate(card.title, { length: 15 })}
-      </span>
+      <span className="primaryText r-title">
+  {card.title}
+</span>
 
-      <span className="secondaryText">
-        {truncate(card.description, { length: 80 })}
-      </span>
+
+<span className="secondaryText">
+  {[card.address, card.region].filter(Boolean).join(", ")}<br />
+  {card.shortDescription
+  ? truncate(card.shortDescription, { length: 80 })
+  : truncate(card.description, { length: 80 })}
+
+</span>
+
     </div>
   );
 };

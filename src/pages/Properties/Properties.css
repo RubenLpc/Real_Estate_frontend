@@ -43,3 +43,15 @@
   .search-input::placeholder {
     color: var(--text-secondary);
   }
+
+  .r-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;       /* max două rânduri */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.3;            /* ajustează după nevoie */
+    /* dacă vrei să forțezi aceeași lățime ca-n card: */
+    max-width: 15rem;
+  }

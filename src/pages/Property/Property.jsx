@@ -51,6 +51,7 @@ import { toast } from "react-toastify";
 
 export default function Property() {
   const { pathname } = useLocation();
+  
   const id = pathname.split("/").pop();
   const { data, isLoading, isError } = useQuery(["residency", id], () =>
     getResidency(id)
@@ -111,6 +112,10 @@ export default function Property() {
     status,
     landArea,
     livingArea,
+    usableArea,
+    hallArea,
+    officeArea,
+    pavedArea,
     rooms,
     constructionYear,
     renovationNeed,
@@ -163,6 +168,10 @@ export default function Property() {
           sources: [{ src: item.src, type: "video/mp4" }],
         }
   );
+  const priceType = tags?.find((tag) =>
+    ["Kaufpreis", "Mietpreis", "Baurechtszins"].includes(tag)
+  ) || "Preis"; // fallback default
+  
 
   const handleContactSubmit = async (values) => {
     const validation = form.validate();
@@ -393,18 +402,43 @@ export default function Property() {
                   <strong>Objektart: </strong> {propertyType}
                 </li>
               )}
-              {landArea > 0 && (
-                <li>
-                  <BiRuler className="fact-icon" />
-                  <strong>Grundstück: </strong> {landArea} m²
-                </li>
-              )}
-              {livingArea > 0 && (
-                <li>
-                  <BiRuler className="fact-icon" />
-                  <strong>Wohn-/Nutzfläche: </strong> ca. {livingArea} m²
-                </li>
-              )}
+             {livingArea > 0 && (
+  <li>
+    <BiRuler className="fact-icon" />
+    <strong>Wohnfläche: </strong> {livingArea} m²
+  </li>
+)}
+{usableArea > 0 && (
+  <li>
+    <BiRuler className="fact-icon" />
+    <strong>Nutzfläche: </strong> {usableArea} m²
+  </li>
+)}
+{hallArea > 0 && (
+  <li>
+    <BiRuler className="fact-icon" />
+    <strong>Hallenfläche: </strong> {hallArea} m²
+  </li>
+)}
+{officeArea > 0 && (
+  <li>
+    <BiRuler className="fact-icon" />
+    <strong>Bürofläche: </strong> {officeArea} m²
+  </li>
+)}
+{landArea > 0 && (
+  <li>
+    <BiRuler className="fact-icon" />
+    <strong>Grundfläche: </strong> {landArea} m²
+  </li>
+)}
+{pavedArea > 0 && (
+  <li>
+    <BiRuler className="fact-icon" />
+    <strong>Befestigte Fläche: </strong> {pavedArea} m²
+  </li>
+)}
+
               {rooms > 0 && (
                 <li>
                   <BiDoorOpen className="fact-icon" />
@@ -443,15 +477,16 @@ export default function Property() {
                   </a>
                 </li>
               )}
-              {price > 0 && (
-                <li className="price-item">
-                  <BiHomeAlt className="fact-icon" />
-                  <strong>Preis: </strong>{" "}
-                  <span className="price-value">
-                    € {price.toLocaleString()}
-                  </span>
-                </li>
-              )}
+            {price > 0 && (
+  <li className="price-item">
+    <BiHomeAlt className="fact-icon" />
+    <strong>{priceType}: </strong>{" "}
+    <span className="price-value">
+      € {price.toLocaleString()}
+    </span>
+  </li>
+)}
+
               {negotiable && (
                 <li>
                   <BiHomeAlt className="fact-icon" />

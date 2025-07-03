@@ -42,3 +42,13 @@
   );
   box-shadow: 0px 72px 49px -51px rgba(136, 160, 255, 0.21);
 }
+
+.r-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;       /* maximum 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.3;
+}

@@ -38,6 +38,12 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [newOpt, setNewOpt] = useState("");
+  const [zoningOptions, setZoningOptions] = useState([
+    "Grünland",
+    "Bauland",
+    "Gewerbegebiet",
+    "Sonstiges",
+  ]);
   const [options, setOptions] = useState([
     "Reitplatz",
     "Lagerhalle",
@@ -53,14 +59,20 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
   };
   const form = useForm({
     initialValues: {
+      priceType: "", // default value
       title: "",
       propertyType: "",
       status: "",
       description: "",
       address: "",
+      shortDescription: "",
       region: "",
       landArea: 0,
       livingArea: 0,
+      usableArea: 0,
+      hallArea: 0,
+      officeArea: 0,
+      pavedArea: 0,
       rooms: 0,
       constructionYear: 0,
       renovationNeed: "",
@@ -94,10 +106,15 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
         propertyType: property.propertyType,
         status: property.status,
         description: property.description,
+        shortDescription: property.shortDescription ,
         address: property.address,
         region: property.region,
         landArea: property.landArea,
         livingArea: property.livingArea,
+        usableArea: property.usableArea,
+        hallArea: property.hallArea,
+        officeArea: property.officeArea,
+        pavedArea: property.pavedArea,
         rooms: property.rooms,
         constructionYear: property.constructionYear,
         renovationNeed: property.renovationNeed,
@@ -136,13 +153,25 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
   const prevStep = () => setActive((current) => Math.max(current - 1, 0));
   const handleSubmit = async () => {
     try {
+      // Adaugă priceType în tags, dacă nu e deja inclus
+      const priceType = form.values.priceType;
+      const updatedTags = form.values.tags.includes(priceType)
+        ? form.values.tags
+        : [...form.values.tags, priceType];
+  
+      const finalValues = {
+        ...form.values,
+        tags: updatedTags,
+      };
+  
       if (property) {
-        await updateResidency(property.id, form.values);
+        await updateResidency(property.id, finalValues);
         toast.success("Immobilie erfolgreich aktualisiert!");
       } else {
-        await createResidency(form.values);
+        await createResidency(finalValues);
         toast.success("Immobilie erfolgreich hinzugefügt!");
       }
+  
       onSaved(); // tell parent to close and refetch
       setActive(0);
       form.reset();
@@ -150,6 +179,7 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
       toast.error("Fehler beim Speichern der Immobilie.");
     }
   };
+  
 
   return (
     <Modal
@@ -192,8 +222,8 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
                   "Wohnhaus",
                   "Zinshaus",
                   "Bauernhaus",
-                  "Gewerbegrundstück",
-                  "Wohnbaugrundstücke",
+                  "Gewerbeobjket",
+                  "Grundstück",
                   "Baulandreserven",
                   "Revitalisierungsprojekte",
                   "Sonstiges",
@@ -218,6 +248,14 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
                 minRows={4}
                 mt="sm"
               />
+
+<TextInput
+  label="Kurzbeschreibung"
+  placeholder="z. B. Charmantes Haus mit Garten"
+  {...form.getInputProps("shortDescription")}
+  mt="sm"
+/>
+
               <TextInput
                 label="Adresse (optional)"
                 placeholder="Straße, PLZ, Ort"
@@ -255,17 +293,36 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
               }}
             >
               <NumberInput
-                label="Grundstücksfläche (m²)"
-                placeholder="z. B. 8230"
-                {...form.getInputProps("landArea")}
-                mt="sm"
-              />
-              <NumberInput
-                label="Wohn-/Nutzfläche (m²)"
-                placeholder="z. B. 320"
-                {...form.getInputProps("livingArea")}
-                mt="sm"
-              />
+  label="Wohnfläche (m²)"
+  {...form.getInputProps("livingArea")}
+  mt="sm"
+/>
+<NumberInput
+  label="Nutzfläche (m²)"
+  {...form.getInputProps("usableArea")}
+  mt="sm"
+/>
+<NumberInput
+  label="Hallenfläche (m²)"
+  {...form.getInputProps("hallArea")}
+  mt="sm"
+/>
+<NumberInput
+  label="Bürofläche (m²)"
+  {...form.getInputProps("officeArea")}
+  mt="sm"
+/>
+<NumberInput
+  label="Grundfläche (m²)"
+  {...form.getInputProps("landArea")}
+  mt="sm"
+/>
+<NumberInput
+  label="Befestigte Fläche (m²)"
+  {...form.getInputProps("pavedArea")}
+  mt="sm"
+/>
+
               <NumberInput
                 label="Anzahl Zimmer"
                 placeholder="z. B. 7"
@@ -288,12 +345,21 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
                 <Radio value="Teilweise" label="Teilweise" />
               </Radio.Group>
               <Select
-                label="Widmung / Nutzung"
-                placeholder="Bitte auswählen"
-                data={["Grünland", "Bauland", "Gewerbegebiet", "Sonstiges"]}
-                {...form.getInputProps("zoning")}
-                mt="sm"
-              />
+  label="Widmung / Nutzung"
+  placeholder="Bitte auswählen"
+  data={zoningOptions} // lista locală
+  creatable
+  searchable
+  getCreateLabel={(query) => `+ Erstelle "${query}"`}
+  onCreate={(query) => {
+    setZoningOptions((current) => [...current, query]); // adaugă opțiunea nouă
+    return query; // selectează automat
+  }}
+  {...form.getInputProps("zoning")}
+  mt="sm"
+/>
+
+             
               <br />
               <UploadPdf
                 value={form.values.energyCertificate}
@@ -315,8 +381,17 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
                 nextStep();
               }}
             >
+              <Select
+  label="Preistyp"
+  placeholder="Bitte auswählen"
+  data={["Kaufpreis", "Mietpreis", "Baurechtszins"]}
+  value={form.values.priceType}
+  onChange={(value) => form.setFieldValue("priceType", value)}
+  mt="sm"
+/>
+
               <NumberInput
-                label="Kaufpreis (€)"
+                label={`${form.values.priceType} (€)`}
                 placeholder="z. B. 325000"
                 parser={(value) => value.replace(/\D/g, "")}
                 formatter={(value) =>
@@ -502,7 +577,7 @@ const AddPropertyModal = ({ opened, onClose, property, onSaved }) => {
                 />
 
                 <Button mt="xs" onClick={addOption}>
-                  Adaugă la Ausstattung
+                  Add Ausstattung
                 </Button>
               </div>
               <MultiSelect

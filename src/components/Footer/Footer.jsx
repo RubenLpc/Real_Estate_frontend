@@ -21,9 +21,7 @@ const Footer = () => {
          
          <br />
 
-          <p className="vision-text">
-            Unsere Vision: Den Menschen den besten Ort zum Leben bieten.
-          </p>
+          
         </div>
 
         {/* Dreapta: Impressum card */}

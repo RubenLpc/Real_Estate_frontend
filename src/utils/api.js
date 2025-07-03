@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 
 export const api = axios.create({
   //baseURL: "https://real-estate-backend-l3m1.onrender.com/api"
-//baseURL: "http://localhost:8000/api"
-baseURL: "https://api.dan-real.immo/api"
+baseURL: "http://localhost:8000/api"
+//baseURL: "https://api.dan-real.immo/api"
 
 });
 
