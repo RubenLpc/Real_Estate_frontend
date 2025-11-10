@@ -38,7 +38,8 @@ const Header = () => {
         <OutsideClickHandler onOutsideClick={() => setMenuOpened(false)}>
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpened)}>
             <NavLink to="/">Startseite</NavLink>
-            <NavLink to="/properties">Immobilien</NavLink>
+            <NavLink to="/leistungen">Leistungen</NavLink>
+            {/* <NavLink to="/properties">Immobilien</NavLink>*/}
             {/* Link către homepage + secțiunea #contact-us */}
             <HashLink
               smooth

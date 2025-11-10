@@ -1,117 +1,55 @@
 import React from "react";
 import "./Contact.css";
-import { MdCall } from "react-icons/md";
-import { FaWhatsapp } from "react-icons/fa";
-import { HiChatBubbleBottomCenter } from 'react-icons/hi2';
-import { Button } from "@mantine/core";
 
 const Contact = () => {
-  
   return (
-    <div id="contact-us" className="c-wrapper">
-      <div className="paddings innerWidth flexCenter c-container">
-        {/* linke Seite */}
-        <div className="flexColStart c-left">
-          <span className="orangeText">Kontakt</span>
-          <span className="primaryText">Kontaktieren Sie mich direkt – unkompliziert & persönlich
+    <section id="contact-us" className="contact-wrapper">
+      {/* fundal panoramic */}
+      <div className="contact-bg"></div>
 
-          </span>
-          <span className="secondaryText">
-          Ob Beratung, Suchauftrag oder Rückfrage, gerne unterstütze ich Sie individuell bei Ihrem Immobilienanliegen.
+      {/* cardul suprapus */}
+      <div className="contact-card">
+        {/* textul din stânga */}
+        <div className="contact-left">
+          <h2>Kontakt</h2>
+          <h3>Kontaktieren Sie mich direkt – unkompliziert & persönlich</h3>
+          <p>
+            Ob Beratung, Suchauftrag oder Rückfrage, gerne unterstütze ich Sie
+            individuell bei Ihrem Immobilienanliegen.
+          </p>
 
-          </span>
+          <div className="contact-info">
+            <p className="phone">+43 664 3883 786</p>
+            <p className="email">office@fidelia.immo</p>
+          </div>
 
-          <div className="flexColStart contactModes">
-            {/* erste Zeile */}
-            <div className="flexStart row">
-              {/* Telefon */}
-              <div className="flexColCenter mode">
-                <div className="flexStart">
-                  <div className="flexCenter icon">
-                    <MdCall size={25} />
-                  </div>
-                  <div className="flexColStart detail">
-                    <span className="primaryText">Anrufen</span>
-                    <span className="secondaryText">+43 664 3883 786</span>
-                  </div>
-                </div>
-                <div className="flexCenter button">
-                  <a href="tel:+43 664 3883 786" rel="noopener noreferrer">
-                    Jetzt anrufen
-                  </a>
-                </div>
-              </div>
-
-              {/* WhatsApp */}
-              <div className="flexColCenter mode">
-                <div className="flexStart">
-                  <div className="flexCenter icon">
-                    <FaWhatsapp size={25} />
-                  </div>
-                  <div className="flexColStart detail">
-                    <span className="primaryText">WhatsApp</span>
-                    <span className="secondaryText">Chat starten</span>
-                  </div>
-                </div>
-                <a
-                  href="https://wa.me/436643883786"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flexCenter button"
-                >
-                  Jetzt chatten
-                </a>
-              </div>
-            </div>
-
-            {/* zweite Zeile */}
-            <div className="flexStart row">
-              {/* SMS */}
-              <div className="flexColCenter mode">
-                <div className="flexStart">
-                  <div className="flexCenter icon">
-                    <HiChatBubbleBottomCenter size={25} />
-                  </div>
-                  <div className="flexColStart detail">
-                    <span className="primaryText">SMS</span>
-                    <span className="secondaryText">Nachricht senden</span>
-                  </div>
-                </div>
-                <a href="sms:+436643883786" className="flexCenter button">
-                  Jetzt SMS
-                </a>
-              </div>
-                  
-              {/* E-Mail */}
-              <div className="flexColCenter mode email">
-                <div className="flexStart">
-                  <div className="flexCenter icon">
-                    <HiChatBubbleBottomCenter size={25} />
-                  </div>
-                  <div className="flexColStart detail">
-                    <span className="primaryText">E-Mail</span>
-                    <span className="secondaryText">E-Mail senden</span>
-                  </div>
-                </div>
-                <a
-                  href="mailto:office@fidelia.immo?subject=Anfrage"
-                  className="flexCenter button"
-                >
-                  Jetzt schreiben
-                </a>
-              </div>
-            </div>
+          <div className="contact-buttons">
+            <a href="tel:+436643883786" className="btn beige">
+              JETZT ANRUFEN
+            </a>
+            <a href="mailto:office@fidelia.immo" className="btn beige">
+              E-MAIL SCHREIBEN
+            </a>
+            <a href="sms:+436643883786" className="btn beige">
+              SMS SCHREIBEN
+            </a>
+            <a
+              href="https://wa.me/436643883786"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn beige"
+            >
+              WHATSAPP CHATTEN
+            </a>
           </div>
         </div>
 
-        {/* rechte Seite */}
-        <div className="flexEnd c-right">
-          <div className="image-container">
-            <img src="../profil1.jpeg" alt="Kontaktbild" />
-          </div>
+        {/* poza din dreapta */}
+        <div className="contact-right">
+          <img src="/profil_1.jpeg" alt="Kontaktbild" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

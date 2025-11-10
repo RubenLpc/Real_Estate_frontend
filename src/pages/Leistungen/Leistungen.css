@@ -1,0 +1,228 @@
+/* WRAPPER GENERAL */
+.lt-wrapper {
+  background: #ffffff;
+}
+
+/* ===== HERO TITLE + IMAGE ===== */
+
+.lt-hero {
+  background: #ffffff;
+}
+
+/* containerul de titlu (stă în .innerWidth în JSX) */
+.lt-hero-inner {
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+
+/* Titlu mare – Cormorant Garamond, italic, 72px */
+.lt-heading {
+  margin: 0;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 4vw, 4.5rem); /* ~72px pe desktop */
+  line-height: 1;
+  color: #000000;
+}
+
+/* hero image – secțiunea cu peisajul mare */
+/* hero image – secțiunea cu peisajul mare */
+.lt-hero-image {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1920px;
+  overflow: hidden;
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.18); /* umbră soft */
+}
+
+/* imaginea în sine */
+.lt-hero-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 0.8s ease;
+}
+
+
+
+/* gradient de „ceață” pe partea de jos, pentru trecerea în conținut */
+.lt-hero-image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22%; /* cât de înalt e fade-ul */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  pointer-events: none;
+}
+
+
+/* ===== CONTENT 2 COLUMNS ===== */
+
+.lt-section-inner {
+  padding: 4rem 0 4.5rem;
+}
+
+.lt-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+/* coloana de imagine */
+.lt-image-col {
+  width: 100%;
+}
+
+/* frame pentru imagine – card cu colțuri rotunjite */
+.lt-image-frame {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+  background: #000; /* ca să nu se vadă margini albe la zoom */
+}
+
+/* imaginea efectivă */
+.lt-main-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 0.6s ease;
+}
+
+/* mic efect de zoom la hover pe desktop */
+@media (hover: hover) and (pointer: fine) {
+  .lt-image-frame:hover .lt-main-image {
+    transform: scale(1.04);
+  }
+}
+
+/* coloana de text – Source Sans Pro, 20px */
+.lt-text-col {
+  max-width: 640px;
+}
+
+.lt-body {
+  font-family: "Source Sans Pro", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #222222;
+  margin: 0 0 1.1rem;
+}
+
+/* CTA */
+
+.lt-cta-link {
+  text-decoration: none;
+}
+
+.lt-cta-button {
+  margin-top: 1.5rem;
+  padding: 0.9rem 2.6rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-family: "Source Sans Pro", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  background: rgba(203, 185, 137, 0.9); /* bejul din design */
+  color: #ffffff;
+  transition: background 0.15s ease, transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.lt-cta-button:hover {
+  background: rgba(203, 185, 137, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1200px) {
+  .lt-section-inner {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .lt-content {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .lt-section-inner {
+    padding: 3.5rem 0 3.5rem;
+  }
+
+  .lt-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* pe ecrane medii, arată mai bine dacă textul vine primul */
+  .lt-text-col {
+    order: 1;
+    max-width: 100%;
+  }
+
+  .lt-image-col {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .lt-hero-inner {
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+    padding-inline: 1.5rem;
+  }
+
+  .lt-section-inner {
+    padding: 3rem 0 3.5rem;
+    padding-inline: 1.5rem;
+  }
+
+  .lt-heading {
+    font-size: clamp(2.2rem, 7vw, 3rem);
+  }
+
+  .lt-content {
+    gap: 2rem;
+  }
+
+  .lt-text-col {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .lt-hero-inner {
+    padding-inline: 1.25rem;
+  }
+
+  .lt-section-inner {
+    padding-inline: 1.25rem;
+  }
+
+  .lt-heading {
+    font-size: clamp(2rem, 8vw, 2.4rem);
+  }
+}

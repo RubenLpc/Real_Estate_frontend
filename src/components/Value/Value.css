@@ -1,6 +1,9 @@
 :root {
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --blue: #5B6D5C;
+  /*--blue: #5B6D5C;*/
+  --blue: #000;
+  
+  ;
 }
 
 /* Container and layout */
@@ -125,8 +128,8 @@
 /* 3) Tranziţii fine */
 .dropIcon {
   transition: transform 0.3s ease, color 0.2s ease, background 0.2s ease;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: var(black);
+  border: 2px solid var(black);
   border-radius: 50%;
   background-color: transparent;
   
@@ -144,6 +147,7 @@
 }
 .primaryText {
   font-size: 1rem ;
+  color: #000;
 }
 
 @media (min-width: 768px) {
@@ -153,5 +157,35 @@
   }
   .primaryText {
     font-size: 1.25rem ;
+  }
+}
+
+
+.core-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;           /* medium */
+  font-size: 64px;            /* conform Figma */
+  line-height: 100%;          /* 1:1 exact */
+  letter-spacing: 0;
+  color: #000000;
+  margin-top: 68px;            /* mic reglaj vizual */
+  width: 684px;               /* conform layoutului */
+  max-width: 90%;             /* adaptabil pe ecrane mici */
+}
+
+@media (max-width: 1024px) {
+  .core-title {
+    font-size: 48px;
+    margin-left: 5%;
+    text-align: center;
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .core-title {
+    font-size: 36px;
+    margin: 2rem auto;
+    text-align: center;
   }
 }

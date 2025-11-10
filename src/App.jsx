@@ -19,6 +19,7 @@ import CookieBanner from "./components/CookieBanner/CookieBanner.jsx";
 import Privacy from "./pages/Privacy/Privacy.jsx";
 import Impressum from "./pages/Impressum/Impressum.jsx";
 import Datenschutz from "./pages/Datenschutz/Datenschutz.jsx";
+import Leistungen from "./pages/Leistungen/Leistungen.jsx";
 
 function App() {
   const queryClient = new QueryClient();
@@ -47,6 +48,8 @@ function App() {
                   <Route index element={<Properties />} />
                   <Route path=":propertyId" element={<Property />} />
                 </Route>
+                <Route path="/leistungen" element={<Leistungen />} />
+
                 <Route path="/bookings" element={<Bookings />} />
                 <Route path="/favourites" element={<Favourites />} />
                 <Route path="/parola" element={<AdminProperties />} /> {/* ✅ admin */}

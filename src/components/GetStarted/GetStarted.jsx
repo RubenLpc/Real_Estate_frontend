@@ -1,76 +1,245 @@
-import React, { useState } from "react";
+import React from "react";
 import "./GetStarted.css";
-import InquiryModal from "../InquiryModal/InquiryModal";
-import { Button, Group } from "@mantine/core";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { useForm } from "@mantine/form";
+import {
+  TextInput,
+  Textarea,
+  Select,
+  Button,
+  Grid,
+  Transition,
+} from "@mantine/core";
+import { toast } from "react-toastify";
+import { sendInquiry } from "../../utils/api";
+import { Check } from "lucide-react";
 
 const GetStarted = () => {
-  const [modalOpened, setModalOpened] = useState(false);
+  const form = useForm({
+    initialValues: {
+      vorname: "",
+      nachname: "",
+      email: "",
+      telefon: "",
+      immobilienart: "",
+      ort: "",
+      flaeche: "",
+      nachricht: "",
+    },
+    validate: {
+      vorname: (v) =>
+        v.trim().length > 1 ? null : "Bitte geben Sie Ihren Vornamen ein",
+      nachname: (v) =>
+        v.trim().length > 1 ? null : "Bitte geben Sie Ihren Nachnamen ein",
+      email: (v) =>
+        /^\S+@\S+$/.test(v) ? null : "Bitte geben Sie eine gültige E-Mail ein",
+      telefon: (v) =>
+        v.trim().length >= 5 ? null : "Telefonnummer erforderlich",
+      immobilienart: (v) =>
+        v.trim().length > 0 ? null : "Bitte wählen Sie eine Immobilienart aus",
+      ort: (v) =>
+        v.trim().length > 1 ? null : "Bitte geben Sie einen Ort an",
+      flaeche: (v) =>
+        v.trim().length > 0 ? null : "Bitte geben Sie die Fläche an",
+    },
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = form.validate();
+    if (!result.hasErrors) {
+      try {
+        await sendInquiry(form.values);
+        toast.success("Anfrage erfolgreich gesendet!");
+        form.reset();
+      } catch {
+        toast.error("Fehler beim Senden");
+      }
+    } else {
+      toast.error("Bitte alle Pflichtfelder überprüfen");
+    }
+  };
 
   return (
-    <div id="get-started" className="g-wrapper">
-      <div className="paddings innerWidth g-container">
-        <div className="flexColCenter inner-container">
-          <span className="primaryText">Bleiben wir in Kontakt!</span>
-          
+    <section id="get-started" className="getstarted-wrapper">
+      <div className="getstarted-container">
+        <h2 className="form-title">Suchauftrag</h2>
 
-          {/* Hauptaktion: Suchauftrag aufgeben */}
-          <Button
-            className="button"
-            size="sm"
-            onClick={() => setModalOpened(true)}
-          >
-            Suchauftrag
-          </Button>
+        <form className="form-box" onSubmit={handleSubmit}>
+          <Grid gutter="md">
+            {/* Vorname */}
+            <Grid.Col xs={12} md={6}>
+              <div className="input-wrapper">
+                <TextInput
+                  required
+                  placeholder="Vorname"
+                  {...form.getInputProps("vorname")}
+                  data-valid={form.values.vorname.trim().length > 1}
+                />
+                <Transition
+                  mounted={form.values.vorname.trim().length > 1}
+                  transition="fade"
+                  duration={300}
+                  timingFunction="ease"
+                >
+                  {(styles) => (
+                    <Check className="valid-icon" style={styles} size={18} />
+                  )}
+                </Transition>
+              </div>
+            </Grid.Col>
 
-          {/* Social Media Buttons: Responsive Wrap */}
-          <Group
-            spacing="sm"
-            mt="md"
-            style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}
-          >
-            <Button
-              component="a"
-              href="https://www.facebook.com/profile.php?id=61563885246419"
-              target="_blank"
-              leftIcon={<Facebook size={16} />}
-              variant="outline"
-              size="sm"
-              className="button"
-              style={{ flex: '1 1 120px', margin: '0.25rem' }}
-            >
-              Facebook
-            </Button>
-            <Button
-              component="a"
-              href="https://www.instagram.com/dan.dutescu.immo"
-              target="_blank"
-              leftIcon={<Instagram size={16} />}
-              variant="outline"
-              className="button"
-              size="sm"
-              style={{ flex: '1 1 120px', margin: '0.25rem' }}
-            >
-              Instagram
-            </Button>
-            <Button
-              component="a"
-              href="https://www.linkedin.com/in/dandutescu"
-              target="_blank"
-              leftIcon={<Linkedin size={16} />}
-              variant="outline"
-              size="sm"
-              style={{ flex: '1 1 120px', margin: '0.25rem' }}
-              className="button"
-            >
-              LinkedIn
-            </Button>
-          </Group>
-        </div>
+            {/* Nachname */}
+            <Grid.Col xs={12} md={6}>
+              <div className="input-wrapper">
+                <TextInput
+                  required
+                  placeholder="Nachname"
+                  {...form.getInputProps("nachname")}
+                  data-valid={form.values.nachname.trim().length > 1}
+                />
+                <Transition
+                  mounted={form.values.nachname.trim().length > 1}
+                  transition="fade"
+                  duration={300}
+                  timingFunction="ease"
+                >
+                  {(styles) => (
+                    <Check className="valid-icon" style={styles} size={18} />
+                  )}
+                </Transition>
+              </div>
+            </Grid.Col>
+
+            {/* Email + Telefon */}
+            <Grid.Col xs={12} md={6}>
+              <div className="input-wrapper">
+                <TextInput
+                  required
+                  placeholder="E-Mail"
+                  {...form.getInputProps("email")}
+                  data-valid={/^\S+@\S+$/.test(form.values.email)}
+                />
+                <Transition
+                  mounted={/^\S+@\S+$/.test(form.values.email)}
+                  transition="fade"
+                  duration={300}
+                  timingFunction="ease"
+                >
+                  {(styles) => (
+                    <Check className="valid-icon" style={styles} size={18} />
+                  )}
+                </Transition>
+              </div>
+            </Grid.Col>
+
+            <Grid.Col xs={12} md={6}>
+              <div className="input-wrapper">
+                <TextInput
+                  required
+                  placeholder="Telefonnummer"
+                  {...form.getInputProps("telefon")}
+                  data-valid={form.values.telefon.trim().length >= 5}
+                />
+                <Transition
+                  mounted={form.values.telefon.trim().length >= 5}
+                  transition="fade"
+                  duration={300}
+                  timingFunction="ease"
+                >
+                  {(styles) => (
+                    <Check className="valid-icon" style={styles} size={18} />
+                  )}
+                </Transition>
+              </div>
+            </Grid.Col>
+
+            {/* Art der Immobilie */}
+            <Grid.Col xs={12}>
+              <Select
+                required
+                placeholder="Welche Art von Immobilien suchen Sie?"
+                data={[
+                  "Ertragsobjekt / Zinshäuser",
+                "Bauernhaus / Landwirtschaftliches Anwesen",
+                "Acker- oder Grünlandflächen",
+                "Waldflächen / Eigenjagd",
+                "Pferdehof",
+                "Gewerbegrundstück",
+                "Betriebshalle",
+                "Wohnhaus / Wohnung",
+                "Wohnbaugrundstücke",
+                "Baulandreserven",
+                "Revitalisierungsprojekte",
+                "Sonstiges", 
+                ]}
+                {...form.getInputProps("immobilienart")}
+              />
+            </Grid.Col>
+
+            {/* Ort + Fläche */}
+            <Grid.Col xs={12} md={6}>
+              <div className="input-wrapper">
+                <TextInput
+                  required
+                  placeholder="Ort bzw. Suchradius"
+                  {...form.getInputProps("ort")}
+                  data-valid={form.values.ort.trim().length > 1}
+                />
+                <Transition
+                  mounted={form.values.ort.trim().length > 1}
+                  transition="fade"
+                  duration={300}
+                  timingFunction="ease"
+                >
+                  {(styles) => (
+                    <Check className="valid-icon" style={styles} size={18} />
+                  )}
+                </Transition>
+              </div>
+            </Grid.Col>
+
+            <Grid.Col xs={12} md={6}>
+              <div className="input-wrapper">
+                <TextInput
+                  required
+                  placeholder="Grundstücksfläche in m²"
+                  {...form.getInputProps("flaeche")}
+                  data-valid={form.values.flaeche.trim().length > 0}
+                />
+                <Transition
+                  mounted={form.values.flaeche.trim().length > 0}
+                  transition="fade"
+                  duration={300}
+                  timingFunction="ease"
+                >
+                  {(styles) => (
+                    <Check className="valid-icon" style={styles} size={18} />
+                  )}
+                </Transition>
+              </div>
+            </Grid.Col>
+
+            {/* Nachricht */}
+            <Grid.Col xs={12}>
+              <Textarea
+                placeholder="Nachricht (optional)"
+                minRows={4}
+                {...form.getInputProps("nachricht")}
+              />
+            </Grid.Col>
+
+            {/* Buton */}
+            <Grid.Col xs={12}>
+              <div className="button-wrapper">
+                <Button type="submit" className="submit-btn">
+                  ABSENDEN
+                </Button>
+              </div>
+            </Grid.Col>
+          </Grid>
+        </form>
       </div>
-
-      <InquiryModal opened={modalOpened} onClose={() => setModalOpened(false)} />
-    </div>
+    </section>
   );
 };
 

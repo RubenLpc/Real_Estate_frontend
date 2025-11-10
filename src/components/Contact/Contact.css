@@ -1,146 +1,226 @@
-.c-container {
-  justify-content: space-between;
+/* ==== STRUCTURA GENERALĂ ==== */
+.contact-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  overflow: visible;
 }
-.c-container > div {
+
+/* ==== IMAGINEA DE FUNDAL PANORAMIC ==== */
+.contact-bg {
+  background-image: url("/contact_back.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 70vh; /* înălțime panoramică */
+}
+
+/* ==== CARDUL BEJ SUPRAPUS ==== */
+.contact-card {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f3efe8;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+
+  padding: 4rem;
+  transform: translateY(-150px); /* ridică peste imagine */
+  z-index: 10;
+}
+
+/* ==== TEXT STÂNGA ==== */
+.contact-left {
   flex: 1;
 }
-.c-right {
+
+.contact-left h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 48px;
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.contact-left h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+.contact-left p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.contact-info {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.contact-info .phone,
+.contact-info .email {
+  font-size: 18px;
+  color: #000;
+  font-weight: 500;
+}
+
+/* ==== BUTOANE ==== */
+.contact-buttons {
   display: flex;
-  justify-content: center; /* centru orizontal */
-  align-items: center;     /* centru vertical */
-}
-.c-left {
-  gap: 0.5rem;
-}
-.contactModes {
-  margin-top: 2rem;
+  flex-wrap: wrap;
   gap: 1rem;
-}
-.contactModes .row {
-  gap: 1.5rem;
+  justify-content: flex-start; /* aliniere la stânga */
 }
 
-.mode_email {
-  width: 33.5rem;
-  padding: 1rem;
-  border: 0.8px solid rgba(128, 128, 128, 0.143);
-  border-radius: 5px;
-  gap: 1rem;
-  transition: all 300ms ease-in;
-}
-.mode {
-  width: 16rem;
-  padding: 1rem;
-  border: 0.8px solid rgba(128, 128, 128, 0.143);
-  border-radius: 5px;
-  gap: 1rem;
-  transition: all 300ms ease-in;
-}
-
-.mode_email .button {
-  width: 100%;
-  
+.btn {
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
-}
-.mode_email > :nth-child(1) {
-  width: 100%;
-  gap: 1.6rem;
-}
-.mode_email .detail .primaryText {
-  font-size: 1.1rem;
-  font-weight: 600;
-  justify-items: center;
-}
-.mode_email:hover {
-  scale: 1.1;
-  box-shadow: var(--shadow);
-}
-.mode_email .button:hover {
-  
-  scale: 0.8;
+  border-radius: 25px;
+  padding: 0.9rem 1.6rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: none;
+  background-color: #cbb989;
+  color: #fff;
+
+  /* 👇 fixăm lățimea pentru uniformitate */
+  width: 200px;
+  text-align: center;
 }
 
-.mode .button {
-  width: 100%;
-  
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-.mode > :nth-child(1) {
-  width: 100%;
-  gap: 1.6rem;
-}
-.mode .detail .primaryText {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-.mode:hover {
-  scale: 1.1;
-  box-shadow: var(--shadow);
-}
-.mode .button:hover {
-  
-  scale: 0.8;
+.btn:hover {
+  background-color: #bca673;
+  transform: translateY(-2px);
 }
 
+
+.btn.beige {
+  background-color: #cbb989;
+  color: #fff;
+}
+
+.btn.beige:hover {
+  background-color: #bca673;
+  transform: translateY(-2px);
+}
+
+/* ==== POZA DIN DREAPTA ==== */
+.contact-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-right img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 4px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+
+/* ==== CARDUL BEJ SUPRAPUS ==== */
+.contact-card {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f3efe8;
+  border-radius: 6px;
+
+  /* 👇 efect de plutire */
+  border: 4px solid #ffffff;             /* margine albă clară între card și fundal */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* umbră difuză mai puternică */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+
+  padding: 4rem;
+  transform: translateY(-150px); /* ridică peste fundal */
+  z-index: 10;
+}
+
+.contact-bg {
+  background-image: url("/contact_back.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 70vh;
+  position: relative;
+}
+
+/* fade subtil la baza imaginii */
+.contact-bg::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.6));
+}
+
+
+/* ==== RESPONSIVE ==== */
 @media (max-width: 1024px) {
-  .c-container {
+  .contact-card {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    transform: translateY(-100px);
   }
-  .c-right {
+
+  .contact-left h2 {
+    font-size: 40px;
+  }
+
+  .contact-right img {
+    max-width: 300px;
+    margin-top: 2rem;
+  }
+
+  .contact-buttons {
     justify-content: center;
   }
 }
-@media (max-width: 1024px) {
-  .contactModes {
-    width: 100%;
-  }
-  .row {
-    flex-direction: column;
-    width: 100%;
-  }
-  .mode {
-    width: 100%;
-  }
-  .mode_email {
-    width: 100%;
-  }
-}
 
-/* ==== Stiluri pentru imagine ==== */
-.c-right .image-container {
-  max-width: 400px;
-  width: 100%;
-  
-  /* efect de umbră și colțuri rotunjite */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-  
-  /* fundal alb și spațiu intern */
-  background: #fff;
-  padding: 0.5rem;
-  
-  /* tranziție pentru hover */
-  transition: transform 200ms ease, box-shadow 200ms ease;
-}
-.c-right .image-container:hover {
-  /* zoom ușor și umbră mai puternică la hover */
-  transform: scale(1.02);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-.c-right .image-container img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 6px; /* rotunjire ușoară pe imagine */
-}
+@media (max-width: 768px) {
+  .contact-bg {
+    height: 50vh;
+  }
 
-@media (max-width: 680px) {
-  .c-right .image-container {
-    /* Adaptează pe ecrane mici */
-    max-width: 100%;
-    padding: 0.5rem;
-    height: 100%;
+  .contact-card {
+    width: 90%;
+    transform: translateY(-80px);
+    padding: 2rem 1.5rem;
+  }
+
+  .contact-left h2 {
+    font-size: 32px;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.8rem 1.2rem;
   }
 }

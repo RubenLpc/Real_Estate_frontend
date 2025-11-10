@@ -3,45 +3,50 @@
   z-index: 99;
   position: sticky;
   top: 0;
-  /* fundal bej deschis, ca Hero 
-  background-color: var(--lightBlue);*/
   background-color: white; /* fundal alb pentru contrast */
 }
 
 /* Containerul din header */
 .h-container {
-  color: var(--text-dark); /* text închis pentru contrast */
-  justify-content: left;
-  gap: 10rem;
+  color: var(--text-dark);
+  display: flex;
   align-items: center;
+  justify-content: space-between;  /* 👈 logo stânga, meniu dreapta */
+  gap: 2rem;
 }
 
 /* Logo */
-.header-logo {
-  width: 150px;
+.header_logo {
+  width: 160px;
   height: auto;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  padding-left: 5%;
+  margin: 0;
+  padding: 0;                     /* 👈 nu-l mai împingem cu padding */
+}
+
+/* dacă vrei să păstrezi și .header-logo */
+.header-logo {
+  width: 160px;
+  height: auto;
 }
 
 /* Meniul */
 .h-menu {
   display: flex;
   gap: 2rem;
-  color: var(--primary);    /* verde inchis pentru link-uri */
+  color: var(--primary);          /* verde inchis pentru link-uri */
   font-size: large;
+  margin-left: auto;              /* 👈 împinge meniul în dreapta */
 }
+
 .h-menu > *:hover {
   cursor: pointer;
-  color: var(--secondary);  /* bej transparent la hover */
+  color: var(--secondary);        /* bej transparent la hover */
 }
 
 /* Iconița de mobile */
 .menu-icon {
   display: none;
   color: var(--primary);
-  padding-right: 5%;
 }
 
 /* Mobile */
@@ -49,37 +54,37 @@
   .menu-icon {
     display: block;
   }
-  .h-menu {
-    color: var(--text-dark);
-    position: absolute;
-    gap: 2rem;
-    font-weight: 500;
-    flex-direction: column;
-    right: 2rem;
-    top: 4rem;
-    background: white;
-    display: flex;
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  }
+
   .h-container {
-    color: var(--text-dark); /* text închis pentru contrast */
+    color: var(--text-dark);
     justify-content: space-between;
     align-items: center;
     gap: 0;
   }
-}
 
-/* stilul implicit pentru logo */
-.header_logo {
-  width: 160px;
-}
+  .h-menu {
+    color: var(--text-dark);
+    position: absolute;
+    top: 4rem;
+    right: 2rem;
+    flex-direction: column;
+    gap: 2rem;
+    font-weight: 500;
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 0;               /* margin-left nu mai trebuie pe mobil */
+  }
 
-/* când ecranul are max-width 768px (tabletă/mobil) */
-@media (max-width: 768px) {
   .header_logo {
-    width: 130px;
+    width: 130px;                 /* logo mai mic pe mobil */
   }
 }
 
+/* default logo pentru desktop */
+@media (min-width: 769px) {
+  .header_logo {
+    width: 160px;
+  }
+}

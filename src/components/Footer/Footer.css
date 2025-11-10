@@ -1,114 +1,161 @@
-/* src/components/Footer/Footer.css */
+/* FOOTER – clean, premium, fără wave */
+
 .footer {
-    background: #f8f8f8;
-    padding: 2rem 0;
-    color: #444;
-    font-size: 0.9rem;
-  }
-  
+  /* gradient subtil pe verde, ca să nu fie bloc plat */
+  background: linear-gradient(
+    180deg,
+    #858a6c 0%,
+    #7b8063 35%,
+    #6e7358 100%
+  );
+  color: #ffffff;
+  padding: 2.6rem 0 2rem;
+  font-size: 0.95rem;
+
+  /* separare față de secțiunea albă de sus */
+  margin-top: 3.5rem;
+  border-radius: 22px 22px 0 0;          /* colțuri rotunjite sus */
+  box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.15);
+
+  position: relative;
+}
+
+/* mică linie de highlight chiar pe marginea de sus */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0)
+  );
+  pointer-events: none;
+}
+
+/* Layout principal: 3 coloane – logo | text | contact */
+.footer-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Logo stânga */
+.footer-left {
+  justify-self: start;
+}
+.footer-logo {
+  width: 210px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Text central – centrat real, nu influențat de stânga/dreapta */
+.footer-center {
+  text-align: center;
+  justify-self: center;
+}
+.footer-claim-line {
+  margin: 0;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
+  line-height: 1.1;
+}
+
+/* Dreapta – contact + social */
+.footer-right {
+  justify-self: end;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.footer-contact-line {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.footer-contact-line:hover {
+  text-decoration: underline;
+}
+
+.footer-socials {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}
+
+.footer-social-link {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7b8063;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease, color 0.15s ease;
+}
+
+.footer-social-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  background: #eaeaea;
+  color: #5b6d5c;
+}
+
+/* Bara de jos: Impressum | Datenschutz */
+.footer-bottom {
+  margin-top: 1.4rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer-bottom-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+.footer-bottom-link:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom-sep {
+  margin: 0 0.5rem;
+  opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
   .footer-inner {
     display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    align-items: flex-start;
-  }
-  
-  /* Coloane */
-  .footer-col {
-    flex: 1;
-  }
-  
-  /* Logo & Vision (stânga) */
-  .footer-col.vision {
-    display: flex;
     flex-direction: column;
-    align-items: center;   /* centrează orizontal */
+    align-items: center;
     text-align: center;
   }
-  
-  .footer-logo {
-    width: 250px;  /* poți ajusta mai mare dacă vrei */
-    height: auto;
-    margin-bottom: 0rem;
-  }
-  
-  .vision-text {
-    font-size: 0.9rem;
-    color: #555;
-    line-height: 1.4;
-    max-width: 300px;
-  }
-  
-  /* Impressum Card (dreapta) */
-  .impressum-card {
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  .impressum-title {
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-    color: #333;
-    border-bottom: 2px solid #4066FF;
-    display: inline-block;
-    padding-bottom: 0.25rem;
-  }
-  
-  .impressum-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.75rem 2rem;
-  }
-  
-  .field-name {
-    font-weight: 600;
-    color: #444;
-  }
-  
-  .impressum-sep {
-    margin: 1rem 0;
-    border: none;
-    border-top: 1px solid #ddd;
-  }
-  
-  .impressum-note {
-    font-size: 0.8rem;
-    color: #666;
-    line-height: 1.4;
-  }
-  
-  .impressum-note a {
-    color: #0066cc;
-    text-decoration: none;
-  }
-  .impressum-note a:hover {
-    text-decoration: underline;
+
+  .footer-left,
+  .footer-right {
+    align-items: center;
+    text-align: center;
   }
 
-  .footer-impressum-link {
-    color: var(--blue);
-    text-decoration: none;
-    font-weight: 600;
+  .footer-right {
+    align-items: center;
   }
-  .footer-impressum-link:hover {
-    text-decoration: underline;
+
+  .footer-socials {
+    justify-content: center;
   }
-  
-  
-  /* Responsive: pe ecrane sub 768px coloanele se așează pe verticală */
-  @media (max-width: 768px) {
-    .footer-inner {
-      flex-direction: column;
-      align-items: center;
-    }
-    .impressum-grid {
-      grid-template-columns: 1fr;
-    }
-    .footer-col {
-      width: 100%;
-      max-width: 500px;
-    }
-  }
-  
+}

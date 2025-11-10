@@ -24,6 +24,7 @@ import {
   IconMapPin,
   IconBriefcase,
   IconRefresh,
+  IconWeight,
 } from "@tabler/icons-react";
 import {
   MdInsertPhoto,
@@ -51,8 +52,11 @@ const Value = () => {
   const [modalOpened, setModalOpened] = useState(false);
   const iconStyle = {
     backgroundColor: "#F8F3F2",
-    color: "var(--primary)",
+  /*  color: "var(--primary)",*/
+    color: "black",
+    IconWeight: "bold",
   };
+  
 
   const sections = [
     {
@@ -542,6 +546,8 @@ const Value = () => {
       <section id="core-competencies" className="core-wrapper">
         <div className="paddings innerWidth flexCenter core-container">
           <div className="flexColStart v-right">
+          <h2 className="core-title">Meine Leistungen</h2>
+
             <Accordion
               allowMultipleExpanded={false}
               allowZeroExpanded

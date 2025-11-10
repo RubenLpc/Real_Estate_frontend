@@ -1,0 +1,187 @@
+.kf-wrapper {
+  background: #ffffff;
+  padding: 5rem 0 4rem;
+}
+
+/* container interior – ne ocupăm aici de margini stânga/dreapta */
+.kf-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.75rem; /* padding lateral pt desktop & mobil */
+}
+
+/* Titlu – Cormorant Garamond */
+.kf-heading {
+  margin: 0 0 2.5rem;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(2.4rem, 4vw, 4.5rem);
+  line-height: 1;
+  color: #000000;
+  text-align: center;
+}
+
+/* Formular */
+.kf-form {
+  width: 100%;
+  max-width: 100%; /* se ocupă .kf-inner de max-width */
+}
+
+/* rânduri de câte 2 câmpuri */
+.kf-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* row full pentru textarea */
+.kf-row-full {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* field wrapper pentru icon */
+.kf-field {
+  position: relative;
+}
+
+/* input/textarea stil de bază */
+.kf-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 14px;
+  padding: 1.1rem 1.6rem;
+  padding-right: 2.8rem; /* loc pentru icon */
+  background: #f3eee6;
+  font-family: "Source Sans Pro", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
+  box-sizing: border-box;
+  transition: box-shadow 0.15s ease, transform 0.1s ease,
+    border-color 0.15s ease, background-color 0.15s ease;
+}
+
+/* textarea */
+.kf-field textarea.kf-input {
+  resize: vertical;
+  min-height: 190px;
+}
+
+/* placeholder */
+.kf-input::placeholder {
+  color: #8d8a7f;
+}
+
+/* focus */
+.kf-input:focus {
+  box-shadow: 0 0 0 2px rgba(203, 185, 137, 0.4);
+  transform: translateY(-1px);
+}
+
+/* state: eroare */
+.kf-input-error {
+  box-shadow: 0 0 0 2px rgba(204, 67, 67, 0.65);
+  background-color: #f9e9e9;
+}
+
+/* state: succes */
+.kf-input-success {
+  box-shadow: 0 0 0 2px rgba(76, 158, 108, 0.7);
+  background-color: #ecf6f0;
+}
+
+/* icon de status (✓ / !) */
+.kf-status-icon {
+  position: absolute;
+  right: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+/* icon pentru textarea – îl mutăm sus */
+.kf-status-textarea {
+  top: 1.1rem;
+  transform: none;
+}
+
+.kf-status-ok {
+  color: #2f8d57;
+}
+
+.kf-status-error {
+  color: #cc4343;
+}
+
+/* Button */
+.kf-button-wrap {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.kf-submit {
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 1rem 3.5rem;
+  background: rgba(203, 185, 137, 0.95);
+  color: #ffffff;
+  font-family: "Source Sans Pro", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.15s ease, transform 0.15s ease,
+    box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.kf-submit:hover:not(:disabled) {
+  background: rgba(203, 185, 137, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+.kf-submit:disabled {
+  opacity: 0.75;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .kf-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* extra fine-tuning pe mobile mici */
+@media (max-width: 600px) {
+  .kf-wrapper {
+    padding: 4rem 0 3rem;
+  }
+
+  .kf-inner {
+    padding: 0 1.25rem;
+  }
+
+  .kf-heading {
+    margin-bottom: 2rem;
+    font-size: clamp(2rem, 7vw, 2.6rem);
+  }
+
+  .kf-field textarea.kf-input {
+    min-height: 160px;
+  }
+}
