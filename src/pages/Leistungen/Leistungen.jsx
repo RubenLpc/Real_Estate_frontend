@@ -65,7 +65,7 @@ const Leistungen = () => {
               Widmungsverfahren bis zur strukturierten Verwertung.
             </p>
 
-            <a href="#contact-form" className="lt-cta-link">
+            <a href="#contact-us" className="lt-cta-link">
               <button className="lt-cta-button">KONTAKT AUFNEHMEN</button>
             </a>
           </div>
