@@ -95,7 +95,7 @@
   cursor: pointer;
   text-transform: uppercase;
   border: none;
-  background-color: #cbb989;
+  background-color: #BDAB83;
   color: #fff;
 
   /* 👇 fixăm lățimea pentru uniformitate */
@@ -110,7 +110,6 @@
 
 
 .btn.beige {
-  background-color: #cbb989;
   color: #fff;
 }
 
@@ -168,16 +167,7 @@
   position: relative;
 }
 
-/* fade subtil la baza imaginii */
-.contact-bg::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.6));
-}
+
 
 
 /* ==== RESPONSIVE ==== */
