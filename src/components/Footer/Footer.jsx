@@ -18,8 +18,9 @@ const Footer = () => {
 
         {/* Centru – claim */}
         <div className="footer-center">
-          <p className="footer-claim-line">Wo Visionen</p>
-          <p className="footer-claim-line">Fläche finden.</p>
+
+          <p className="footer-claim-line"><i>Wo Visionen</i></p>
+          <p className="footer-claim-line"><i>Fläche finden.</i></p>
         </div>
 
         {/* Dreapta – contact + social */}

@@ -69,7 +69,7 @@
 .hero-btn {
   display: inline-block;
   text-decoration: none;
-  background-color: #bdab83;
+  background-color: #B29E82;
   color: #fff;
   border: none;
   padding: 0.9rem 2rem;
@@ -82,7 +82,6 @@
 }
 
 .hero-btn:hover {
-  background-color: #bca673;
   transform: translateY(-2px);
   text-decoration: none;
 }
