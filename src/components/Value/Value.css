@@ -121,15 +121,12 @@
 /* 2) Roteşte săgeata sus când e deschis */
 .accordionButton[aria-expanded="true"] .dropIcon {
   transform: rotate(180deg);
-  background-color: #000;
-  color: white;
 }
 
 /* 3) Tranziţii fine */
 .dropIcon {
   transition: transform 0.3s ease, color 0.2s ease, background 0.2s ease;
-  color: var(black);
-  border: 2px solid var(black);
+  color: #5B6D5C;
   border-radius: 50%;
   background-color: transparent;
   

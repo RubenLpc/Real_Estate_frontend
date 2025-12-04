@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { RxArrowRight } from "react-icons/rx";
+
 import {
   Accordion,
   AccordionItem,
@@ -118,10 +121,8 @@ const Value = () => {
                 <span className="primaryText" >
                   Sie suchen eine Immobilie?
                 </span>
-                <MdOutlineArrowDropDown
-                  className="dropIcon"
-                  size={24}
-                />
+                <RxArrowRight size={22} className="dropIcon" />
+
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -190,10 +191,8 @@ const Value = () => {
                   Diskrete Vermarktung oder gezielte Suche abseits der
                   Öffentlichkeit
                 </span>
-                <MdOutlineArrowDropDown
-                  size={24}
-                  className="dropIcon"
-                />
+                <RxArrowRight size={22} className="dropIcon" />
+
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -243,10 +242,8 @@ const Value = () => {
                   Professionelle Immobilienvermittlung – strukturiert und
                   marktorientiert
                 </span>
-                <MdOutlineArrowDropDown
-                  size={24}
-                  className="dropIcon"
-                />
+                <RxArrowRight size={22} className="dropIcon" />
+
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -570,10 +567,8 @@ const Value = () => {
                       >
                         {title}
                       </span>
-                      <MdOutlineArrowDropDown
-                        size={28}
-                        className="dropIcon"
-                      />
+                      <RxArrowRight size={22} className="dropIcon" />
+
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
