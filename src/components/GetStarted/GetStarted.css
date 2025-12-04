@@ -111,6 +111,8 @@
     border-radius: 30px !important;
     text-transform: uppercase;
     transition: all 0.3s ease;
+    width: 190px ;    /* ✔️ lățime fixă */
+    height: 49px ;
   }
   
   .submit-btn:hover {

@@ -23,7 +23,9 @@ const Header = () => {
   };
 
   return (
-    <section className="h-wrapper" >
+    <section  >
+
+      <div className="h-wrapper">
       <div className="flexCenter innerWidth paddings-lr h-container">
         {/* Logo */}
         <Link to="/">
@@ -37,8 +39,8 @@ const Header = () => {
         {/* Desktop / large menu */}
         <OutsideClickHandler onOutsideClick={() => setMenuOpened(false)}>
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpened)}>
-            <NavLink to="/">Startseite</NavLink>
-            <NavLink to="/leistungen">Leistungen</NavLink>
+            <NavLink to="/"><b>STARTSEITE</b></NavLink>
+            <NavLink to="/leistungen"><b>LEISTUNGEN</b></NavLink>
             {/* <NavLink to="/properties">Immobilien</NavLink>*/}
             {/* Link către homepage + secțiunea #contact-us */}
             <HashLink
@@ -47,7 +49,8 @@ const Header = () => {
               onClick={() => setMenuOpened(false)}
               className="menu-link"
             >
-              Kontakt
+              <b>KONTAKT</b>
+              
             </HashLink>
             {/* Dacă vrei să reintroduci butonul de adăugare proprietate: */}
             {/* <div onClick={handleAddPropertyClick}>Inserat hinzufügen</div>
@@ -62,7 +65,7 @@ const Header = () => {
         >
           <BiMenuAltRight size={30} />
         </div>
-      </div>
+      </div></div>
     </section>
   );
 };

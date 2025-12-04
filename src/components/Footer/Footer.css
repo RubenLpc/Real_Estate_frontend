@@ -14,7 +14,6 @@
 
   /* separare față de secțiunea albă de sus */
   margin-top: 3.5rem;
-  border-radius: 22px 22px 0 0;          /* colțuri rotunjite sus */
   box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.15);
 
   position: relative;
@@ -50,9 +49,9 @@
   justify-self: start;
 }
 .footer-logo {
-  width: 210px;
+  width: 204px;
   max-width: 100%;
-  height: auto;
+  height: 204px;
 }
 
 /* Text central – centrat real, nu influențat de stânga/dreapta */
@@ -64,7 +63,7 @@
   margin: 0;
   font-family: "Cormorant Garamond", "Times New Roman", serif;
   font-weight: 500;
-  font-size: clamp(2.2rem, 3vw, 2.8rem);
+  font-size: clamp(2.2rem, 3vw, 3rem);
   line-height: 1.1;
 }
 
@@ -74,14 +73,14 @@
   text-align: right;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 0.25rem;
 }
 
 .footer-contact-line {
   color: #ffffff;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 24px;
 }
 .footer-contact-line:hover {
   text-decoration: underline;
@@ -91,12 +90,12 @@
   margin-top: 0.8rem;
   display: flex;
   gap: 0.6rem;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .footer-social-link {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.96);
   display: flex;
@@ -135,6 +134,14 @@
   margin: 0 0.5rem;
   opacity: 0.85;
 }
+
+.innerWidth {
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 40px; 
+}
+
 
 /* Responsive */
 @media (max-width: 900px) {

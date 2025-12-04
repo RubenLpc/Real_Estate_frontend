@@ -130,10 +130,10 @@
 }
 
 .kf-submit {
+   
   border: none;
   cursor: pointer;
   border-radius: 999px;
-  padding: 1rem 3.5rem;
   background: #BDAB83;
   color: #ffffff;
   font-family: "Source Sans Pro", system-ui, -apple-system, BlinkMacSystemFont,
@@ -144,6 +144,8 @@
   text-transform: uppercase;
   transition: background 0.15s ease, transform 0.15s ease,
     box-shadow 0.15s ease, opacity 0.15s ease;
+    width: 190px ;    /* ✔️ lățime fixă */
+  height: 49px ;
 }
 
 .kf-submit:hover:not(:disabled) {

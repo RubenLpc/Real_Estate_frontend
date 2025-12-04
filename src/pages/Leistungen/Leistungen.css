@@ -61,9 +61,13 @@
 .lt-content {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-  gap: 4rem;
+  gap: 10rem;
   align-items: flex-start;
+
+  max-width: 1200px;     /* ← controlează cât de “centralizate” sunt */
+  margin: 0 auto;        /* ← centrează grid-ul */
 }
+
 
 /* coloana de imagine */
 .lt-image-col {
@@ -72,9 +76,10 @@
 
 /* frame pentru imagine – card cu colțuri rotunjite */
 .lt-image-frame {
-  border-radius: 14px;
+  width: 566px;
+  height: 656px;
+
   overflow: hidden;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
   background: #000; /* ca să nu se vadă margini albe la zoom */
 }
 
@@ -167,9 +172,28 @@
   .lt-image-col {
     order: 2;
   }
+  .lt-image-frame {
+    width: auto;
+    height: auto;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+  background: #000; /* ca să nu se vadă margini albe la zoom */
+}
+
+/* imaginea efectivă */
+.lt-main-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 0.6s ease;
+}
 }
 
 @media (max-width: 768px) {
+  /* frame pentru imagine – card cu colțuri rotunjite */
+
   .lt-hero-inner {
     padding-top: 3.5rem;
     padding-bottom: 2rem;

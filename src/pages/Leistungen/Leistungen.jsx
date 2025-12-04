@@ -55,7 +55,7 @@ const Leistungen = () => {
               entwickle ich eine passende Vermarktungsstrategie.
             </p>
             <p className="lt-body">
-              <strong>Mein Ziel:</strong> Das bestmögliche Ergebnis für Sie als
+              Mein Ziel: Das bestmögliche Ergebnis für Sie als
               Eigentümer:in – wirtschaftlich durchdacht, steuerlich sinnvoll und
               emotional stimmig.
             </p>

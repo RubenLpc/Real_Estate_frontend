@@ -1,6 +1,6 @@
 .App{
   position: relative;
-  overflow-x: clip;
+  overflow-x: hidden;
   background-color: white;
 }
 .App>:nth-child(1)
@@ -8,7 +8,6 @@
   
     background: #fafafa;  /* sau #fff */
   
-    position: relative;
 }
 .white-gradient{
   position: absolute;

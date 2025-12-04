@@ -9,11 +9,13 @@
 /* ==== IMAGINEA DE FUNDAL PANORAMIC ==== */
 .contact-bg {
   background-image: url("/contact_back.jpg");
-  background-size: cover;
-  background-position: center;
+  background-size: contain;      /* 🔥 imaginea se scalează complet */
+  background-repeat: no-repeat;  /* previne repetarea */
+  background-position: center;   /* centrare pe ecran */
   width: 100%;
-  height: 70vh; /* înălțime panoramică */
+  height: 70vh;
 }
+
 
 /* ==== CARDUL BEJ SUPRAPUS ==== */
 .contact-card {
@@ -22,7 +24,6 @@
   max-width: 1200px;
   margin: 0 auto;
   background-color: #f3efe8;
-  border-radius: 4px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 
   display: flex;
@@ -129,7 +130,6 @@
 .contact-right img {
   width: 100%;
   max-width: 350px;
-  border-radius: 4px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   object-fit: cover;
 }
@@ -142,7 +142,6 @@
   max-width: 1200px;
   margin: 0 auto;
   background-color: #f3efe8;
-  border-radius: 6px;
 
   /* 👇 efect de plutire */
   border: 4px solid #ffffff;             /* margine albă clară între card și fundal */

@@ -1,6 +1,6 @@
 /* Hero.css (sau fișier separat de Header) */
 .h-wrapper {
-  z-index: 99;
+  z-index: 999;
   position: sticky;
   top: 0;
   background-color: white; /* fundal alb pentru contrast */
