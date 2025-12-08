@@ -100,12 +100,12 @@ a {
 }
 
 /* media queries */
-@media (min-width: 1536px) {
-  .innerWidth {
-    max-width: 1280px;
-    margin: auto;
-  }
+.innerWidth {
+  width: 90%;     /* ocupă 90% din ecran */
+  max-width: 1600px; /* opțional, pentru readability */
+  margin: 0 auto;
 }
+
 
 @media (min-width: 640px) {
   .paddings {
@@ -147,9 +147,4 @@ a {
 }
 
 
-@media (min-width: 2000px) {
-  .App {
-    transform: scale(1.5);       /* mărește tot site-ul */
-    transform-origin: top center; /* ancorează la centru sus */
-  }
-}
+
