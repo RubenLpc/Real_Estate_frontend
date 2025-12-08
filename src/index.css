@@ -102,7 +102,7 @@ a {
 /* media queries */
 @media (min-width: 1536px) {
   .innerWidth {
-    max-width: 1600px; /* sau 1800px dacă ai ecran wide */
+    max-width: 2000px;
     margin: auto;
   }
 }
