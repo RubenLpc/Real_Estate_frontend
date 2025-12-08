@@ -60,13 +60,18 @@
 
 .lt-content {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-  gap: 10rem;
-  align-items: flex-start;
-
-  max-width: 1200px;     /* ← controlează cât de “centralizate” sunt */
-  margin: 0 auto;        /* ← centrează grid-ul */
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;            /* mai mic și mai echilibrat */
+  align-items: center;  /* centrează vertical ambele coloane */
+  justify-content: center; /* centrează grid-ul în container */
+  
+  max-width: 1250px;    /* mai mic = adevărat centrat vizual */
+  margin: 0 auto;       /* centrează pe orizontală */
 }
+
+
+
+
 
 
 /* coloana de imagine */
