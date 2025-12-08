@@ -91,9 +91,12 @@
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .hero-bottom {
   position: relative;
-  width: 100%;
+ /* width: 100%;*/
   overflow: hidden;
   box-shadow: 0 22px 40px rgba(0, 0, 0, 0.18);
+  max-width: 1920px;
+
+  margin: 0 auto;
 }
 
 .hero-bottom img {

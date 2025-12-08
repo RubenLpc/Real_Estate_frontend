@@ -42,7 +42,7 @@
 .accordionButton {
   display: flex;
   align-items: center;
- background-color: #F8F3F2;      /* bej deschis */
+ background-color: #F2EDE5;      /* bej deschis */
 
   padding: 1rem;
   width: 100%;
@@ -114,7 +114,7 @@
 
 /* 1) Highlight background când e deschis */
 .accordionButton[aria-expanded="true"] {
-  background-color: #F8F3F2;      /* bej deschis */
+  background-color: #F2EDE5;      /* bej deschis */
   border-radius: 6px 6px 0 0;    /* colţuri rotunjite doar sus */
 }
 

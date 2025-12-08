@@ -54,7 +54,7 @@ const iconStyle = {
 const Value = () => {
   const [modalOpened, setModalOpened] = useState(false);
   const iconStyle = {
-    backgroundColor: "#F8F3F2",
+    backgroundColor: "#F2EDE5",
   /*  color: "var(--primary)",*/
     color: "black",
     IconWeight: "bold",

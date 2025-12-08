@@ -46,7 +46,7 @@ const Contact = () => {
 
         {/* poza din dreapta */}
         <div className="contact-right">
-          <img src="/profil_1.jpeg" alt="Kontaktbild" />
+          <img src="/profil1.jpeg" alt="Kontaktbild" />
         </div>
       </div>
     </section>

@@ -131,7 +131,10 @@
   max-width: 350px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   object-fit: cover;
+  object-position: top; /* Afișează partea de sus → taie mai mult din jos */
+  height: 450px; /* setezi o înălțime fixă pentru "crop" */
 }
+
 
 
 /* ==== CARDUL BEJ SUPRAPUS ==== */
@@ -158,9 +161,11 @@
   background-image: url("/contact_back.jpg");
   background-size: cover;
   background-position: center;
-  width: 100%;
+  /* width: 100%; */
+  max-width: 1920px;
   height: 70vh;
   position: relative;
+  margin: 0 auto;
 }
 
 
