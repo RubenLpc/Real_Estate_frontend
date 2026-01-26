@@ -1,104 +1,188 @@
 import React from "react";
-import {
-  Container,
-  Title,
-  SimpleGrid,
-  Card,
-  Text,
-  Divider,
-  Anchor,
-  ThemeIcon,
-} from "@mantine/core";
-import { IconMail, IconFileText } from "@tabler/icons-react";
 import "./Datenschutz.css";
 
 const Datenschutz = () => {
   return (
-    <Container fluid py="xl" className="datenschutz-container">
-      <Title order={2} align="center" className="datenschutz-header">
-        Datenschutzinformation für Interessenten und Kunden
-      </Title>
+    <div className="datenschutz-page">
+      <div className="datenschutz-box">
+        <h1>DATENSCHUTZERKLÄRUNG</h1>
 
-      <SimpleGrid
-        cols={2}
-        spacing="xl"
-        breakpoints={[{ maxWidth: 768, cols: 1 }]}
-        mb="xl"
-      >
-        {/* Card 1: Verantwortlicher */}
-        <Card shadow="sm" radius="md" withBorder className="info-card">
-          <ThemeIcon size={40} radius="md" variant="light" className="info-icon">
-            <IconMail size={28} />
-          </ThemeIcon>
+        <section>
+          <h2>1. PRÄAMBEL</h2>
+          <p>
+            Verantwortlicher im Sinne der datenschutzrechtlichen Bestimmungen:<br />
+            <b>fidelia.immo GmbH</b><br />
+            Pegasusweg 1<br />
+            4030 Linz<br />
+            Tel.: +43 664 3883 786<br />
+            E-Mail:{" "}
+            <a href="mailto:office@fidelia.immo">office@fidelia.immo</a>
+          </p>
+          <p>
+            Es ist kein Datenschutzbeauftragter bestellt, da eine Bestellung
+            gesetzlich nicht vorgesehen ist.
+          </p>
+          <p>
+            In dieser Datenschutzerklärung informieren wir Sie über die
+            wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer
+            Tätigkeiten, insbesondere der <b>Immobilienvermittlung</b>, 
+            der <b>Standortentwicklung</b>, unserer <b>allgemeinen</b> <b>unternehmerischen</b>
+            <b>Tätigkeiten</b> (Auftraggeber- und Lieferantenverwaltung), der
+            <b>Funktionen unserer Website</b> sowie <b>Marketingmaßnahmen</b>.
+          </p>
+        </section>
 
-          <Text weight={500} mt="sm">Verantwortlicher</Text>
-          <Text mb="sm">
-            <strong>Firmenwortlaut:</strong> Dan Dutescu, BA, Immobilientreuhänder (Immobilienmakler, Immobilienverwalter, Bauträger), eingeschränkt auf Immobilienmakler
-          </Text>
-          <Text mb="sm">
-            <strong>Adresse:</strong> Pegasusweg 1, 4030 Linz
-          </Text>
-          <Text mb="sm">
-            <strong>Telefonnummer:</strong> +43 664 3883 786
-          </Text>
+        <hr />
 
-          <Text weight={500} mt="md">Datenschutzbeauftragter</Text>
-          <Text>
-            Es ist kein Datenschutzbeauftragter bestellt, da keine gesetzliche Notwendigkeit besteht
-          </Text>
-        </Card>
+        <section>
+          <h2>2. ZWECKE DER VERARBEITUNGSVORGÄNGE</h2>
+          <p>
+            Wir führen folgende Verarbeitungsvorgänge durch, die für Sie als
+            Kunde, Interessent, Auftraggeber, Lieferant, Newsletter-Abonnent
+            oder Website-Besucher wesentlich sind:
+          </p>
+          <p> <b>2.1 Immobilienvermittlung</b> <br />(Vermittlung von Immobilien – Kauf, Miete – sowie damit verbundene Tätigkeiten)</p>
+          <p> <b>2.2 Lieferanten- und Auftraggeberverwaltung</b> <br />(zur Abwicklung unseres Einkaufs sowie unseres Backoffices)</p>
+          <p> <b>2.3 Kontaktformular auf der Website</b><br /> (zur Beantwortung von Anfragen und zur Vertragsanbahnung)</p>
+          <p> <b>2.4 Marketing</b><br /> (zur Information von Kunden und Interessenten sowie zur Kundengewinnung)</p>
+          <p> <b>2.5 Newsletter</b><br /> (zur Kundenbetreuung und Information bestehender Kunden)</p>
+          <p> <b>2.6 Website-Tracking</b></p>
+          <p>
+             <b>2.7 Einsatz von KI-gestützten Assistenz- und Analysesystemen</b><br />
+            Zur Unterstützung unserer fachlichen Tätigkeit (insbesondere
+            Recherche, Textanalyse, Markt- und Standortanalysen,
+            Strukturierung von Informationen, Exposé-Erstellung sowie interne
+            Entscheidungsfindung) setzen wir KI-gestützte Assistenzsysteme ein.
+            Dabei werden personenbezogene Daten ausschließlich im
+            erforderlichen Umfang verarbeitet. Eine automatisierte
+            Entscheidungsfindung oder Profiling im Sinne des Art. 22 DSGVO
+            findet nicht statt.
+          </p>
+        </section>
 
-        {/* Card 2: Verarbeitung, Rechtsgrundlage... */}
-        <Card shadow="sm" radius="md" withBorder className="info-card">
-          <ThemeIcon size={40} radius="md" variant="light" className="info-icon">
-            <IconFileText size={28} />
-          </ThemeIcon>
+        <hr />
 
-          <Text mb="sm">
-            <strong>Zu welchem Zweck verarbeiten wir Ihre Daten:</strong><br />
-            Interessenten- und Kundenverwaltung im Rahmen der Immobilienvermittlung (einschließlich automationsunterstützt erstellter und archivierter Textdokumente (wie z. B. Korrespondenz) in diesen Angelegenheiten)          </Text>
-          <Text mb="sm">
-            <strong>Rechtsgrundlage:</strong><br />
-            Vertrag, Vertragsanbahnung (Vermittlungsvertrag) sowie gesetzliche Grundlage
-            </Text>
-          <Text mb="sm">
-            <strong>Wie lange speichern wir Ihre Daten:</strong><br />
-            Die Daten werden während der Dauer des Vertragsverhältnisses und nach Beendigung dessen zumindest solange aufbewahrt, als gesetzliche Aufbewahrungsfristen bestehen oder Verjährungsfristen potentieller Rechtsansprüche noch nicht abgelaufen sind.
-            </Text>
-          <Text mb="sm">
-            <strong>An wen geben wir Ihre Daten weiter:</strong><br />
-            Wir speichern und verarbeiten die uns übermittelten bzw. bekannt gegebenen personenbezogenen Daten nur soweit es mit der Abwicklung des Vertrages (Vermittlungsvertrag) im Zusammenhang steht. Eine Weitergabe erfolgt nur im minimal erforderlichen Umfang und soweit es für die Vertragsabwicklung notwendig ist, auf einer gesetzlichen Grundlage beruht oder ein berechtigtes Interesse an der Geschäftsabwicklung beteiligter (Dritter) besteht.
-Mögliche Empfänger können sein: Abteilungen des Unternehmens, die mit der Geschäftsabwicklung befasst sind (z.B. EDV, sonstige Verwaltungseinheiten) oder an der Geschäftsabwicklung beteiligte Dritte (an der Geschäftsabwicklung notwendigerweise teilnehmende Personen und potentielle Vertragspartner, weitere Makler, Vermittlungsplattformen, Hausverwaltungen, Finanzierungsunternehmen, private und öffentliche Stellen, die Informationen zu Objekten bekannt geben können oder benötigen, Versicherungen).
-Dienstleister des Verantwortlichen (z.B. Steuerberater, Lohnverrechnung, Rechtsanwalt) sowie Behörden (Sozialversicherung, Finanzamt, sonstige Behörden), Rechtsvertreter (bei der Durchsetzung von Rechten oder Abwehr von Ansprüchen oder im Rahmen von Behördenverfahren) oder Unternehmen, die im Rahmen der Betreuung der IT-Infrastruktur (Software, Hardware) als Auftragnehmer tätig sind.
-          </Text>
-          
-          <Text mb="sm">
-          Keinesfalls werden Ihre Daten zu Werbezwecken o.ä. weitergegeben. Unsere Mitarbeiter und unsere Dienstleistungsunternehmen sind zur Verschwiegenheit und zur Einhaltung der Datenschutzbestimmungen verpflichtet.           </Text>
-          <Text mb="sm">
-          Eine Übermittlung an Empfänger in einem Drittland (außerhalb der EU) oder an eine internationale Organisation ist vorgesehen; die Übermittlung beruht auf Standarddatenschutzklauseln sowie Angemessenheitsbeschluss.          </Text>
-          <Text mb="sm">
-          Es besteht keine automatisierte Entscheidungsfindung (Profiling).
-          </Text>
-          <Text mb="sm">
-          Die Angabe der Daten ist erforderlich, damit das Vertragsverhältnis ordnungsgemäß durchgeführt werden kann.          </Text>
-        </Card>
-      </SimpleGrid>
+        <section>
+          <h2>3. EMPFÄNGERKATEGORIEN</h2>
+          <p>
+          Im Rahmen der Verarbeitungsvorgänge übermitteln wir Daten an folgende Empfängerkategorien, sofern dies zur Vertragserfüllung, zur Wahrung berechtigter Interessen oder zur Erfüllung gesetzlicher Verpflichtungen erforderlich ist: <br /><br />
+            • potentielle Vertragspartner<br />
+            • Vertragsverfasser (Rechtsanwälte, Notare)<br />
+            • Hausverwaltungen<br />
+            • Finanzierungsvermittler und Finanzierungsinstitute<br />
+            • Behörden<br />
+            • andere Immobilienvermittler (insbesondere im Rahmen von Gemeinschaftsgeschäften)<br />
+            • Hypothekarbanken und finanzierende Institute
+          </p>
+          <p>
+            <b>Auftragsverarbeiter</b>:<br />
+            • Plattformen zur Bewerbung von Immobilien<br />
+            • IT-Dienstleister (Hard- und Software, Hosting, Website-Betreuung)<br />
+            • Anbieter von KI-gestützten Assistenz- und Analysetools
+          </p>
+          weiters:
+          <p>
+            • steuerliche Vertreter<br />
+            • Banken<br />
+            • Inkassodienstleister<br />
+            • Rechtsvertreter<br />
+            • Versicherungen<br />
+            • Finanzamt, Gerichte, Sozialversicherung<br />
+            • Statistik Austria
+          </p>
+          <p>
+          Eine Übermittlung an Empfänger in Drittstaaten erfolgt nur, sofern dies erforderlich ist, und ausschließlich auf Basis ausreichender Garantien, insbesondere <b>Standarddatenschutzklauseln gemäß Art. 46 DSGVO oder eines Angemessenheitsbeschlusses.</b>
+          </p>
+        </section>
 
-      <Divider my="xl" />
+        <hr />
 
-      <div className="footnote">
-        <Text size="sm" mb="xs">
-        Als betroffener Person steht Ihnen grundsätzlich das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch und Datenübertragbarkeit im Rahmen der gesetzlichen Bestimmungen zu. Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:
-        <strong>Dan Dutescu, BA</strong>, +43 664 3883 786; <Anchor href="mailto:office@fidelia.immo">office@fidelia.immo</Anchor>
-        </Text>
-        <Text size="sm">
-        Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in irgendeiner Weise verletzt worden sind, können Sie sich bei der Datenschutzbehörde beschweren.        </Text>
+        <section>
+          <h2>4. VERWENDUNGSZWECKE, SPEICHERDAUER, VERPFLICHTUNG ZUR DATENBEREITSTELLUNG</h2>
+          <p>
+         <b> 4.1 Immobilienvermittlung:</b><br />
+         Wir erhalten Daten von Ihnen als Interessent, Kunde oder Abgeber im Rahmen der Vertragsanbahnung oder Vertragsdurchführung.
+Diese Daten sind zur Vertragserfüllung erforderlich und werden darüber hinaus zur Erfüllung gesetzlicher Verpflichtungen (z. B. steuerliche Aufbewahrungspflichten, Gewährleistungs- und Schadenersatzansprüche) verarbeitet.
+
+<br /><br />Im Rahmen unserer Vermittlungstätigkeit erheben wir Daten auch aus öffentlich zugänglichen Quellen (z. B. Grundbuch), um potentielle Abgeber anzusprechen. Diese Verarbeitung erfolgt auf Basis unseres berechtigten Interesses an der Kundengewinnung.
+Ein Widerspruch ist jederzeit möglich.
+          </p>
+          <b>Speicherdauer:</b>
+          •  während der Vertragsbeziehung
+          • mindestens 7 Jahre nach Ende des Geschäftsjahres
+          • darüber hinaus bis zu 30 Jahre, sofern Gewährleistungs- oder Schadenersatzansprüche bestehen
+
+          <p>Die Bereitstellung der Daten ist freiwillig, jedoch Voraussetzung für die Leistungserbringung.
+          </p>
+
+          <hr />
+
+          <b>4.2 Lieferanten- und Auftraggeberverwaltung</b>
+          <p>Verarbeitung zur Vertragsabwicklung und Erfüllung gesetzlicher Verpflichtungen.
+<br /><b>Speicherdauer: </b>    7 Jahre nach Ende des Geschäftsjahres, bei unbeweglichen Sachen bis zu 30 Jahre.      </p>
+<hr />
+<b>4.3 Marketing</b>
+<p>Marketingmaßnahmen erfolgen auf Basis berechtigter Interessen oder Einwilligung (bei elektronischer Kommunikation). <br />
+Widerspruch bzw. Widerruf ist jederzeit möglich. <br />
+<b>Speicherdauer: </b>3 Jahre nach letztem Kontakt.
+</p>
+
+          <hr />
+          <b>4.4 Kontaktformular</b>
+          <p>Daten werden zur Beantwortung von Anfragen oder zur Vertragsanbahnung verarbeitet. <br />
+          <b>Speicherdauer:</b> <br />
+          • 12 Monate bei bloßer Anfrage <br />
+          • 7 Jahre bzw. bis zu 30 Jahre bei Vertragsbezug
+
+          </p>
+
+          <hr />
+          <b>4.5 Newsletter
+          </b>
+          <p>Versand erfolgt gemäß § 107 Abs. 3 TKG oder auf Basis ausdrücklicher Einwilligung.
+          Abmeldung ist jederzeit möglich. <br />
+          <b>Speicherdauer:</b>  3 Jahre nach letztem Kontakt.</p>
+
+          <hr />
+          <b>4.6 Website-Tracking</b>
+<p>Beim Besuch der Website werden technisch notwendige Cookies (z. B. JSESSIONID) eingesetzt. <br /> Es erfolgt keine Erhebung personenbezogener Daten wie IP-Adressen.
+ <br /> Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
+ </p>          
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>5. RECHTE DER BETROFFENEN PERSONEN</h2>
+          <p>
+          • Es erfolgt <b>keine automatisierte Entscheidungsfindung und kein Profiling.</b> <br />
+            • Sie haben das Recht auf <b>Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit.</b><br />
+            • Einwilligungen können jederzeit widerrufen werden. <br />           • Gegen Verarbeitungen auf Basis berechtigter Interessen kann Widerspruch erhoben werden.
+          </p>
+          <p>
+          <b>Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:</b>
+          <br />
+            fidelia.immo GmbH<br />
+            Pegasusweg 1, 4030 Linz<br />
+            E-Mail:{" "}
+            <a href="mailto:office@fidelia.immo">office@fidelia.immo</a>
+          </p>
+          <p>
+          Wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt, können Sie Beschwerde bei der Österreichischen Datenschutzbehörde <a href="https://www.dsb.gv.at" target="_blank" rel="noreferrer">
+              www.dsb.gv.at
+            </a> erheben.
+          </p>
+        </section>
+
+        <hr />
+
+        <p className="version">
+          Version 2.0 – Stand Jänner/2026
+        </p>
+
+        <a href="/" className="back-link">← Zurück zur Startseite</a>
       </div>
-
-      <Anchor href="/" className="back-link" mt="xl" display="block">
-        ← Zurück zur Startseite
-      </Anchor>
-    </Container>
+    </div>
   );
 };
 

@@ -1,89 +1,139 @@
 import React from "react";
-import {
-  Container,
-  Title,
-  SimpleGrid,
-  Card,
-  Text,
-  Divider,
-  Anchor,
-  ThemeIcon,
-} from "@mantine/core";
-import { IconBuilding, IconFileText } from "@tabler/icons-react";
 import "./Impressum.css";
 
-const Impressum = () => (
-  <Container fluid py="xl" className="impressum-container">
-    <Title order={2} align="center" className="impressum-header">
-      Impressum
-    </Title>
+const Impressum = () => {
+  return (
+    <div className="impressum-page">
+      <div className="impressum-box">
+        <h1>IMPRESSUM</h1>
 
-    <SimpleGrid
-      cols={2}
-      spacing="xl"
-      breakpoints={[{ maxWidth: 768, cols: 1 }]}
-      mb="xl"
-    >
-      {/* Card 1: Kontaktdaten */}
-      <Card shadow="sm" radius="md" withBorder className="info-card">
-        <ThemeIcon size={40} radius="md" variant="light" className="info-icon">
-          <IconBuilding size={28} />
-        </ThemeIcon>
+        <p className="intro">
+          Angaben gemäß § 5 E-Commerce-Gesetz (ECG), § 14
+          Unternehmensgesetzbuch (UGB) sowie § 24 Mediengesetz (MedienG)
+        </p>
+        <hr />
 
-        <Text weight={500} mt="sm">Dan Dutescu, BA</Text>
-        <Text mb="sm">Pegasusweg 1, 4030 Linz</Text>
+        <section>
+          <h2>Unternehmensangaben</h2>
+          <p>
+            <b>fidelia.immo GmbH</b><br />
+            Pegasusweg 1<br />
+            4030 Linz<br />
+            Österreich
+          </p>
+          <p>
+            <b>Telefon:</b> +43 664 3883 786<br />
+            <b>E-Mail:</b>{" "}
+            <a href="mailto:office@fidelia.immo">office@fidelia.immo</a>
+          </p>
+        </section>
+        <hr />
 
-        <Text weight={500}>Immobilientreuhänder</Text>
-        <Text mb="sm">
-          (Immobilienmakler, Immobilienverwalter, Bauträger), eingeschränkt auf Immobilienmakler
-        </Text>
+        <section>
+          <h2>Unternehmensform und Vertretung</h2>
+          <p>
+            <b>Rechtsform: </b>Gesellschaft mit beschränkter Haftung (GmbH)<br />
+            <b>Geschäftsführer: </b>Dan Dutescu, BA
+          </p>
+        </section>
+<hr />
+        <section>
+          <h2>Firmenbuch</h2>
+          <p>
+            <b>Firmenbuchnummer: </b>FN 668241 h<br />
+            <b>Firmenbuchgericht:</b> Landesgericht Linz
+          </p>
+        </section>
+<hr />
+        <section>
+          <h2>Umsatzsteuer</h2>
+          <p><b>UID-Nummer: </b>ATU82793924</p>
+        </section>
+<hr />
+        <section>
+          <h2>Gewerberechtliche Angaben</h2>
+          <p>
+            <b>Unternehmensgegenstand:</b><br />
+            Immobilienvermittlung, Standortentwicklung sowie Beratung in
+            Immobilienangelegenheiten
+          </p>
+          <p>
+            <b>Gewerbebehörde:</b><br />
+            Magistrat Linz
+          </p>
+          <p>
+            <b>Mitgliedschaft:</b><br />
+            Wirtschaftskammer Österreich (WKÖ)<br />
+            Fachgruppe: Immobilien- und Vermögenstreuhänder
+          </p>
+          <p>
+            <b>Anwendbare Rechtsvorschriften:</b><br />
+            Gewerbeordnung 1994 (GewO), Maklergesetz<br />
+            Abrufbar unter:{" "}
+            <a
+              href="https://www.ris.bka.gv.at"
+              target="_blank"
+              rel="noreferrer"
+            >
+              https://www.ris.bka.gv.at
+            </a>
+          </p>
+        </section>
+<hr />
+        <section>
+          <h2>Aufsichtsbehörde</h2>
+          <p>Magistrat Linz</p>
+        </section>
+<hr />
+        <section>
+          <h2>Haftungsausschluss</h2>
+          <p>
+          Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir jedoch keine Haftung.
+          Als Diensteanbieter sind wir gemäß § 18 ECG nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.
+          </p>
+        </section>
+<hr />
+        <section>
+          <h2>Haftung für Links</h2>
+          <p>
+          Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte übernehmen wir keine Haftung. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.
+          </p>
+        </section>
+<hr />
+        <section>
+          <h2>Urheberrecht</h2>
+          <p>
+          Die auf dieser Website veröffentlichten Inhalte, Texte, Bilder, Grafiken und sonstigen Werke unterliegen dem österreichischen Urheberrecht. Jede Verwertung außerhalb der Grenzen des Urheberrechts bedarf der vorherigen schriftlichen Zustimmung der fidelia.immo GmbH.
+          </p>
+        </section>
+<hr />
+        <section>
+          <h2>Bildnachweise</h2>
+          <p>
+          Eigene Aufnahmen sowie lizenzierte Bilder von Drittanbietern (z. B. Fotografen, Bilddatenbanken, Drohnenaufnahmen).
+          </p>
+        </section>
+<hr />
+        <section>
+          <h2>Online-Streitbeilegung</h2>
+          <p>
+          Verbraucher haben die Möglichkeit, Beschwerden an die Online-Streitbeilegungsplattform der EU zu richten:<br />
+            <a
+              href="https://ec.europa.eu/consumers/odr"
+              target="_blank"
+              rel="noreferrer"
+            >
+              https://ec.europa.eu/consumers/odr
+            </a>
+            <br />
+            Wir sind weder verpflichtet noch bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+          </p>
+        </section>
 
-        <Text weight={500}>Telefon</Text>
-        <Text mb="sm">+43 664 3883 786</Text>
-
-        <Text weight={500}>E-Mail</Text>
-        <Anchor href="mailto:office@fidelia.immo" mb="sm">
-          office@fidelia.immo
-        </Anchor>
-
-        <Text weight={500}>UID</Text>
-        <Text mb="sm">ATU 81065856</Text>
-
-        <Text weight={500}>Mitgliedschaft</Text>
-        <Text mb="sm">Mitglied der WKÖ, FG Immobilien- und Vermögenstreuhänder</Text>
-
-        <Text weight={500}>Gewerbebehörde</Text>
-        <Text>Bezirkshauptmannschaft Linz-Land</Text>
-      </Card>
-
-      {/* Card 2: Rechtliches */}
-      <Card shadow="sm" radius="md" withBorder className="info-card">
-        <ThemeIcon size={40} radius="md" variant="light" className="info-icon">
-          <IconFileText size={28} />
-        </ThemeIcon>
-
-        <Text mb="md">
-          <strong>Haftung:</strong><br/>
-          Dan Dutescu, BA recherchiert sorgfältig und setzt alles daran, nur vollständige und richtige Informationen auf seiner Website www.fidelia.immo zu veröffentlichen. Es wird jedoch keine Gewähr oder Haftung für die Vollständigkeit, Richtigkeit, Qualität und Aktualität der Informationen übernommen. Die Nutzung der Informationen liegt im alleinigen Verantwortungsbereich des Nutzers.
-        </Text>
-
-        <Text mb="md">
-          <strong>Nutzung:</strong><br/>
-          Sämtliche Inhalte, einschließlich aller Texte, Bilder, Grafiken, Icons, Animationen etc. der Website von Dan Dutescu, BA sind urheberrechtlich geschützt. Dan Dutescu, BA erlaubt Ihnen jedoch, das Material zur internen Nutzung in Ihrem Haus herunterzuladen und zu vervielfältigen. Jede weitergehende kommerzielle Verwendung, insbesondere die Veröffentlichung, Speicherung in Datenbanken sowie jede Form von gewerblicher Nutzung ohne Zustimmung der Rechteinhaber ist untersagt.
-        </Text>
-
-        <Text>
-          <strong>Links:</strong><br/>
-          Auf der Website von Dan Dutescu, BA wird mittels Links auf andere Websites verwiesen. Vor der Veröffentlichung dieser Links wurden die fremden Sites auf rechtswidrige Inhalte überprüft. Dan Dutescu, BA jedoch keine Kontrolle über das Material, welches auf solchen Sites veröffentlicht wird und ist nicht für die Inhalte sowie die Datenschutzstrategien fremder Sites verantwortlich. Dan Dutescu, BA übernimmt keinerlei Haftung für die Inhalte der Sites, auf die verwiesen wird. Hinweise auf rechtswidrige Inhalte wird Dan Dutscu, BA überprüfen und gegebenenfalls den Link entfernen.
-        </Text>
-      </Card>
-    </SimpleGrid>
-
-    <Divider my="xl" />
-    <Anchor href="/" className="back-link" mt="xl" display="block">
-      ← Zurück zur Startseite
-    </Anchor>
-  </Container>
-);
+        <a href="/" className="back-link">← Zurück zur Startseite</a>
+      </div>
+    </div>
+  );
+};
 
 export default Impressum;

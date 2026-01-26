@@ -1,62 +1,62 @@
-.impressum-container {
-  background-color: #fafafa;
+.impressum-page {
+  background: #fafafa;
+  padding: 3rem 1rem;
 }
 
-.impressum-header {
-  color: var(--primary);
-  font-family: "Inter", sans-serif;
-  margin-bottom: 1.5rem;
-}
-
-.info-card {
-  position: relative;
-  padding-top: 3rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.info-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-}
-
-.info-icon {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
-  border: 2px solid var(--primary);
-}
-
-.info-card .mantine-Text-root {
-  line-height: 1.5;
-}
-
-.footnote {
-  max-width: 600px;
+.impressum-box {
+  max-width: 820px;
   margin: 0 auto;
+  background: #fff;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  color: #000; /* text general */
+}
+
+/* TITLU PRINCIPAL */
+.impressum-box h1 {
   text-align: center;
-  color: #555;
-  font-size: 0.9rem;
+  color: #000;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+/* TITLURI SECTIUNI */
+.impressum-box h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* PARAGRAFE */
+.impressum-box p {
   line-height: 1.6;
+  margin-bottom: 0.75rem;
+  color: #000;
 }
 
-.ris-link {
+/* LINKURI */
+.impressum-box a {
+  color: #000;
   text-decoration: underline;
 }
 
-.back-link {
-  color: var(--primary);
+/* INTRO */
+.intro {
+  text-align: center;
   font-weight: 500;
-  text-decoration: none;
-  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  color: #000;
 }
 
-.back-link:hover {
-  text-decoration: underline;
-}
-
-/* listei cu no-break-uri pentru paragraf lung */
-.info-card p {
-  white-space: pre-line;
+/* BACK LINK */
+.back-link {
+  display: block;
+  margin-top: 3rem;
+  text-align: center;
+  font-weight: 500;
+  color: #000;
 }

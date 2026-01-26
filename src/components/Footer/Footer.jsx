@@ -10,7 +10,7 @@ const Footer = () => {
         {/* Stânga – logo */}
         <div className="footer-left">
           <img
-            src="../logo6.png"
+            src="../logo6_1.png"
             alt="Dan Dutescu Real Treuhand Logo"
             className="footer-logo"
           />
